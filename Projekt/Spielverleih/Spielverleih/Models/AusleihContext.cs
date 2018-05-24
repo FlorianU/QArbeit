@@ -13,7 +13,6 @@ namespace Spielverleih.Models
         }
 
         public DbSet<Kunde> Kunden { get; set; }
-        public DbSet<Spiel> Spiele { get; set; }
         public DbSet<Ausleihe> Ausleihen { get; set; }
     }
 }

@@ -20,7 +20,6 @@ namespace Spielverleih.Models
         public Guid SpielId { get; set; }
         public Guid KundeId { get; set; }
 
-        public virtual Spiel Spiel { get; set; }
         public virtual Kunde Kunde { get; set; }
     }
 }
