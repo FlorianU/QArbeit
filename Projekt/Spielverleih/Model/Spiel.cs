@@ -26,6 +26,8 @@ namespace Ludothek.Model
         public System.Guid FkVerlag { get; set; }
         public System.Guid FkSpielkategorie { get; set; }
         public System.Guid FkTarifkategorie { get; set; }
+        public string Beschreibung { get; set; }
+        public Nullable<int> FSK { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AusleiheSpiel> AusleiheSpiel { get; set; }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LudothekDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LudothekDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Ausleihe">
           <Key>
             <PropertyRef Name="ID" />
@@ -66,6 +66,8 @@
           <Property Name="FkVerlag" Type="uniqueidentifier" Nullable="false" />
           <Property Name="FkSpielkategorie" Type="uniqueidentifier" Nullable="false" />
           <Property Name="FkTarifkategorie" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Beschreibung" Type="varchar" MaxLength="100" />
+          <Property Name="FSK" Type="int" />
         </EntityType>
         <EntityType Name="Spielkategorie">
           <Key>
@@ -336,8 +338,7 @@
             <End Role="Verbandsvorstandsmitarbeiter" EntitySet="Verbandsvorstandsmitarbeiter" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LudothekDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -419,6 +420,8 @@
           <NavigationProperty Name="Spielkategorie" Relationship="Self.FK_SpielSpielkategorie" FromRole="Spiel" ToRole="Spielkategorie" />
           <NavigationProperty Name="Tarifkategorie" Relationship="Self.FK_SpielTarifkategorie" FromRole="Spiel" ToRole="Tarifkategorie" />
           <NavigationProperty Name="Verlag" Relationship="Self.FK_SpielVerlag" FromRole="Spiel" ToRole="Verlag" />
+          <Property Name="Beschreibung" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FSK" Type="Int32" />
         </EntityType>
         <EntityType Name="Spielkategorie">
           <Key>
@@ -763,6 +766,8 @@
           <EntitySetMapping Name="Spiel">
             <EntityTypeMapping TypeName="LudothekDBModel.Spiel">
               <MappingFragment StoreEntitySet="Spiel">
+                <ScalarProperty Name="FSK" ColumnName="FSK" />
+                <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Spielnummer" ColumnName="Spielnummer" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

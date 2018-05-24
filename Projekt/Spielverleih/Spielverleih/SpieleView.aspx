@@ -29,8 +29,8 @@
                 <table>
                     <tr>
                         <h2><%#: Item.Name %></h2
-                        <%--<p>Beschreibung: <%#: Item.Beschreibung %></p>--%>
-                        <%--<p>Altersempfehlung: <%#: Item.Fsk %></p>--%>
+                        <p>Beschreibung: <%#: Item.Beschreibung %></p>
+                        <p>Altersempfehlung: <%#: Item.FSK %></p>
 
                     </tr>
                 </table>
