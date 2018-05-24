@@ -1,0 +1,851 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LudothekDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ausleihe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Ausleihnummer" Type="int" />
+          <Property Name="Ausleihdatum" Type="date" />
+          <Property Name="Rückgabedatum" Type="date" />
+          <Property Name="AnzVerlängerungen" Type="int" />
+          <Property Name="FkKunde" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AusleiheSpiel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FkAusleihe" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FkSpiel" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kunde">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Nachname" Type="varchar" MaxLength="255" />
+          <Property Name="Geburtsdatum" Type="date" />
+          <Property Name="fkLudothek" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ludothek">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Strasse" Type="varchar" MaxLength="255" />
+          <Property Name="PLZ" Type="int" />
+          <Property Name="Ort" Type="varchar" MaxLength="255" />
+          <Property Name="FkVerband" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mitarbeiter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Personalnummer" Type="int" />
+          <Property Name="Vorname" Type="varchar" MaxLength="255" />
+          <Property Name="Nachname" Type="varchar" MaxLength="255" />
+          <Property Name="Geburtsdatum" Type="date" />
+          <Property Name="FkLudothek" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Spiel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Spielnummer" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="FkVerlag" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FkSpielkategorie" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FkTarifkategorie" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Spielkategorie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Standort">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PLZ" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="FkLudothek" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tarifkategorie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Vereinstarif" Type="int" />
+          <Property Name="Normaltarif" Type="int" />
+          <Property Name="FkUrheber" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Verband">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Verbandsvorstandsmitarbeiter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FkMitarbeiter" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FkVerband" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Verlag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <Association Name="FK_AusleiheSpielAusleihe">
+          <End Role="Ausleihe" Type="Self.Ausleihe" Multiplicity="1" />
+          <End Role="AusleiheSpiel" Type="Self.AusleiheSpiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ausleihe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AusleiheSpiel">
+              <PropertyRef Name="FkAusleihe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AusleiheSpielSpiel">
+          <End Role="Spiel" Type="Self.Spiel" Multiplicity="1" />
+          <End Role="AusleiheSpiel" Type="Self.AusleiheSpiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spiel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AusleiheSpiel">
+              <PropertyRef Name="FkSpiel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kunde">
+          <End Role="Kunde" Type="Self.Kunde" Multiplicity="1" />
+          <End Role="Ausleihe" Type="Self.Ausleihe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kunde">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ausleihe">
+              <PropertyRef Name="FkKunde" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KundeLudothek">
+          <End Role="Ludothek" Type="Self.Ludothek" Multiplicity="1" />
+          <End Role="Kunde" Type="Self.Kunde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ludothek">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Kunde">
+              <PropertyRef Name="fkLudothek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LudothekVerband">
+          <End Role="Verband" Type="Self.Verband" Multiplicity="1" />
+          <End Role="Ludothek" Type="Self.Ludothek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Verband">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ludothek">
+              <PropertyRef Name="FkVerband" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MitarbeiterLudothek">
+          <End Role="Ludothek" Type="Self.Ludothek" Multiplicity="0..1" />
+          <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ludothek">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Mitarbeiter">
+              <PropertyRef Name="FkLudothek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpielSpielkategorie">
+          <End Role="Spielkategorie" Type="Self.Spielkategorie" Multiplicity="1" />
+          <End Role="Spiel" Type="Self.Spiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spielkategorie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Spiel">
+              <PropertyRef Name="FkSpielkategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpielTarifkategorie">
+          <End Role="Tarifkategorie" Type="Self.Tarifkategorie" Multiplicity="1" />
+          <End Role="Spiel" Type="Self.Spiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarifkategorie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Spiel">
+              <PropertyRef Name="FkTarifkategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpielVerlag">
+          <End Role="Verlag" Type="Self.Verlag" Multiplicity="1" />
+          <End Role="Spiel" Type="Self.Spiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Verlag">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Spiel">
+              <PropertyRef Name="FkVerlag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StandortLudothek">
+          <End Role="Ludothek" Type="Self.Ludothek" Multiplicity="1" />
+          <End Role="Standort" Type="Self.Standort" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ludothek">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Standort">
+              <PropertyRef Name="FkLudothek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TarifkategorieUrheber">
+          <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="1" />
+          <End Role="Tarifkategorie" Type="Self.Tarifkategorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mitarbeiter">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tarifkategorie">
+              <PropertyRef Name="FkUrheber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VerbandsvorstandsmitarbeiterMitarbeiter">
+          <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="1" />
+          <End Role="Verbandsvorstandsmitarbeiter" Type="Self.Verbandsvorstandsmitarbeiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mitarbeiter">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Verbandsvorstandsmitarbeiter">
+              <PropertyRef Name="FkMitarbeiter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VerbandsvorstandsmitarbeiterVerband">
+          <End Role="Verband" Type="Self.Verband" Multiplicity="1" />
+          <End Role="Verbandsvorstandsmitarbeiter" Type="Self.Verbandsvorstandsmitarbeiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Verband">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Verbandsvorstandsmitarbeiter">
+              <PropertyRef Name="FkVerband" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LudothekDBModelStoreContainer">
+          <EntitySet Name="Ausleihe" EntityType="Self.Ausleihe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AusleiheSpiel" EntityType="Self.AusleiheSpiel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kunde" EntityType="Self.Kunde" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ludothek" EntityType="Self.Ludothek" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mitarbeiter" EntityType="Self.Mitarbeiter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Spiel" EntityType="Self.Spiel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Spielkategorie" EntityType="Self.Spielkategorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Standort" EntityType="Self.Standort" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarifkategorie" EntityType="Self.Tarifkategorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Verband" EntityType="Self.Verband" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Verbandsvorstandsmitarbeiter" EntityType="Self.Verbandsvorstandsmitarbeiter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Verlag" EntityType="Self.Verlag" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AusleiheSpielAusleihe" Association="Self.FK_AusleiheSpielAusleihe">
+            <End Role="Ausleihe" EntitySet="Ausleihe" />
+            <End Role="AusleiheSpiel" EntitySet="AusleiheSpiel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AusleiheSpielSpiel" Association="Self.FK_AusleiheSpielSpiel">
+            <End Role="Spiel" EntitySet="Spiel" />
+            <End Role="AusleiheSpiel" EntitySet="AusleiheSpiel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kunde" Association="Self.FK_Kunde">
+            <End Role="Kunde" EntitySet="Kunde" />
+            <End Role="Ausleihe" EntitySet="Ausleihe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KundeLudothek" Association="Self.FK_KundeLudothek">
+            <End Role="Ludothek" EntitySet="Ludothek" />
+            <End Role="Kunde" EntitySet="Kunde" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LudothekVerband" Association="Self.FK_LudothekVerband">
+            <End Role="Verband" EntitySet="Verband" />
+            <End Role="Ludothek" EntitySet="Ludothek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MitarbeiterLudothek" Association="Self.FK_MitarbeiterLudothek">
+            <End Role="Ludothek" EntitySet="Ludothek" />
+            <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpielSpielkategorie" Association="Self.FK_SpielSpielkategorie">
+            <End Role="Spielkategorie" EntitySet="Spielkategorie" />
+            <End Role="Spiel" EntitySet="Spiel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpielTarifkategorie" Association="Self.FK_SpielTarifkategorie">
+            <End Role="Tarifkategorie" EntitySet="Tarifkategorie" />
+            <End Role="Spiel" EntitySet="Spiel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpielVerlag" Association="Self.FK_SpielVerlag">
+            <End Role="Verlag" EntitySet="Verlag" />
+            <End Role="Spiel" EntitySet="Spiel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StandortLudothek" Association="Self.FK_StandortLudothek">
+            <End Role="Ludothek" EntitySet="Ludothek" />
+            <End Role="Standort" EntitySet="Standort" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TarifkategorieUrheber" Association="Self.FK_TarifkategorieUrheber">
+            <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
+            <End Role="Tarifkategorie" EntitySet="Tarifkategorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VerbandsvorstandsmitarbeiterMitarbeiter" Association="Self.FK_VerbandsvorstandsmitarbeiterMitarbeiter">
+            <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
+            <End Role="Verbandsvorstandsmitarbeiter" EntitySet="Verbandsvorstandsmitarbeiter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VerbandsvorstandsmitarbeiterVerband" Association="Self.FK_VerbandsvorstandsmitarbeiterVerband">
+            <End Role="Verband" EntitySet="Verband" />
+            <End Role="Verbandsvorstandsmitarbeiter" EntitySet="Verbandsvorstandsmitarbeiter" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LudothekDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ausleihe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Ausleihnummer" Type="Int32" />
+          <Property Name="Ausleihdatum" Type="DateTime" Precision="0" />
+          <Property Name="Rückgabedatum" Type="DateTime" Precision="0" />
+          <Property Name="AnzVerlängerungen" Type="Int32" />
+          <Property Name="FkKunde" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="AusleiheSpiel" Relationship="Self.FK_AusleiheSpielAusleihe" FromRole="Ausleihe" ToRole="AusleiheSpiel" />
+          <NavigationProperty Name="Kunde" Relationship="Self.FK_Kunde" FromRole="Ausleihe" ToRole="Kunde" />
+        </EntityType>
+        <EntityType Name="AusleiheSpiel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="FkAusleihe" Type="Guid" Nullable="false" />
+          <Property Name="FkSpiel" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Ausleihe" Relationship="Self.FK_AusleiheSpielAusleihe" FromRole="AusleiheSpiel" ToRole="Ausleihe" />
+          <NavigationProperty Name="Spiel" Relationship="Self.FK_AusleiheSpielSpiel" FromRole="AusleiheSpiel" ToRole="Spiel" />
+        </EntityType>
+        <EntityType Name="Kunde">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Nachname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Geburtsdatum" Type="DateTime" Precision="0" />
+          <Property Name="fkLudothek" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Ausleihe" Relationship="Self.FK_Kunde" FromRole="Kunde" ToRole="Ausleihe" />
+          <NavigationProperty Name="Ludothek" Relationship="Self.FK_KundeLudothek" FromRole="Kunde" ToRole="Ludothek" />
+        </EntityType>
+        <EntityType Name="Ludothek">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Strasse" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PLZ" Type="Int32" />
+          <Property Name="Ort" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FkVerband" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Kunde" Relationship="Self.FK_KundeLudothek" FromRole="Ludothek" ToRole="Kunde" />
+          <NavigationProperty Name="Verband" Relationship="Self.FK_LudothekVerband" FromRole="Ludothek" ToRole="Verband" />
+          <NavigationProperty Name="Mitarbeiter" Relationship="Self.FK_MitarbeiterLudothek" FromRole="Ludothek" ToRole="Mitarbeiter" />
+          <NavigationProperty Name="Standort" Relationship="Self.FK_StandortLudothek" FromRole="Ludothek" ToRole="Standort" />
+        </EntityType>
+        <EntityType Name="Mitarbeiter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Personalnummer" Type="Int32" />
+          <Property Name="Vorname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Nachname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Geburtsdatum" Type="DateTime" Precision="0" />
+          <Property Name="FkLudothek" Type="Guid" />
+          <NavigationProperty Name="Ludothek" Relationship="Self.FK_MitarbeiterLudothek" FromRole="Mitarbeiter" ToRole="Ludothek" />
+          <NavigationProperty Name="Tarifkategorie" Relationship="Self.FK_TarifkategorieUrheber" FromRole="Mitarbeiter" ToRole="Tarifkategorie" />
+          <NavigationProperty Name="Verbandsvorstandsmitarbeiter" Relationship="Self.FK_VerbandsvorstandsmitarbeiterMitarbeiter" FromRole="Mitarbeiter" ToRole="Verbandsvorstandsmitarbeiter" />
+        </EntityType>
+        <EntityType Name="Spiel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Spielnummer" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FkVerlag" Type="Guid" Nullable="false" />
+          <Property Name="FkSpielkategorie" Type="Guid" Nullable="false" />
+          <Property Name="FkTarifkategorie" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="AusleiheSpiel" Relationship="Self.FK_AusleiheSpielSpiel" FromRole="Spiel" ToRole="AusleiheSpiel" />
+          <NavigationProperty Name="Spielkategorie" Relationship="Self.FK_SpielSpielkategorie" FromRole="Spiel" ToRole="Spielkategorie" />
+          <NavigationProperty Name="Tarifkategorie" Relationship="Self.FK_SpielTarifkategorie" FromRole="Spiel" ToRole="Tarifkategorie" />
+          <NavigationProperty Name="Verlag" Relationship="Self.FK_SpielVerlag" FromRole="Spiel" ToRole="Verlag" />
+        </EntityType>
+        <EntityType Name="Spielkategorie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Spiel" Relationship="Self.FK_SpielSpielkategorie" FromRole="Spielkategorie" ToRole="Spiel" />
+        </EntityType>
+        <EntityType Name="Standort">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="PLZ" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FkLudothek" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Ludothek" Relationship="Self.FK_StandortLudothek" FromRole="Standort" ToRole="Ludothek" />
+        </EntityType>
+        <EntityType Name="Tarifkategorie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Vereinstarif" Type="Int32" />
+          <Property Name="Normaltarif" Type="Int32" />
+          <Property Name="FkUrheber" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Mitarbeiter" Relationship="Self.FK_TarifkategorieUrheber" FromRole="Tarifkategorie" ToRole="Mitarbeiter" />
+          <NavigationProperty Name="Spiel" Relationship="Self.FK_SpielTarifkategorie" FromRole="Tarifkategorie" ToRole="Spiel" />
+        </EntityType>
+        <EntityType Name="Verband">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ludothek" Relationship="Self.FK_LudothekVerband" FromRole="Verband" ToRole="Ludothek" />
+          <NavigationProperty Name="Verbandsvorstandsmitarbeiter" Relationship="Self.FK_VerbandsvorstandsmitarbeiterVerband" FromRole="Verband" ToRole="Verbandsvorstandsmitarbeiter" />
+        </EntityType>
+        <EntityType Name="Verbandsvorstandsmitarbeiter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="FkMitarbeiter" Type="Guid" Nullable="false" />
+          <Property Name="FkVerband" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Mitarbeiter" Relationship="Self.FK_VerbandsvorstandsmitarbeiterMitarbeiter" FromRole="Verbandsvorstandsmitarbeiter" ToRole="Mitarbeiter" />
+          <NavigationProperty Name="Verband" Relationship="Self.FK_VerbandsvorstandsmitarbeiterVerband" FromRole="Verbandsvorstandsmitarbeiter" ToRole="Verband" />
+        </EntityType>
+        <EntityType Name="Verlag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Spiel" Relationship="Self.FK_SpielVerlag" FromRole="Verlag" ToRole="Spiel" />
+        </EntityType>
+        <Association Name="FK_AusleiheSpielAusleihe">
+          <End Role="Ausleihe" Type="Self.Ausleihe" Multiplicity="1" />
+          <End Role="AusleiheSpiel" Type="Self.AusleiheSpiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ausleihe">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AusleiheSpiel">
+              <PropertyRef Name="FkAusleihe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kunde">
+          <End Role="Kunde" Type="Self.Kunde" Multiplicity="1" />
+          <End Role="Ausleihe" Type="Self.Ausleihe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kunde">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ausleihe">
+              <PropertyRef Name="FkKunde" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AusleiheSpielSpiel">
+          <End Role="Spiel" Type="Self.Spiel" Multiplicity="1" />
+          <End Role="AusleiheSpiel" Type="Self.AusleiheSpiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spiel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AusleiheSpiel">
+              <PropertyRef Name="FkSpiel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KundeLudothek">
+          <End Role="Ludothek" Type="Self.Ludothek" Multiplicity="1" />
+          <End Role="Kunde" Type="Self.Kunde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ludothek">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Kunde">
+              <PropertyRef Name="fkLudothek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LudothekVerband">
+          <End Role="Verband" Type="Self.Verband" Multiplicity="1" />
+          <End Role="Ludothek" Type="Self.Ludothek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Verband">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ludothek">
+              <PropertyRef Name="FkVerband" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MitarbeiterLudothek">
+          <End Role="Ludothek" Type="Self.Ludothek" Multiplicity="0..1" />
+          <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ludothek">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Mitarbeiter">
+              <PropertyRef Name="FkLudothek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StandortLudothek">
+          <End Role="Ludothek" Type="Self.Ludothek" Multiplicity="1" />
+          <End Role="Standort" Type="Self.Standort" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ludothek">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Standort">
+              <PropertyRef Name="FkLudothek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TarifkategorieUrheber">
+          <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="1" />
+          <End Role="Tarifkategorie" Type="Self.Tarifkategorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mitarbeiter">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tarifkategorie">
+              <PropertyRef Name="FkUrheber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VerbandsvorstandsmitarbeiterMitarbeiter">
+          <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="1" />
+          <End Role="Verbandsvorstandsmitarbeiter" Type="Self.Verbandsvorstandsmitarbeiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mitarbeiter">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Verbandsvorstandsmitarbeiter">
+              <PropertyRef Name="FkMitarbeiter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpielSpielkategorie">
+          <End Role="Spielkategorie" Type="Self.Spielkategorie" Multiplicity="1" />
+          <End Role="Spiel" Type="Self.Spiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spielkategorie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Spiel">
+              <PropertyRef Name="FkSpielkategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpielTarifkategorie">
+          <End Role="Tarifkategorie" Type="Self.Tarifkategorie" Multiplicity="1" />
+          <End Role="Spiel" Type="Self.Spiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tarifkategorie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Spiel">
+              <PropertyRef Name="FkTarifkategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpielVerlag">
+          <End Role="Verlag" Type="Self.Verlag" Multiplicity="1" />
+          <End Role="Spiel" Type="Self.Spiel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Verlag">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Spiel">
+              <PropertyRef Name="FkVerlag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VerbandsvorstandsmitarbeiterVerband">
+          <End Role="Verband" Type="Self.Verband" Multiplicity="1" />
+          <End Role="Verbandsvorstandsmitarbeiter" Type="Self.Verbandsvorstandsmitarbeiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Verband">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Verbandsvorstandsmitarbeiter">
+              <PropertyRef Name="FkVerband" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LudothekDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ausleihe" EntityType="Self.Ausleihe" />
+          <EntitySet Name="AusleiheSpiel" EntityType="Self.AusleiheSpiel" />
+          <EntitySet Name="Kunde" EntityType="Self.Kunde" />
+          <EntitySet Name="Ludothek" EntityType="Self.Ludothek" />
+          <EntitySet Name="Mitarbeiter" EntityType="Self.Mitarbeiter" />
+          <EntitySet Name="Spiel" EntityType="Self.Spiel" />
+          <EntitySet Name="Spielkategorie" EntityType="Self.Spielkategorie" />
+          <EntitySet Name="Standort" EntityType="Self.Standort" />
+          <EntitySet Name="Tarifkategorie" EntityType="Self.Tarifkategorie" />
+          <EntitySet Name="Verband" EntityType="Self.Verband" />
+          <EntitySet Name="Verbandsvorstandsmitarbeiter" EntityType="Self.Verbandsvorstandsmitarbeiter" />
+          <EntitySet Name="Verlag" EntityType="Self.Verlag" />
+          <AssociationSet Name="FK_AusleiheSpielAusleihe" Association="Self.FK_AusleiheSpielAusleihe">
+            <End Role="Ausleihe" EntitySet="Ausleihe" />
+            <End Role="AusleiheSpiel" EntitySet="AusleiheSpiel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kunde" Association="Self.FK_Kunde">
+            <End Role="Kunde" EntitySet="Kunde" />
+            <End Role="Ausleihe" EntitySet="Ausleihe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AusleiheSpielSpiel" Association="Self.FK_AusleiheSpielSpiel">
+            <End Role="Spiel" EntitySet="Spiel" />
+            <End Role="AusleiheSpiel" EntitySet="AusleiheSpiel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KundeLudothek" Association="Self.FK_KundeLudothek">
+            <End Role="Ludothek" EntitySet="Ludothek" />
+            <End Role="Kunde" EntitySet="Kunde" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LudothekVerband" Association="Self.FK_LudothekVerband">
+            <End Role="Verband" EntitySet="Verband" />
+            <End Role="Ludothek" EntitySet="Ludothek" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MitarbeiterLudothek" Association="Self.FK_MitarbeiterLudothek">
+            <End Role="Ludothek" EntitySet="Ludothek" />
+            <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StandortLudothek" Association="Self.FK_StandortLudothek">
+            <End Role="Ludothek" EntitySet="Ludothek" />
+            <End Role="Standort" EntitySet="Standort" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TarifkategorieUrheber" Association="Self.FK_TarifkategorieUrheber">
+            <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
+            <End Role="Tarifkategorie" EntitySet="Tarifkategorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VerbandsvorstandsmitarbeiterMitarbeiter" Association="Self.FK_VerbandsvorstandsmitarbeiterMitarbeiter">
+            <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
+            <End Role="Verbandsvorstandsmitarbeiter" EntitySet="Verbandsvorstandsmitarbeiter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpielSpielkategorie" Association="Self.FK_SpielSpielkategorie">
+            <End Role="Spielkategorie" EntitySet="Spielkategorie" />
+            <End Role="Spiel" EntitySet="Spiel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpielTarifkategorie" Association="Self.FK_SpielTarifkategorie">
+            <End Role="Tarifkategorie" EntitySet="Tarifkategorie" />
+            <End Role="Spiel" EntitySet="Spiel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpielVerlag" Association="Self.FK_SpielVerlag">
+            <End Role="Verlag" EntitySet="Verlag" />
+            <End Role="Spiel" EntitySet="Spiel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VerbandsvorstandsmitarbeiterVerband" Association="Self.FK_VerbandsvorstandsmitarbeiterVerband">
+            <End Role="Verband" EntitySet="Verband" />
+            <End Role="Verbandsvorstandsmitarbeiter" EntitySet="Verbandsvorstandsmitarbeiter" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LudothekDBModelStoreContainer" CdmEntityContainer="LudothekDBEntities">
+          <EntitySetMapping Name="Ausleihe">
+            <EntityTypeMapping TypeName="LudothekDBModel.Ausleihe">
+              <MappingFragment StoreEntitySet="Ausleihe">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ausleihnummer" ColumnName="Ausleihnummer" />
+                <ScalarProperty Name="Ausleihdatum" ColumnName="Ausleihdatum" />
+                <ScalarProperty Name="Rückgabedatum" ColumnName="Rückgabedatum" />
+                <ScalarProperty Name="AnzVerlängerungen" ColumnName="AnzVerlängerungen" />
+                <ScalarProperty Name="FkKunde" ColumnName="FkKunde" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AusleiheSpiel">
+            <EntityTypeMapping TypeName="LudothekDBModel.AusleiheSpiel">
+              <MappingFragment StoreEntitySet="AusleiheSpiel">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FkAusleihe" ColumnName="FkAusleihe" />
+                <ScalarProperty Name="FkSpiel" ColumnName="FkSpiel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kunde">
+            <EntityTypeMapping TypeName="LudothekDBModel.Kunde">
+              <MappingFragment StoreEntitySet="Kunde">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Nachname" ColumnName="Nachname" />
+                <ScalarProperty Name="Geburtsdatum" ColumnName="Geburtsdatum" />
+                <ScalarProperty Name="fkLudothek" ColumnName="fkLudothek" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ludothek">
+            <EntityTypeMapping TypeName="LudothekDBModel.Ludothek">
+              <MappingFragment StoreEntitySet="Ludothek">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Strasse" ColumnName="Strasse" />
+                <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+                <ScalarProperty Name="Ort" ColumnName="Ort" />
+                <ScalarProperty Name="FkVerband" ColumnName="FkVerband" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mitarbeiter">
+            <EntityTypeMapping TypeName="LudothekDBModel.Mitarbeiter">
+              <MappingFragment StoreEntitySet="Mitarbeiter">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Personalnummer" ColumnName="Personalnummer" />
+                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+                <ScalarProperty Name="Nachname" ColumnName="Nachname" />
+                <ScalarProperty Name="Geburtsdatum" ColumnName="Geburtsdatum" />
+                <ScalarProperty Name="FkLudothek" ColumnName="FkLudothek" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Spiel">
+            <EntityTypeMapping TypeName="LudothekDBModel.Spiel">
+              <MappingFragment StoreEntitySet="Spiel">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Spielnummer" ColumnName="Spielnummer" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FkVerlag" ColumnName="FkVerlag" />
+                <ScalarProperty Name="FkSpielkategorie" ColumnName="FkSpielkategorie" />
+                <ScalarProperty Name="FkTarifkategorie" ColumnName="FkTarifkategorie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Spielkategorie">
+            <EntityTypeMapping TypeName="LudothekDBModel.Spielkategorie">
+              <MappingFragment StoreEntitySet="Spielkategorie">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Standort">
+            <EntityTypeMapping TypeName="LudothekDBModel.Standort">
+              <MappingFragment StoreEntitySet="Standort">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FkLudothek" ColumnName="FkLudothek" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarifkategorie">
+            <EntityTypeMapping TypeName="LudothekDBModel.Tarifkategorie">
+              <MappingFragment StoreEntitySet="Tarifkategorie">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Vereinstarif" ColumnName="Vereinstarif" />
+                <ScalarProperty Name="Normaltarif" ColumnName="Normaltarif" />
+                <ScalarProperty Name="FkUrheber" ColumnName="FkUrheber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Verband">
+            <EntityTypeMapping TypeName="LudothekDBModel.Verband">
+              <MappingFragment StoreEntitySet="Verband">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Verbandsvorstandsmitarbeiter">
+            <EntityTypeMapping TypeName="LudothekDBModel.Verbandsvorstandsmitarbeiter">
+              <MappingFragment StoreEntitySet="Verbandsvorstandsmitarbeiter">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FkMitarbeiter" ColumnName="FkMitarbeiter" />
+                <ScalarProperty Name="FkVerband" ColumnName="FkVerband" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Verlag">
+            <EntityTypeMapping TypeName="LudothekDBModel.Verlag">
+              <MappingFragment StoreEntitySet="Verlag">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Kein" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

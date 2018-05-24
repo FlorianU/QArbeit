@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8dc18de8e5534db5b7b468830840a842" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="LudothekDBModel.Ausleihe" Width="1.5" PointX="7.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="LudothekDBModel.AusleiheSpiel" Width="1.5" PointX="9.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LudothekDBModel.Kunde" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LudothekDBModel.Ludothek" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="LudothekDBModel.Mitarbeiter" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LudothekDBModel.Spiel" Width="1.5" PointX="9.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LudothekDBModel.Spielkategorie" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LudothekDBModel.Standort" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LudothekDBModel.Tarifkategorie" Width="1.5" PointX="7.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LudothekDBModel.Verband" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LudothekDBModel.Verbandsvorstandsmitarbeiter" Width="1.5" PointX="7.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LudothekDBModel.Verlag" Width="1.5" PointX="7.5" PointY="14.125" IsExpanded="true" />
+        <AssociationConnector Association="LudothekDBModel.FK_AusleiheSpielAusleihe" ManuallyRouted="false" />
+        <AssociationConnector Association="LudothekDBModel.FK_Kunde" ManuallyRouted="false" />
+        <AssociationConnector Association="LudothekDBModel.FK_AusleiheSpielSpiel" ManuallyRouted="false" />
+        <AssociationConnector Association="LudothekDBModel.FK_KundeLudothek" ManuallyRouted="false" />
+        <AssociationConnector Association="LudothekDBModel.FK_LudothekVerband" ManuallyRouted="false" />
+        <AssociationConnector Association="LudothekDBModel.FK_MitarbeiterLudothek" ManuallyRouted="false" />
+        <AssociationConnector Association="LudothekDBModel.FK_StandortLudothek" ManuallyRouted="false" />
+        <AssociationConnector Association="LudothekDBModel.FK_TarifkategorieUrheber" ManuallyRouted="false" />
+        <AssociationConnector Association="LudothekDBModel.FK_VerbandsvorstandsmitarbeiterMitarbeiter" ManuallyRouted="false" />
+        <AssociationConnector Association="LudothekDBModel.FK_SpielSpielkategorie" ManuallyRouted="false" />
+        <AssociationConnector Association="LudothekDBModel.FK_SpielTarifkategorie" ManuallyRouted="false" />
+        <AssociationConnector Association="LudothekDBModel.FK_SpielVerlag" ManuallyRouted="false" />
+        <AssociationConnector Association="LudothekDBModel.FK_VerbandsvorstandsmitarbeiterVerband" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

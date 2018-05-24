@@ -1,0 +1,240 @@
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\ApplicationInsights.config
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\roslyn\csc.exe
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\roslyn\System.Collections.Immutable.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\roslyn\System.Reflection.Metadata.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\roslyn\vbc.exe
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\roslyn\VBCSCompiler.exe
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\roslyn\VBCSCompiler.exe.config
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Spielverleih.dll.config
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Spielverleih.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Spielverleih.pdb
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Antlr3.Runtime.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\AspNet.ScriptManager.bootstrap.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\AspNet.ScriptManager.jQuery.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\EntityFramework.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\EntityFramework.SqlServer.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AI.DependencyCollector.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AI.Web.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AI.WindowsServer.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.ApplicationInsights.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AspNet.FriendlyUrls.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Google.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.ScriptManager.MSAjax.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.ScriptManager.WebForms.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Web.Infrastructure.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Newtonsoft.Json.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Owin.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\System.Web.Optimization.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\System.Web.Providers.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\WebGrease.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AI.DependencyCollector.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AI.Web.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AI.WindowsServer.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.ApplicationInsights.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\System.Web.Optimization.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Antlr3.Runtime.pdb
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Newtonsoft.Json.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AspNet.FriendlyUrls.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\EntityFramework.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\EntityFramework.SqlServer.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\System.Web.Providers.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Google.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Visual Studio Projects\Spielverleih\Spielverleih\obj\Debug\Spielverleih.dll
+E:\Visual Studio Projects\Spielverleih\Spielverleih\obj\Debug\Spielverleih.pdb
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\ApplicationInsights.config
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\roslyn\csc.exe
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\roslyn\vbc.exe
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\roslyn\VBCSCompiler.exe
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Spielverleih.dll.config
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Spielverleih.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Spielverleih.pdb
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Antlr3.Runtime.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\AspNet.ScriptManager.bootstrap.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\AspNet.ScriptManager.jQuery.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\EntityFramework.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\EntityFramework.SqlServer.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AI.Web.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.ApplicationInsights.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.ScriptManager.MSAjax.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.ScriptManager.WebForms.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Newtonsoft.Json.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Owin.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\System.Web.Optimization.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\System.Web.Providers.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\WebGrease.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AI.Web.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.ApplicationInsights.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\System.Web.Optimization.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Antlr3.Runtime.pdb
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Newtonsoft.Json.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\EntityFramework.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\EntityFramework.SqlServer.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\System.Web.Providers.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\obj\Debug\Spielverleih.csprojResolveAssemblyReference.cache
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\obj\Debug\Spielverleih.csproj.CoreCompileInputs.cache
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\obj\Debug\Spielverleih.dll
+C:\Users\vmadmin\Desktop\Spielverleih\Spielverleih\obj\Debug\Spielverleih.pdb
+E:\Visual Studio Projects\Spielverleih\Spielverleih\obj\Debug\Spielverleih.csprojResolveAssemblyReference.cache
+C:\Projekt\Spielverleih\Spielverleih\bin\ApplicationInsights.config
+C:\Projekt\Spielverleih\Spielverleih\bin\roslyn\csc.exe
+C:\Projekt\Spielverleih\Spielverleih\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Projekt\Spielverleih\Spielverleih\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Projekt\Spielverleih\Spielverleih\bin\roslyn\System.Collections.Immutable.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\roslyn\System.Reflection.Metadata.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\roslyn\vbc.exe
+C:\Projekt\Spielverleih\Spielverleih\bin\roslyn\VBCSCompiler.exe
+C:\Projekt\Spielverleih\Spielverleih\bin\roslyn\VBCSCompiler.exe.config
+C:\Projekt\Spielverleih\Spielverleih\bin\Spielverleih.dll.config
+C:\Projekt\Spielverleih\Spielverleih\bin\Spielverleih.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Spielverleih.pdb
+C:\Projekt\Spielverleih\Spielverleih\bin\Antlr3.Runtime.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\AspNet.ScriptManager.bootstrap.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\AspNet.ScriptManager.jQuery.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\EntityFramework.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\EntityFramework.SqlServer.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AI.DependencyCollector.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AI.Web.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AI.WindowsServer.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.ApplicationInsights.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Google.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.ScriptManager.MSAjax.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.ScriptManager.WebForms.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Web.Infrastructure.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Newtonsoft.Json.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Owin.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\System.Web.Optimization.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\System.Web.Providers.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\WebGrease.dll
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AI.DependencyCollector.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AI.Web.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AI.WindowsServer.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.ApplicationInsights.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\System.Web.Optimization.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Antlr3.Runtime.pdb
+C:\Projekt\Spielverleih\Spielverleih\bin\Newtonsoft.Json.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\EntityFramework.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\EntityFramework.SqlServer.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\System.Web.Providers.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Google.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Projekt\Spielverleih\Spielverleih\obj\Debug\Spielverleih.csprojResolveAssemblyReference.cache
+C:\Projekt\Spielverleih\Spielverleih\obj\Debug\Spielverleih.csproj.CoreCompileInputs.cache
+C:\Projekt\Spielverleih\Spielverleih\obj\Debug\Spielverleih.csproj.CopyComplete
+C:\Projekt\Spielverleih\Spielverleih\obj\Debug\Spielverleih.dll
+C:\Projekt\Spielverleih\Spielverleih\obj\Debug\Spielverleih.pdb

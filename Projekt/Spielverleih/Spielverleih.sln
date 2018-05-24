@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spielverleih", "Spielverleih\Spielverleih.csproj", "{A7E046A8-CCF0-4C00-A702-0B1A850CF4CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{A746136B-62CB-4AF4-A9C3-2D8AFB973B1C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7E046A8-CCF0-4C00-A702-0B1A850CF4CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7E046A8-CCF0-4C00-A702-0B1A850CF4CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7E046A8-CCF0-4C00-A702-0B1A850CF4CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7E046A8-CCF0-4C00-A702-0B1A850CF4CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A746136B-62CB-4AF4-A9C3-2D8AFB973B1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A746136B-62CB-4AF4-A9C3-2D8AFB973B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A746136B-62CB-4AF4-A9C3-2D8AFB973B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A746136B-62CB-4AF4-A9C3-2D8AFB973B1C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87189595-F2A8-4138-ABC6-E421E9ABE8BD}
+	EndGlobalSection
+EndGlobal
