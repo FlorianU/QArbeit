@@ -26,6 +26,14 @@
             </div>
         </div>
         <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="txtGeburtsdatum" CssClass="col-md-2 control-label">Geburtsdatum</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="txtGeburtsdatum" CssClass="form-control" />
+<%--                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtName"
+                    CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." />--%>
+            </div>
+        </div>
+        <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtPlz" CssClass="col-md-2 control-label">PLZ</asp:Label>
             <div class="col-md-3">
                 <asp:TextBox runat="server" ID="txtPlz" CssClass="form-control plz" TextMode="Number" />

@@ -27,13 +27,14 @@ namespace Spielverleih
             _context = new LudothekDBEntities();
             if (!IsPostBack)
             {
-                //var benutzer = Benutzer;
-                //txtVorname.Text = benutzer.Name;
-                //txtName.Text = benutzer.Nachname;
-                //txtPlz.Text = benutzer.p.ToString();
-                //txtOrt.Text = benutzer.Ort;
-                //txtStrasse.Text = benutzer.Strasse;
-                //txtStrassennummer.Text = benutzer.Strassennummer;
+                var benutzer = Benutzer;
+                txtVorname.Text = benutzer.Vorname;
+                txtName.Text = benutzer.Nachname;
+                //txtPlz.Text = benutzer.Geburtsdatum;
+                txtPlz.Text = benutzer.PLZ.ToString();
+                txtOrt.Text = benutzer.Ort;
+                txtStrasse.Text = benutzer.Strasse;
+                txtStrassennummer.Text = benutzer.StrassenNummer;
             }
         }
 
@@ -48,16 +49,17 @@ namespace Spielverleih
 
         protected void Speichern_Click(object sender, EventArgs e)
         {
-            //var benutzer = Benutzer;
-            //benutzer.Vorname = txtVorname.Text;
-            //benutzer.Name = txtName.Text;
-            //benutzer.Plz = int.Parse(txtPlz.Text);
-            //benutzer.Ort = txtOrt.Text;
-            //benutzer.Strasse = txtStrasse.Text;
-            //benutzer.Strassennummer = txtStrassennummer.Text;
-            //_context.Entry(benutzer).State = EntityState.Modified;
-            //_context.SaveChanges();
-            //Response.Redirect("BenutzerView.aspx");
+            var benutzer = Benutzer;
+            benutzer.Vorname = txtVorname.Text;
+            benutzer.Nachname = txtName.Text;
+            //benutzer.Geburtsdatum = txtGeburtsdatum.Text;
+            benutzer.PLZ = int.Parse(txtPlz.Text);
+            benutzer.Ort = txtOrt.Text;
+            benutzer.Strasse = txtStrasse.Text;
+            benutzer.StrassenNummer = txtStrassennummer.Text;
+            _context.Entry(benutzer).State = EntityState.Modified;
+            _context.SaveChanges();
+            Response.Redirect("BenutzerView.aspx");
         }
     }
 }

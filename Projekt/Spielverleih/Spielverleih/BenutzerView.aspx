@@ -14,6 +14,8 @@
                 <tr>
                     <td>
                         <div class="form-group">
+                            <div class="col-md-12"><b>Geburtsdatum: </b><%#:Item.Geburtsdatum  %></div>
+                            <br />
                             <div class="col-md-12"><b>PLZ: </b><%#:Item.PLZ  %></div>
                             <br />
                             <div class="col-md-12"><b>Ort: </b><%#:Item.Ort  %></div>

@@ -21,8 +21,8 @@ namespace Spielverleih
 
         public IQueryable<Kunde> GetKunde([QueryString("Id")] Guid? kundeId)
         {
-            var id = Context.User.Identity.GetUserId();
-            return _context.Kunde.Where(p => p.ID.ToString() == id);
+            Guid userIdentityId = new Guid(Context.User.Identity.GetUserId());
+            return _context.Kunde.Where(kunde => kunde.ID == userIdentityId);
         }
 
         protected void Editieren_Click(object sender, EventArgs e)
