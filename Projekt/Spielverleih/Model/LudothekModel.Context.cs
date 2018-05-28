@@ -26,7 +26,6 @@ namespace Ludothek.Model
         }
     
         public virtual DbSet<Ausleihe> Ausleihe { get; set; }
-        public virtual DbSet<AusleiheSpiel> AusleiheSpiel { get; set; }
         public virtual DbSet<Kunde> Kunde { get; set; }
         public virtual DbSet<Ludothek> Ludothek { get; set; }
         public virtual DbSet<Mitarbeiter> Mitarbeiter { get; set; }

@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <asp:ListView ID="lstAusleihe" runat="server" ItemType="Spielverleih.Models.Ausleihe">
+        <asp:ListView ID="lstAusleihe" runat="server" ItemType="Ludothek.Model.Ausleihe">
             <EmptyDataTemplate>
                 <table >
                     <tr>
@@ -39,10 +39,13 @@
                 <td runat="server">
                     <div class="form-group">
                         <table>
-                            <tr><div class="col-md-3"><%#: Item.Spiel.Bezeichnung %></div></tr>  
-                            <tr><div class="col-md-3"><%#: Item.Ausleihdatum %></div></tr>
-                            <%--<tr><div class="col-md-3"><%#: Item.Enddatum %></div></tr>--%>
-                            <tr><asp:Button runat="server" Text="Verlängern" CssClass="btn btn-default col-md-3" CausesValidation="false"  CommandArgument="<%#: Item.Id %>"  OnClick="Verlaengern_Click"/></tr>
+                            <tr><div class="col-md-2"><%#: Item.Nummer%></div></tr>  
+                            <tr><div class="col-md-2"><%#: Item.SpielBezeichnung %></div></tr>
+                            <tr><div class="col-md-2"><%#: Item.Verlag %></div></tr>
+                            <tr><div class="col-md-2"><%#: Item.Ausleihdatum %></div></tr>
+                            <tr><div class="col-md-2"><%#: Item.Rueckgabedatum %></div></tr>
+                            <tr><div class="col-md-2"><%#: Item.AnzVerlängerungen %></div></tr>
+                            <tr><asp:Button runat="server" Text="Verlängern" CssClass="btn btn-default col-md-3" CausesValidation="false"  CommandArgument="<%#: Item.ID %>"  OnClick="Verlaengern_Click"/></tr>
                         </table>
                     </div>
                 </td>
@@ -51,10 +54,12 @@
                  <td runat="server">
                     <div class="form-group">
                         <table>
-                            <tr><div class="col-md-3"><b>Spiel</b></div></tr>
-                            <tr><div class="col-md-3"><b>Ausleihdatum</b></div></tr>
-                            <tr><div class="col-md-3"><b>Rückgabedatum</b></div></tr>
-                            <tr><div class="col-md-3"><b>Verlängern</b></div></tr>
+                            <tr><div class="col-md-2"><b>Ausleih-Nummer</b></div></tr>
+                            <tr><div class="col-md-2"><b>Spiel</b></div></tr>
+                            <tr><div class="col-md-2"><b>Verlag</b></div></tr>
+                            <tr><div class="col-md-2"><b>Ausleihdatum</b></div></tr>
+                            <tr><div class="col-md-2"><b>Rückgabedatum</b></div></tr>
+                            <tr><div class="col-md-2"><b>Anzahl Verlängerungen</b></div></tr>
                         </table>
                     </div>
                 </td>

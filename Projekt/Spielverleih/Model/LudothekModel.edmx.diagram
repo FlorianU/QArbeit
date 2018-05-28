@@ -5,21 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="8dc18de8e5534db5b7b468830840a842" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="LudothekDBModel.Ausleihe" Width="1.5" PointX="9.75" PointY="15.5" />
-        <EntityTypeShape EntityType="LudothekDBModel.AusleiheSpiel" Width="1.5" PointX="12" PointY="8.75" />
-        <EntityTypeShape EntityType="LudothekDBModel.Kunde" Width="1.5" PointX="7.5" PointY="15.375" />
-        <EntityTypeShape EntityType="LudothekDBModel.Ludothek" Width="1.5" PointX="3" PointY="4.25" />
-        <EntityTypeShape EntityType="LudothekDBModel.Mitarbeiter" Width="1.5" PointX="5.25" PointY="5.625" />
-        <EntityTypeShape EntityType="LudothekDBModel.Spiel" Width="1.5" PointX="9.75" PointY="8.125" />
-        <EntityTypeShape EntityType="LudothekDBModel.Spielkategorie" Width="1.5" PointX="7.5" PointY="12.375" />
-        <EntityTypeShape EntityType="LudothekDBModel.Standort" Width="1.5" PointX="5.25" PointY="2.875" />
-        <EntityTypeShape EntityType="LudothekDBModel.Tarifkategorie" Width="1.5" PointX="7.5" PointY="8.625" />
-        <EntityTypeShape EntityType="LudothekDBModel.Verband" Width="1.5" PointX="0.75" PointY="4.75" />
-        <EntityTypeShape EntityType="LudothekDBModel.Verbandsvorstandsmitarbeiter" Width="1.5" PointX="7.5" PointY="5.625" />
-        <EntityTypeShape EntityType="LudothekDBModel.Verlag" Width="1.5" PointX="7.5" PointY="2.5" />
-        <AssociationConnector Association="LudothekDBModel.FK_AusleiheSpielAusleihe" />
+        <EntityTypeShape EntityType="LudothekDBModel.Ausleihe" Width="1.5" PointX="12" PointY="2.125" />
+        <EntityTypeShape EntityType="LudothekDBModel.Kunde" Width="1.5" PointX="9.75" PointY="2.125" />
+        <EntityTypeShape EntityType="LudothekDBModel.Ludothek" Width="1.5" PointX="3" PointY="5.25" />
+        <EntityTypeShape EntityType="LudothekDBModel.Mitarbeiter" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="LudothekDBModel.Spiel" Width="1.5" PointX="9.75" PointY="6.5" />
+        <EntityTypeShape EntityType="LudothekDBModel.Spielkategorie" Width="1.5" PointX="7.5" PointY="0.75" />
+        <EntityTypeShape EntityType="LudothekDBModel.Standort" Width="1.5" PointX="5.25" PointY="7.375" />
+        <EntityTypeShape EntityType="LudothekDBModel.Tarifkategorie" Width="1.5" PointX="7.5" PointY="6.875" />
+        <EntityTypeShape EntityType="LudothekDBModel.Verband" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="LudothekDBModel.Verbandsvorstandsmitarbeiter" Width="1.5" PointX="7.5" PointY="3.75" />
+        <EntityTypeShape EntityType="LudothekDBModel.Verlag" Width="1.5" PointX="7.5" PointY="10.125" />
         <AssociationConnector Association="LudothekDBModel.FK_Kunde" />
-        <AssociationConnector Association="LudothekDBModel.FK_AusleiheSpielSpiel" />
         <AssociationConnector Association="LudothekDBModel.FK_LudothekVerband" />
         <AssociationConnector Association="LudothekDBModel.FK_MitarbeiterLudothek" />
         <AssociationConnector Association="LudothekDBModel.FK_StandortLudothek" />

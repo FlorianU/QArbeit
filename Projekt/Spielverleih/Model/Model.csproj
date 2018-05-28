@@ -53,9 +53,6 @@
     <Compile Include="Ausleihe.cs">
       <DependentUpon>LudothekModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AusleiheSpiel.cs">
-      <DependentUpon>LudothekModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Kunde.cs">
       <DependentUpon>LudothekModel.tt</DependentUpon>
     </Compile>

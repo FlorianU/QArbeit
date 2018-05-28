@@ -14,14 +14,8 @@ namespace Ludothek.Model
     
     public partial class Spiel
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Spiel()
-        {
-            this.AusleiheSpiel = new HashSet<AusleiheSpiel>();
-        }
-    
         public System.Guid ID { get; set; }
-        public Nullable<int> Spielnummer { get; set; }
+        public int Spielnummer { get; set; }
         public string Name { get; set; }
         public System.Guid FkVerlag { get; set; }
         public System.Guid FkSpielkategorie { get; set; }
@@ -29,8 +23,6 @@ namespace Ludothek.Model
         public string Beschreibung { get; set; }
         public Nullable<int> FSK { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AusleiheSpiel> AusleiheSpiel { get; set; }
         public virtual Spielkategorie Spielkategorie { get; set; }
         public virtual Tarifkategorie Tarifkategorie { get; set; }
         public virtual Verlag Verlag { get; set; }

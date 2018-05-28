@@ -23,17 +23,13 @@ namespace Spielverleih
             }
         }
 
-        //public List<Spiel> Spiele
-        //{
-        //    get
-        //    {
-        //        List<Ausleihe> ausleihen = _context.Ausleihen.ToList();
-        //        var list = ausleihen.Where(x => x.Enddatum >= DateTime.Now);
-        //        var spiele = _context.Spiele.ToList();
-        //        list.Select(x => x.Spiel).ToList().ForEach(x => spiele.Remove(x));
-        //        return spiele;
-        //    }
-        //}
+        public List<Spiel> Spiele
+        {
+            get
+            {
+                return _context.Spiel.ToList();
+            }
+        }
 
         public List<Ausleihe> Ausleihen
         {
@@ -48,9 +44,9 @@ namespace Spielverleih
             _context = new LudothekDBEntities();
             if (!Page.IsPostBack)
             {
-                //lstVerfuegbareSpiele.DataSource = Spiele;
+                lstVerfuegbareSpiele.DataSource = Spiele;
                 lstVerfuegbareSpiele.DataValueField = "Id";
-                lstVerfuegbareSpiele.DataTextField = "Bezeichnung";
+                lstVerfuegbareSpiele.DataTextField = "Name";
                 lstVerfuegbareSpiele.DataBind();
                 lstAusleihe.DataSource = Ausleihen;
                 lstAusleihe.DataBind();
@@ -59,22 +55,32 @@ namespace Spielverleih
 
         protected void Ausleihen_Click(object sender, EventArgs e)
         {
-            //DateTime now = DateTime.Now;
-            ////Spiel spiel = _context.Spiele.Where(x => x.Id == new Guid(lstVerfuegbareSpiele.SelectedValue)).FirstOrDefault();
-            //Ausleihe ausleihe = new Ausleihe()
-            //{
-            //    Id = Guid.NewGuid(),
-            //    Kunde = Benutzer,
-            //    Ausleihdatum = now,
-            //    Enddatum = now.AddDays(7),
-            //    Spiel = spiel
-            //};
-            //_context.Ausleihen.Add(ausleihe);
-            //_context.SaveChanges();
-            //lstVerfuegbareSpiele.DataSource = Spiele;
-            //lstVerfuegbareSpiele.DataBind();
-            //lstAusleihe.DataSource = Ausleihen;
-            //lstAusleihe.DataBind();
+            DateTime now = DateTime.Now;
+            Spiel spiel = _context.Spiel.Where(x => x.ID == new Guid(lstVerfuegbareSpiele.SelectedValue)).FirstOrDefault();
+            Ausleihe letzteAusleihe = _context.Ausleihe.OrderByDescending(x => x.Nummer).FirstOrDefault();
+            int nummer = 1;
+            if (letzteAusleihe != null)
+            {
+                nummer = letzteAusleihe.Nummer + 1;
+            }
+
+            Ausleihe ausleihe = new Ausleihe()
+            {
+                ID = Guid.NewGuid(),
+                Nummer = nummer,
+                SpielNummer = spiel.Spielnummer,
+                SpielBezeichnung = spiel.Name,
+                Verlag = spiel.Verlag.Name,
+                Kunde = Benutzer,
+                Ausleihdatum = now,
+                AnzVerlängerungen = 0,
+            };
+            _context.Ausleihe.Add(ausleihe);
+            _context.SaveChanges();
+            lstVerfuegbareSpiele.DataSource = Spiele;
+            lstVerfuegbareSpiele.DataBind();
+            lstAusleihe.DataSource = Ausleihen;
+            lstAusleihe.DataBind();
         }
 
         protected void Verlaengern_Click(object sender, EventArgs e)

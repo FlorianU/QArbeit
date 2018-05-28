@@ -14,21 +14,16 @@ namespace Ludothek.Model
     
     public partial class Ausleihe
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ausleihe()
-        {
-            this.AusleiheSpiel = new HashSet<AusleiheSpiel>();
-        }
-    
         public System.Guid ID { get; set; }
-        public Nullable<int> Ausleihnummer { get; set; }
-        public Nullable<System.DateTime> Ausleihdatum { get; set; }
-        public Nullable<System.DateTime> Rückgabedatum { get; set; }
-        public Nullable<int> AnzVerlängerungen { get; set; }
+        public int Nummer { get; set; }
+        public int SpielNummer { get; set; }
+        public string SpielBezeichnung { get; set; }
+        public string Verlag { get; set; }
+        public System.DateTime Ausleihdatum { get; set; }
+        public Nullable<System.DateTime> Rueckgabedatum { get; set; }
+        public int AnzVerlängerungen { get; set; }
         public System.Guid FkKunde { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AusleiheSpiel> AusleiheSpiel { get; set; }
         public virtual Kunde Kunde { get; set; }
     }
 }

@@ -10,19 +10,14 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Ausleihnummer" Type="int" />
-          <Property Name="Ausleihdatum" Type="date" />
-          <Property Name="Rückgabedatum" Type="date" />
-          <Property Name="AnzVerlängerungen" Type="int" />
+          <Property Name="Nummer" Type="int" Nullable="false" />
+          <Property Name="SpielNummer" Type="int" Nullable="false" />
+          <Property Name="SpielBezeichnung" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Verlag" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Ausleihdatum" Type="datetime" Nullable="false" />
+          <Property Name="Rueckgabedatum" Type="datetime" />
+          <Property Name="AnzVerlängerungen" Type="int" Nullable="false" />
           <Property Name="FkKunde" Type="uniqueidentifier" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AusleiheSpiel">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="FkAusleihe" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="FkSpiel" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Kunde">
           <Key>
@@ -64,8 +59,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Spielnummer" Type="int" />
-          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Spielnummer" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="FkVerlag" Type="uniqueidentifier" Nullable="false" />
           <Property Name="FkSpielkategorie" Type="uniqueidentifier" Nullable="false" />
           <Property Name="FkTarifkategorie" Type="uniqueidentifier" Nullable="false" />
@@ -122,30 +117,6 @@
           <Property Name="PLZ" Type="int" />
           <Property Name="Ort" Type="varchar" MaxLength="255" />
         </EntityType>
-        <Association Name="FK_AusleiheSpielAusleihe">
-          <End Role="Ausleihe" Type="Self.Ausleihe" Multiplicity="1" />
-          <End Role="AusleiheSpiel" Type="Self.AusleiheSpiel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ausleihe">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="AusleiheSpiel">
-              <PropertyRef Name="FkAusleihe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AusleiheSpielSpiel">
-          <End Role="Spiel" Type="Self.Spiel" Multiplicity="1" />
-          <End Role="AusleiheSpiel" Type="Self.AusleiheSpiel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Spiel">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="AusleiheSpiel">
-              <PropertyRef Name="FkSpiel" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Kunde">
           <End Role="Kunde" Type="Self.Kunde" Multiplicity="1" />
           <End Role="Ausleihe" Type="Self.Ausleihe" Multiplicity="*" />
@@ -268,7 +239,6 @@
         </Association>
         <EntityContainer Name="LudothekDBModelStoreContainer">
           <EntitySet Name="Ausleihe" EntityType="Self.Ausleihe" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AusleiheSpiel" EntityType="Self.AusleiheSpiel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kunde" EntityType="Self.Kunde" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ludothek" EntityType="Self.Ludothek" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mitarbeiter" EntityType="Self.Mitarbeiter" Schema="dbo" store:Type="Tables" />
@@ -279,14 +249,6 @@
           <EntitySet Name="Verband" EntityType="Self.Verband" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Verbandsvorstandsmitarbeiter" EntityType="Self.Verbandsvorstandsmitarbeiter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Verlag" EntityType="Self.Verlag" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_AusleiheSpielAusleihe" Association="Self.FK_AusleiheSpielAusleihe">
-            <End Role="Ausleihe" EntitySet="Ausleihe" />
-            <End Role="AusleiheSpiel" EntitySet="AusleiheSpiel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AusleiheSpielSpiel" Association="Self.FK_AusleiheSpielSpiel">
-            <End Role="Spiel" EntitySet="Spiel" />
-            <End Role="AusleiheSpiel" EntitySet="AusleiheSpiel" />
-          </AssociationSet>
           <AssociationSet Name="FK_Kunde" Association="Self.FK_Kunde">
             <End Role="Kunde" EntitySet="Kunde" />
             <End Role="Ausleihe" EntitySet="Ausleihe" />
@@ -334,7 +296,6 @@
       <Schema Namespace="LudothekDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="LudothekDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Ausleihe" EntityType="LudothekDBModel.Ausleihe" />
-          <EntitySet Name="AusleiheSpiel" EntityType="LudothekDBModel.AusleiheSpiel" />
           <EntitySet Name="Kunde" EntityType="LudothekDBModel.Kunde" />
           <EntitySet Name="Ludothek" EntityType="LudothekDBModel.Ludothek" />
           <EntitySet Name="Mitarbeiter" EntityType="LudothekDBModel.Mitarbeiter" />
@@ -345,17 +306,9 @@
           <EntitySet Name="Verband" EntityType="LudothekDBModel.Verband" />
           <EntitySet Name="Verbandsvorstandsmitarbeiter" EntityType="LudothekDBModel.Verbandsvorstandsmitarbeiter" />
           <EntitySet Name="Verlag" EntityType="LudothekDBModel.Verlag" />
-          <AssociationSet Name="FK_AusleiheSpielAusleihe" Association="LudothekDBModel.FK_AusleiheSpielAusleihe">
-            <End Role="Ausleihe" EntitySet="Ausleihe" />
-            <End Role="AusleiheSpiel" EntitySet="AusleiheSpiel" />
-          </AssociationSet>
           <AssociationSet Name="FK_Kunde" Association="LudothekDBModel.FK_Kunde">
             <End Role="Kunde" EntitySet="Kunde" />
             <End Role="Ausleihe" EntitySet="Ausleihe" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AusleiheSpielSpiel" Association="LudothekDBModel.FK_AusleiheSpielSpiel">
-            <End Role="Spiel" EntitySet="Spiel" />
-            <End Role="AusleiheSpiel" EntitySet="AusleiheSpiel" />
           </AssociationSet>
           <AssociationSet Name="FK_LudothekVerband" Association="LudothekDBModel.FK_LudothekVerband">
             <End Role="Verband" EntitySet="Verband" />
@@ -399,23 +352,15 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="Ausleihnummer" Type="Int32" />
-          <Property Name="Ausleihdatum" Type="DateTime" Precision="0" />
-          <Property Name="Rückgabedatum" Type="DateTime" Precision="0" />
-          <Property Name="AnzVerlängerungen" Type="Int32" />
+          <Property Name="Nummer" Type="Int32" Nullable="false" />
+          <Property Name="SpielNummer" Type="Int32" Nullable="false" />
+          <Property Name="SpielBezeichnung" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Verlag" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Ausleihdatum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Rueckgabedatum" Type="DateTime" Precision="3" />
+          <Property Name="AnzVerlängerungen" Type="Int32" Nullable="false" />
           <Property Name="FkKunde" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="AusleiheSpiel" Relationship="LudothekDBModel.FK_AusleiheSpielAusleihe" FromRole="Ausleihe" ToRole="AusleiheSpiel" />
           <NavigationProperty Name="Kunde" Relationship="LudothekDBModel.FK_Kunde" FromRole="Ausleihe" ToRole="Kunde" />
-        </EntityType>
-        <EntityType Name="AusleiheSpiel">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="FkAusleihe" Type="Guid" Nullable="false" />
-          <Property Name="FkSpiel" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Ausleihe" Relationship="LudothekDBModel.FK_AusleiheSpielAusleihe" FromRole="AusleiheSpiel" ToRole="Ausleihe" />
-          <NavigationProperty Name="Spiel" Relationship="LudothekDBModel.FK_AusleiheSpielSpiel" FromRole="AusleiheSpiel" ToRole="Spiel" />
         </EntityType>
         <EntityType Name="Kunde">
           <Key>
@@ -464,14 +409,13 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="Spielnummer" Type="Int32" />
-          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Spielnummer" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="FkVerlag" Type="Guid" Nullable="false" />
           <Property Name="FkSpielkategorie" Type="Guid" Nullable="false" />
           <Property Name="FkTarifkategorie" Type="Guid" Nullable="false" />
           <Property Name="Beschreibung" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FSK" Type="Int32" />
-          <NavigationProperty Name="AusleiheSpiel" Relationship="LudothekDBModel.FK_AusleiheSpielSpiel" FromRole="Spiel" ToRole="AusleiheSpiel" />
           <NavigationProperty Name="Spielkategorie" Relationship="LudothekDBModel.FK_SpielSpielkategorie" FromRole="Spiel" ToRole="Spielkategorie" />
           <NavigationProperty Name="Tarifkategorie" Relationship="LudothekDBModel.FK_SpielTarifkategorie" FromRole="Spiel" ToRole="Tarifkategorie" />
           <NavigationProperty Name="Verlag" Relationship="LudothekDBModel.FK_SpielVerlag" FromRole="Spiel" ToRole="Verlag" />
@@ -535,18 +479,6 @@
           <Property Name="Ort" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Spiel" Relationship="LudothekDBModel.FK_SpielVerlag" FromRole="Verlag" ToRole="Spiel" />
         </EntityType>
-        <Association Name="FK_AusleiheSpielAusleihe">
-          <End Type="LudothekDBModel.Ausleihe" Role="Ausleihe" Multiplicity="1" />
-          <End Type="LudothekDBModel.AusleiheSpiel" Role="AusleiheSpiel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ausleihe">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="AusleiheSpiel">
-              <PropertyRef Name="FkAusleihe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Kunde">
           <End Type="LudothekDBModel.Kunde" Role="Kunde" Multiplicity="1" />
           <End Type="LudothekDBModel.Ausleihe" Role="Ausleihe" Multiplicity="*" />
@@ -556,18 +488,6 @@
             </Principal>
             <Dependent Role="Ausleihe">
               <PropertyRef Name="FkKunde" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AusleiheSpielSpiel">
-          <End Type="LudothekDBModel.Spiel" Role="Spiel" Multiplicity="1" />
-          <End Type="LudothekDBModel.AusleiheSpiel" Role="AusleiheSpiel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Spiel">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="AusleiheSpiel">
-              <PropertyRef Name="FkSpiel" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -690,18 +610,12 @@
               <MappingFragment StoreEntitySet="Ausleihe">
                 <ScalarProperty Name="FkKunde" ColumnName="FkKunde" />
                 <ScalarProperty Name="AnzVerlängerungen" ColumnName="AnzVerlängerungen" />
-                <ScalarProperty Name="Rückgabedatum" ColumnName="Rückgabedatum" />
+                <ScalarProperty Name="Rueckgabedatum" ColumnName="Rueckgabedatum" />
                 <ScalarProperty Name="Ausleihdatum" ColumnName="Ausleihdatum" />
-                <ScalarProperty Name="Ausleihnummer" ColumnName="Ausleihnummer" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AusleiheSpiel">
-            <EntityTypeMapping TypeName="LudothekDBModel.AusleiheSpiel">
-              <MappingFragment StoreEntitySet="AusleiheSpiel">
-                <ScalarProperty Name="FkSpiel" ColumnName="FkSpiel" />
-                <ScalarProperty Name="FkAusleihe" ColumnName="FkAusleihe" />
+                <ScalarProperty Name="Verlag" ColumnName="Verlag" />
+                <ScalarProperty Name="SpielBezeichnung" ColumnName="SpielBezeichnung" />
+                <ScalarProperty Name="SpielNummer" ColumnName="SpielNummer" />
+                <ScalarProperty Name="Nummer" ColumnName="Nummer" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
