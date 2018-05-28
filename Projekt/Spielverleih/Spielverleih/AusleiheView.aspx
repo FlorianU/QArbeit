@@ -41,7 +41,7 @@
                         <table>
                             <tr><div class="col-md-3"><%#: Item.Spiel.Bezeichnung %></div></tr>  
                             <tr><div class="col-md-3"><%#: Item.Ausleihdatum %></div></tr>
-                            <tr><div class="col-md-3"><%#: Item.Enddatum %></div></tr>
+                            <%--<tr><div class="col-md-3"><%#: Item.Enddatum %></div></tr>--%>
                             <tr><asp:Button runat="server" Text="Verlängern" CssClass="btn btn-default col-md-3" CausesValidation="false"  CommandArgument="<%#: Item.Id %>"  OnClick="Verlaengern_Click"/></tr>
                         </table>
                     </div>

@@ -10,15 +10,24 @@
 namespace Spielverleih {
     
     
-    public partial class SiteMaster {
+    public partial class VerlagView {
         
         /// <summary>
-        /// MainContent-Steuerelement
+        /// txtName-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.TextBox txtName;
+        
+        /// <summary>
+        /// lstVerlaege-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView lstVerlaege;
     }
 }
