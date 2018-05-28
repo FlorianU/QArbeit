@@ -22,6 +22,9 @@ namespace Ludothek.Model
     
         public System.Guid ID { get; set; }
         public string Name { get; set; }
+        public string Strasse { get; set; }
+        public Nullable<int> PLZ { get; set; }
+        public string Ort { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Spiel> Spiel { get; set; }

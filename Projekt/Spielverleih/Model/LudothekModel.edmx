@@ -118,6 +118,9 @@
           </Key>
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="45" />
+          <Property Name="Strasse" Type="varchar" MaxLength="255" />
+          <Property Name="PLZ" Type="int" />
+          <Property Name="Ort" Type="varchar" MaxLength="255" />
         </EntityType>
         <Association Name="FK_AusleiheSpielAusleihe">
           <End Role="Ausleihe" Type="Self.Ausleihe" Multiplicity="1" />
@@ -527,6 +530,9 @@
           </Key>
           <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Strasse" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PLZ" Type="Int32" />
+          <Property Name="Ort" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Spiel" Relationship="LudothekDBModel.FK_SpielVerlag" FromRole="Verlag" ToRole="Spiel" />
         </EntityType>
         <Association Name="FK_AusleiheSpielAusleihe">
@@ -800,6 +806,9 @@
           <EntitySetMapping Name="Verlag">
             <EntityTypeMapping TypeName="LudothekDBModel.Verlag">
               <MappingFragment StoreEntitySet="Verlag">
+                <ScalarProperty Name="Ort" ColumnName="Ort" />
+                <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+                <ScalarProperty Name="Strasse" ColumnName="Strasse" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

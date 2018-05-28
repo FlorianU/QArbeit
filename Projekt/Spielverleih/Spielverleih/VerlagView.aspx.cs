@@ -30,7 +30,10 @@ namespace Spielverleih
             Verlag verlag = new Verlag()
             {
                 ID = Guid.NewGuid(),
-                Name = txtName.Text
+                Name = txtName.Text,
+                Strasse = txtStrasse.Text,
+                PLZ = int.Parse(txtPLZ.Text),
+                Ort = txtOrt.Text,
             };
 
             _context.Verlag.Add(verlag);
