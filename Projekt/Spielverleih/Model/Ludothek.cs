@@ -17,7 +17,6 @@ namespace Ludothek.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ludothek()
         {
-            this.Kunde = new HashSet<Kunde>();
             this.Mitarbeiter = new HashSet<Mitarbeiter>();
             this.Standort = new HashSet<Standort>();
         }
@@ -29,8 +28,6 @@ namespace Ludothek.Model
         public string Ort { get; set; }
         public System.Guid FkVerband { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kunde> Kunde { get; set; }
         public virtual Verband Verband { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mitarbeiter> Mitarbeiter { get; set; }

@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
-using Spielverleih.Models;
+﻿using Ludothek.Model;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,13 +13,13 @@ namespace Spielverleih
 {
     public partial class AusleiheView : Page
     {
-        private AusleihContext _context;
+        private LudothekDBEntities _context;
 
         public Kunde Benutzer
         {
             get
             {
-                return _context.Kunden.ToList().Where(x => x.Id == new Guid(Context.User.Identity.GetUserId())).FirstOrDefault();
+                return _context.Kunde.ToList().Where(x => x.ID == new Guid(Context.User.Identity.GetUserId())).FirstOrDefault();
             }
         }
 
@@ -39,13 +39,13 @@ namespace Spielverleih
         {
             get
             {
-                return _context.Ausleihen.Where(x => x.KundeId == Benutzer.Id).ToList();
+                return _context.Ausleihe.Where(x => x.FkKunde == Benutzer.ID).ToList();
             }
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            _context = new AusleihContext();
+            _context = new LudothekDBEntities();
             if (!Page.IsPostBack)
             {
                 //lstVerfuegbareSpiele.DataSource = Spiele;
@@ -79,13 +79,13 @@ namespace Spielverleih
 
         protected void Verlaengern_Click(object sender, EventArgs e)
         {
-            var id = new Guid(((Button)sender).CommandArgument);
-            var ausleihe = _context.Ausleihen.Where(x => x.Id == id).FirstOrDefault();
-            ausleihe.Enddatum = ausleihe.Enddatum.AddDays(7);
-             _context.Entry(ausleihe).State = EntityState.Modified;
-            _context.SaveChanges();
-            lstAusleihe.DataSource = Ausleihen;
-            lstAusleihe.DataBind();
+            //var id = new Guid(((Button)sender).CommandArgument);
+            //var ausleihe = _context.Ausleihen.Where(x => x.Id == id).FirstOrDefault();
+            //ausleihe.Enddatum = ausleihe.Enddatum.AddDays(7);
+            // _context.Entry(ausleihe).State = EntityState.Modified;
+            //_context.SaveChanges();
+            //lstAusleihe.DataSource = Ausleihen;
+            //lstAusleihe.DataBind();
         }
     }
 }

@@ -21,13 +21,15 @@ namespace Ludothek.Model
         }
     
         public System.Guid ID { get; set; }
-        public string Name { get; set; }
+        public string Vorname { get; set; }
         public string Nachname { get; set; }
         public Nullable<System.DateTime> Geburtsdatum { get; set; }
-        public System.Guid fkLudothek { get; set; }
+        public string Strasse { get; set; }
+        public string StrassenNummer { get; set; }
+        public Nullable<int> PLZ { get; set; }
+        public string Ort { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ausleihe> Ausleihe { get; set; }
-        public virtual Ludothek Ludothek { get; set; }
     }
 }

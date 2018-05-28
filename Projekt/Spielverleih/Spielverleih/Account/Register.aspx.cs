@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using Ludothek.Model;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
@@ -29,16 +30,17 @@ namespace Spielverleih.Account
                 signInManager.SignIn( user, isPersistent: false, rememberBrowser: false);
                 var kunde = new Kunde()
                 {
-                    Id = new Guid(user.Id),
+                    ID = new Guid(user.Id),
                     Vorname = Vorname.Text,
-                    Name = Name.Text,
-                    Plz = int.Parse(Plz.Text),
-                    Ort = Ort.Text,
+                    Nachname = Nachname.Text,
+                    //Geburtsdatum = Geburtsdatum.Text,
                     Strasse = Strasse.Text,
-                    Strassennummer = Strassennummer.Text
+                    StrassenNummer = Strassennummer.Text,
+                    PLZ = int.Parse(Plz.Text),
+                    Ort = Ort.Text
                 };
-                var db = new AusleihContext();
-                db.Kunden.Add(kunde);
+                var db = new LudothekDBEntities();
+                db.Kunde.Add(kunde);
                 db.SaveChanges();
                 IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
 

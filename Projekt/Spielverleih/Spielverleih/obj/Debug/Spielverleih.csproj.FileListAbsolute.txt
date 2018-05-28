@@ -238,7 +238,6 @@ C:\Projekt\Spielverleih\Spielverleih\obj\Debug\Spielverleih.csproj.CoreCompileIn
 C:\Projekt\Spielverleih\Spielverleih\obj\Debug\Spielverleih.csproj.CopyComplete
 C:\Projekt\Spielverleih\Spielverleih\obj\Debug\Spielverleih.dll
 C:\Projekt\Spielverleih\Spielverleih\obj\Debug\Spielverleih.pdb
-C:\M151\Projekt\Spielverleih\Spielverleih\obj\Debug\Spielverleih.csprojResolveAssemblyReference.cache
 C:\M151\Projekt\Spielverleih\Spielverleih\obj\Debug\Spielverleih.csproj.CoreCompileInputs.cache
 C:\M151\Projekt\Spielverleih\Spielverleih\obj\Debug\Spielverleih.dll
 C:\M151\Projekt\Spielverleih\Spielverleih\obj\Debug\Spielverleih.pdb
@@ -322,3 +321,4 @@ C:\M151\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.Twitter.xm
 C:\M151\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\M151\Projekt\Spielverleih\Spielverleih\bin\Microsoft.Owin.Security.OAuth.xml
 C:\M151\Projekt\Spielverleih\Spielverleih\obj\Debug\Spielverleih.csproj.CopyComplete
+C:\M151\Projekt\Spielverleih\Spielverleih\obj\Debug\Spielverleih.csprojAssemblyReference.cache

@@ -45,11 +45,19 @@
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Name" CssClass="col-md-2 control-label">Name</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="Nachname" CssClass="col-md-2 control-label">Nachname</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="Name" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Name"
-                    CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." />
+                <asp:TextBox runat="server" ID="Nachname" CssClass="form-control" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Nachname" 
+                    CssClass="text-danger" ErrorMessage="Der Nachname muss angegeben werden." />
+            </div>
+        </div>
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="Geburtsdatum" CssClass="col-md-2 control-label">Geburtsdatum</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="Geburtsdatum" CssClass="form-control"/>
+                <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="Geburtsdatum"
+                    CssClass="text-danger" ErrorMessage="Der Geburtsdatum muss angegeben werden." />--%>
             </div>
         </div>
         <div class="form-group">
