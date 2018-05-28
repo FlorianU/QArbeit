@@ -66,6 +66,7 @@
                                 <li><a runat="server" href="~/AusleiheView">Ausleihe</a></li>
                                 <li><a runat="server" href="~/SpieleView">Spiele</a></li>
                                 <li><a runat="server" href="~/VerlagView">Verläge</a></li>
+                                <li><a runat="server" href="~/LudothekView">Ludotheken</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hallo, <%: Context.User.Identity.GetUserName()  %> !</a></li>

@@ -247,6 +247,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
+    <Content Include="LudothekView.aspx" />
     <Content Include="VerlagView.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -427,6 +428,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="LudothekView.aspx.cs">
+      <DependentUpon>LudothekView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LudothekView.aspx.designer.cs">
+      <DependentUpon>LudothekView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VerlagView.aspx.cs">
       <DependentUpon>VerlagView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
