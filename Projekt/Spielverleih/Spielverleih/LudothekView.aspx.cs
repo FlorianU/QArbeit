@@ -30,16 +30,23 @@ namespace Spielverleih
             Ludothek.Model.Ludothek ludothek = new Ludothek.Model.Ludothek()
             {
                 ID = Guid.NewGuid(),
-                Name = txtName.Text,
-                Strasse = txtStrasse.Text,
-                PLZ = int.Parse(txtPLZ.Text),
-                Ort = txtOrt.Text,
+                Name = txtName.Text
             };
 
             _context.Ludothek.Add(ludothek);
             _context.SaveChanges();
             lstLudotheken.DataSource = Ludotheken;
             lstLudotheken.DataBind();
+        }
+
+        protected void Expand_Click(object sender, EventArgs e)
+        {
+            Button button = ((Button)sender);
+            var panel = button.Parent.FindControl("expandID");
+            panel.Visible = !panel.Visible;
+            StandortControl sc = (StandortControl)panel.FindControl("standortControl");
+            sc.LudothekID = ((Button)sender).CommandArgument;
+            sc.RefreshList();
         }
     }
 }

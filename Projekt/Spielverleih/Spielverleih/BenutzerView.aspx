@@ -20,7 +20,7 @@
                             <br />
                             <div class="col-md-12"><b>Ort: </b><%#:Item.Ort  %></div>
                             <br />
-                            <div class="col-md-12"><b>Strasse: </b><%#:Item.Strasse + " " + Item.StrassenNummer %></div>
+                            <div class="col-md-12"><b>Strasse: </b><%#:Item.Strasse %></div>
                             <br />
                             <asp:Button runat="server" OnClick="Editieren_Click" Text="Editieren" CssClass="btn btn-default col-md-12" />
                         </div>

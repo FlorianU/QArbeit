@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="8dc18de8e5534db5b7b468830840a842" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="LudothekDBModel.Ausleihe" Width="1.5" PointX="12" PointY="2.125" />
-        <EntityTypeShape EntityType="LudothekDBModel.Kunde" Width="1.5" PointX="9.75" PointY="2.125" />
+        <EntityTypeShape EntityType="LudothekDBModel.Kunde" Width="1.5" PointX="9.75" PointY="2.25" />
         <EntityTypeShape EntityType="LudothekDBModel.Ludothek" Width="1.5" PointX="3" PointY="5.25" />
         <EntityTypeShape EntityType="LudothekDBModel.Mitarbeiter" Width="1.5" PointX="5.25" PointY="3.875" />
         <EntityTypeShape EntityType="LudothekDBModel.Spiel" Width="1.5" PointX="9.75" PointY="6.5" />

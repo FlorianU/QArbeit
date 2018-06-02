@@ -34,7 +34,6 @@ namespace Spielverleih
                 txtPlz.Text = benutzer.PLZ.ToString();
                 txtOrt.Text = benutzer.Ort;
                 txtStrasse.Text = benutzer.Strasse;
-                txtStrassennummer.Text = benutzer.StrassenNummer;
             }
         }
 
@@ -56,7 +55,6 @@ namespace Spielverleih
             benutzer.PLZ = int.Parse(txtPlz.Text);
             benutzer.Ort = txtOrt.Text;
             benutzer.Strasse = txtStrasse.Text;
-            benutzer.StrassenNummer = txtStrassennummer.Text;
             _context.Entry(benutzer).State = EntityState.Modified;
             _context.SaveChanges();
             Response.Redirect("BenutzerView.aspx");

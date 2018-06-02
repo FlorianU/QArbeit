@@ -1,4 +1,5 @@
 ﻿<%@  Page Title="Ludotheken" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LudothekView.aspx.cs" Inherits="Spielverleih.LudothekView" %>
+<%@ Register Src="~/Controls/StandortControl.ascx" TagPrefix="uc" TagName="StandortControl" %>  
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     
@@ -18,27 +19,7 @@
                             CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." />
                     </div>
                 </div>
-                <div class="form-group">
-                    <asp:Label runat="server" AssociatedControlID="txtStrasse" CssClass="col-md-2 control-label">Strasse</asp:Label>
-                    <div class="col-md-10">
-                        <asp:TextBox runat="server" ID="txtStrasse" CssClass="form-control" />
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtStrasse" CssClass="text-danger" ErrorMessage="Die Strasse muss angegeben werden." />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <asp:Label runat="server" AssociatedControlID="txtPLZ" CssClass="col-md-2 control-label">PLZ</asp:Label>
-                    <div class="col-md-3">
-                        <asp:TextBox runat="server" ID="txtPLZ" CssClass="form-control" TextMode="Number"  />
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPLZ"
-                            CssClass="text-danger" ErrorMessage="Die Postleitzahl muss angegeben werden." />
-                    </div>
-                     <asp:Label runat="server" AssociatedControlID="txtOrt" CssClass="col-md-2 control-label">Ort</asp:Label>
-                    <div class="col-md-3">
-                        <asp:TextBox runat="server" ID="txtOrt" CssClass="form-control" />
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtOrt"
-                            CssClass="text-danger" ErrorMessage="Der Ort muss angegeben werden." />
-                    </div>
-                </div>
+
                 <div class="col-md-offset-1 col-md-11">
                     <asp:Button runat="server" OnClick="Hinzufügen_Click" Text="Hinzufügen" CssClass="btn btn-default" UseSubmitBehavior="false"/>
                 </div>
@@ -64,10 +45,16 @@
                                 <div class="form-group">
                                     <table>
                                         <tr><div class="col-md-3"><%#: Item.Name %></div></tr>  
-                                        <tr><div class="col-md-3"><%#: Item.Strasse %></div></tr>  
-                                        <tr><div class="col-md-2"><%#: Item.PLZ %></div></tr>  
-                                        <tr><div class="col-md-2"><%#: Item.Ort %></div></tr>  
-                                        <tr><div class="col-md-2"><%#: Item.Verband.Name %></div></tr>  
+                                        <tr><div class="col-md-3"><%#: Item.Verband.Name %></div></tr>  
+                                        
+                                <tr>
+                                    <asp:Button runat="server" Text="+" CssClass="btn btn-default col-md-2" CausesValidation="false" CommandArgument="<%#: Item.ID %>"  OnClick="Expand_Click" />
+                                </tr>
+                                <tr>
+                                    <asp:Panel ID="expandID" runat="server" Visible="false">
+                                        <uc:StandortControl runat="server" ID="standortControl"/>   
+                                    </asp:Panel>
+                                </tr>
                                     </table>
                                 </div>
                             </td>
@@ -77,10 +64,7 @@
                         <div class="form-group">
                             <table>
                                 <tr><div class="col-md-3"><b>Name</b></div></tr>
-                                <tr><div class="col-md-3"><b>Strasse</b></div></tr>
-                                <tr><div class="col-md-2"><b>PLZ</b></div></tr>
-                                <tr><div class="col-md-2"><b>Ort</b></div></tr>
-                                <tr><div class="col-md-2"><b>Verband</b></div></tr>
+                                <tr><div class="col-md-3"><b>Verband</b></div></tr>
                             </table>
                         </div>
                     </td>

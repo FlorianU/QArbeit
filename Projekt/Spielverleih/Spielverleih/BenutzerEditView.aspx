@@ -33,6 +33,16 @@
                     CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." />--%>
             </div>
         </div>
+                
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="txtStrasse" CssClass="col-md-2 control-label">Strasse</asp:Label>
+            <div class="col-md-3">
+                <asp:TextBox runat="server" ID="txtStrasse" CssClass="form-control" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtStrasse"
+                    CssClass="text-danger" ErrorMessage="Die Strasse muss angegeben werden." />
+            </div>
+        </div>
+
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtPlz" CssClass="col-md-2 control-label">PLZ</asp:Label>
             <div class="col-md-3">
@@ -45,21 +55,6 @@
                 <asp:TextBox runat="server" ID="txtOrt" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtOrt"
                     CssClass="text-danger" ErrorMessage="Der Ort muss angegeben werden." />
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="txtStrasse" CssClass="col-md-2 control-label">Strasse</asp:Label>
-            <div class="col-md-3">
-                <asp:TextBox runat="server" ID="txtStrasse" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtStrasse"
-                    CssClass="text-danger" ErrorMessage="Die Strasse muss angegeben werden." />
-            </div>
-            <asp:Label runat="server" AssociatedControlID="txtStrassennummer" CssClass="col-md-2 control-label">Strassennummer</asp:Label>
-            <div class="col-md-3">
-                <asp:TextBox runat="server" ID="txtStrassennummer" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtStrassennummer"
-                    CssClass="text-danger" ErrorMessage="Die Strassennummer muss angegeben werden." />
             </div>
         </div>
 

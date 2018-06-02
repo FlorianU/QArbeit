@@ -18,27 +18,6 @@
                             CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." />
                     </div>
                 </div>
-                <div class="form-group">
-                    <asp:Label runat="server" AssociatedControlID="txtStrasse" CssClass="col-md-2 control-label">Strasse</asp:Label>
-                    <div class="col-md-10">
-                        <asp:TextBox runat="server" ID="txtStrasse" CssClass="form-control" />
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtStrasse" CssClass="text-danger" ErrorMessage="Die Strasse muss angegeben werden." />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <asp:Label runat="server" AssociatedControlID="txtPLZ" CssClass="col-md-2 control-label">PLZ</asp:Label>
-                    <div class="col-md-3">
-                        <asp:TextBox runat="server" ID="txtPLZ" CssClass="form-control" TextMode="Number"  />
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPLZ"
-                            CssClass="text-danger" ErrorMessage="Die Postleitzahl muss angegeben werden." />
-                    </div>
-                     <asp:Label runat="server" AssociatedControlID="txtOrt" CssClass="col-md-2 control-label">Ort</asp:Label>
-                    <div class="col-md-3">
-                        <asp:TextBox runat="server" ID="txtOrt" CssClass="form-control" />
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtOrt"
-                            CssClass="text-danger" ErrorMessage="Der Ort muss angegeben werden." />
-                    </div>
-                </div>
                 <div class="col-md-offset-1 col-md-11">
                     <asp:Button runat="server" OnClick="Hinzufügen_Click" Text="Hinzufügen" CssClass="btn btn-default" UseSubmitBehavior="false"/>
                 </div>
@@ -61,24 +40,20 @@
                 </GroupTemplate>
                 <ItemTemplate>
                     <td runat="server">
-                            <div class="form-group">
-                                <table>
-                                    <tr><div class="col-md-3"><%#: Item.Name %></div></tr>  
-                                    <tr><div class="col-md-3"><%#: Item.Strasse %></div></tr>  
-                                    <tr><div class="col-md-3"><%#: Item.PLZ %></div></tr>  
-                                    <tr><div class="col-md-3"><%#: Item.Ort %></div></tr>  
-                                </table>
-                            </div>
-                        </td>
+                        <div class="form-group">
+                            <table>
+                                <tr>
+                                    <div class="col-md-10"><%#: Item.Name %></div>
+                                </tr>  
+                            </table>
+                        </div>
+                    </td>
                 </ItemTemplate>
                 <LayoutTemplate>
                 <td runat="server">
                     <div class="form-group">
                         <table>
-                            <tr><div class="col-md-3"><b>Name</b></div></tr>
-                            <tr><div class="col-md-3"><b>Strasse</b></div></tr>
-                            <tr><div class="col-md-3"><b>PLZ</b></div></tr>
-                            <tr><div class="col-md-3"><b>Ort</b></div></tr>
+                            <tr><div class="col-md-9"><b>Name</b></div></tr>
                         </table>
                     </div>
                 </td>

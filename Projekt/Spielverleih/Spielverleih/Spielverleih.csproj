@@ -201,6 +201,7 @@
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="AusleiheView.aspx" />
+    <Content Include="Controls\StandortControl.ascx" />
     <Content Include="SpieleView.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -393,6 +394,13 @@
     </Compile>
     <Compile Include="AusleiheView.aspx.designer.cs">
       <DependentUpon>AusleiheView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StandortControl.ascx.cs">
+      <DependentUpon>StandortControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\StandortControl.ascx.designer.cs">
+      <DependentUpon>StandortControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="SpieleView.aspx.cs">
       <DependentUpon>SpieleView.aspx</DependentUpon>

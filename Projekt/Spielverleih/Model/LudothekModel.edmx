@@ -28,7 +28,6 @@
           <Property Name="Nachname" Type="varchar" MaxLength="255" />
           <Property Name="Geburtsdatum" Type="date" />
           <Property Name="Strasse" Type="varchar" MaxLength="255" />
-          <Property Name="StrassenNummer" Type="varchar" MaxLength="5" />
           <Property Name="PLZ" Type="int" />
           <Property Name="Ort" Type="varchar" MaxLength="255" />
         </EntityType>
@@ -371,7 +370,6 @@
           <Property Name="Nachname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Geburtsdatum" Type="DateTime" Precision="0" />
           <Property Name="Strasse" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="StrassenNummer" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="PLZ" Type="Int32" />
           <Property Name="Ort" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Ausleihe" Relationship="LudothekDBModel.FK_Kunde" FromRole="Kunde" ToRole="Ausleihe" />
@@ -625,7 +623,6 @@
               <MappingFragment StoreEntitySet="Kunde">
                 <ScalarProperty Name="Ort" ColumnName="Ort" />
                 <ScalarProperty Name="PLZ" ColumnName="PLZ" />
-                <ScalarProperty Name="StrassenNummer" ColumnName="StrassenNummer" />
                 <ScalarProperty Name="Strasse" ColumnName="Strasse" />
                 <ScalarProperty Name="Geburtsdatum" ColumnName="Geburtsdatum" />
                 <ScalarProperty Name="Nachname" ColumnName="Nachname" />

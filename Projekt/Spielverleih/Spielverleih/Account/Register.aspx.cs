@@ -35,7 +35,6 @@ namespace Spielverleih.Account
                     Nachname = Nachname.Text,
                     //Geburtsdatum = Geburtsdatum.Text,
                     Strasse = Strasse.Text,
-                    StrassenNummer = Strassennummer.Text,
                     PLZ = int.Parse(Plz.Text),
                     Ort = Ort.Text
                 };

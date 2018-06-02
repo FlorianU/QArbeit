@@ -31,9 +31,6 @@ namespace Spielverleih
             {
                 ID = Guid.NewGuid(),
                 Name = txtName.Text,
-                Strasse = txtStrasse.Text,
-                PLZ = int.Parse(txtPLZ.Text),
-                Ort = txtOrt.Text,
             };
 
             _context.Verlag.Add(verlag);
