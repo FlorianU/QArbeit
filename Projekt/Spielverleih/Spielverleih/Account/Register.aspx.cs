@@ -17,6 +17,7 @@ namespace Spielverleih.Account
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
             var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text };
+
             
             IdentityResult result = manager.Create(user, Password.Text);
 
@@ -38,6 +39,7 @@ namespace Spielverleih.Account
                     PLZ = int.Parse(Plz.Text),
                     Ort = Ort.Text
                 };
+                manager.AddToRole<ApplicationUser, string>(user.Id, "Kunde");
                 var db = new LudothekDBEntities();
                 db.Kunde.Add(kunde);
                 db.SaveChanges();

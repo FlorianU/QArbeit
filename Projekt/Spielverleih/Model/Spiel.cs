@@ -18,12 +18,11 @@ namespace Ludothek.Model
         public int Spielnummer { get; set; }
         public string Name { get; set; }
         public System.Guid FkVerlag { get; set; }
-        public System.Guid FkSpielkategorie { get; set; }
         public System.Guid FkTarifkategorie { get; set; }
         public string Beschreibung { get; set; }
         public Nullable<int> FSK { get; set; }
+        public Enums.SpielKategorie Kategorie { get; set; }
     
-        public virtual Spielkategorie Spielkategorie { get; set; }
         public virtual Tarifkategorie Tarifkategorie { get; set; }
         public virtual Verlag Verlag { get; set; }
     }

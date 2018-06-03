@@ -250,6 +250,7 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="LudothekView.aspx" />
+    <Content Include="TarifkategorieView.aspx" />
     <Content Include="VerlagView.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -450,6 +451,13 @@
     </Compile>
     <Compile Include="LudothekView.aspx.designer.cs">
       <DependentUpon>LudothekView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TarifkategorieView.aspx.cs">
+      <DependentUpon>TarifkategorieView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TarifkategorieView.aspx.designer.cs">
+      <DependentUpon>TarifkategorieView.aspx</DependentUpon>
     </Compile>
     <Compile Include="VerlagView.aspx.cs">
       <DependentUpon>VerlagView.aspx</DependentUpon>

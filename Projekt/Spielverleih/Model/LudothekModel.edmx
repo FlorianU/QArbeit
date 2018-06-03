@@ -61,17 +61,10 @@
           <Property Name="Spielnummer" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="FkVerlag" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="FkSpielkategorie" Type="uniqueidentifier" Nullable="false" />
           <Property Name="FkTarifkategorie" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Beschreibung" Type="varchar" MaxLength="100" />
           <Property Name="FSK" Type="int" />
-        </EntityType>
-        <EntityType Name="Spielkategorie">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Kategorie" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Standort">
           <Key>
@@ -87,9 +80,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Vereinstarif" Type="int" />
-          <Property Name="Normaltarif" Type="int" />
-          <Property Name="FkUrheber" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Tarifname" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Verband">
           <Key>
@@ -152,18 +144,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SpielSpielkategorie">
-          <End Role="Spielkategorie" Type="Self.Spielkategorie" Multiplicity="1" />
-          <End Role="Spiel" Type="Self.Spiel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Spielkategorie">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Spiel">
-              <PropertyRef Name="FkSpielkategorie" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SpielTarifkategorie">
           <End Role="Tarifkategorie" Type="Self.Tarifkategorie" Multiplicity="1" />
           <End Role="Spiel" Type="Self.Spiel" Multiplicity="*" />
@@ -200,18 +180,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TarifkategorieUrheber">
-          <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="1" />
-          <End Role="Tarifkategorie" Type="Self.Tarifkategorie" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Mitarbeiter">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tarifkategorie">
-              <PropertyRef Name="FkUrheber" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_VerbandsvorstandsmitarbeiterMitarbeiter">
           <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="1" />
           <End Role="Verbandsvorstandsmitarbeiter" Type="Self.Verbandsvorstandsmitarbeiter" Multiplicity="*" />
@@ -242,7 +210,6 @@
           <EntitySet Name="Ludothek" EntityType="Self.Ludothek" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mitarbeiter" EntityType="Self.Mitarbeiter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Spiel" EntityType="Self.Spiel" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Spielkategorie" EntityType="Self.Spielkategorie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Standort" EntityType="Self.Standort" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tarifkategorie" EntityType="Self.Tarifkategorie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Verband" EntityType="Self.Verband" Schema="dbo" store:Type="Tables" />
@@ -260,10 +227,6 @@
             <End Role="Ludothek" EntitySet="Ludothek" />
             <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
           </AssociationSet>
-          <AssociationSet Name="FK_SpielSpielkategorie" Association="Self.FK_SpielSpielkategorie">
-            <End Role="Spielkategorie" EntitySet="Spielkategorie" />
-            <End Role="Spiel" EntitySet="Spiel" />
-          </AssociationSet>
           <AssociationSet Name="FK_SpielTarifkategorie" Association="Self.FK_SpielTarifkategorie">
             <End Role="Tarifkategorie" EntitySet="Tarifkategorie" />
             <End Role="Spiel" EntitySet="Spiel" />
@@ -275,10 +238,6 @@
           <AssociationSet Name="FK_StandortLudothek" Association="Self.FK_StandortLudothek">
             <End Role="Ludothek" EntitySet="Ludothek" />
             <End Role="Standort" EntitySet="Standort" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TarifkategorieUrheber" Association="Self.FK_TarifkategorieUrheber">
-            <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
-            <End Role="Tarifkategorie" EntitySet="Tarifkategorie" />
           </AssociationSet>
           <AssociationSet Name="FK_VerbandsvorstandsmitarbeiterMitarbeiter" Association="Self.FK_VerbandsvorstandsmitarbeiterMitarbeiter">
             <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
@@ -299,7 +258,6 @@
           <EntitySet Name="Ludothek" EntityType="LudothekDBModel.Ludothek" />
           <EntitySet Name="Mitarbeiter" EntityType="LudothekDBModel.Mitarbeiter" />
           <EntitySet Name="Spiel" EntityType="LudothekDBModel.Spiel" />
-          <EntitySet Name="Spielkategorie" EntityType="LudothekDBModel.Spielkategorie" />
           <EntitySet Name="Standort" EntityType="LudothekDBModel.Standort" />
           <EntitySet Name="Tarifkategorie" EntityType="LudothekDBModel.Tarifkategorie" />
           <EntitySet Name="Verband" EntityType="LudothekDBModel.Verband" />
@@ -321,17 +279,9 @@
             <End Role="Ludothek" EntitySet="Ludothek" />
             <End Role="Standort" EntitySet="Standort" />
           </AssociationSet>
-          <AssociationSet Name="FK_TarifkategorieUrheber" Association="LudothekDBModel.FK_TarifkategorieUrheber">
-            <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
-            <End Role="Tarifkategorie" EntitySet="Tarifkategorie" />
-          </AssociationSet>
           <AssociationSet Name="FK_VerbandsvorstandsmitarbeiterMitarbeiter" Association="LudothekDBModel.FK_VerbandsvorstandsmitarbeiterMitarbeiter">
             <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
             <End Role="Verbandsvorstandsmitarbeiter" EntitySet="Verbandsvorstandsmitarbeiter" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SpielSpielkategorie" Association="LudothekDBModel.FK_SpielSpielkategorie">
-            <End Role="Spielkategorie" EntitySet="Spielkategorie" />
-            <End Role="Spiel" EntitySet="Spiel" />
           </AssociationSet>
           <AssociationSet Name="FK_SpielTarifkategorie" Association="LudothekDBModel.FK_SpielTarifkategorie">
             <End Role="Tarifkategorie" EntitySet="Tarifkategorie" />
@@ -399,7 +349,6 @@
           <Property Name="Geburtsdatum" Type="DateTime" Precision="0" />
           <Property Name="FkLudothek" Type="Guid" />
           <NavigationProperty Name="Ludothek" Relationship="LudothekDBModel.FK_MitarbeiterLudothek" FromRole="Mitarbeiter" ToRole="Ludothek" />
-          <NavigationProperty Name="Tarifkategorie" Relationship="LudothekDBModel.FK_TarifkategorieUrheber" FromRole="Mitarbeiter" ToRole="Tarifkategorie" />
           <NavigationProperty Name="Verbandsvorstandsmitarbeiter" Relationship="LudothekDBModel.FK_VerbandsvorstandsmitarbeiterMitarbeiter" FromRole="Mitarbeiter" ToRole="Verbandsvorstandsmitarbeiter" />
         </EntityType>
         <EntityType Name="Spiel">
@@ -410,21 +359,12 @@
           <Property Name="Spielnummer" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="FkVerlag" Type="Guid" Nullable="false" />
-          <Property Name="FkSpielkategorie" Type="Guid" Nullable="false" />
           <Property Name="FkTarifkategorie" Type="Guid" Nullable="false" />
           <Property Name="Beschreibung" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FSK" Type="Int32" />
-          <NavigationProperty Name="Spielkategorie" Relationship="LudothekDBModel.FK_SpielSpielkategorie" FromRole="Spiel" ToRole="Spielkategorie" />
+          <Property Name="Kategorie" Type="LudothekDBModel.SpielKategorie" Nullable="false" />
           <NavigationProperty Name="Tarifkategorie" Relationship="LudothekDBModel.FK_SpielTarifkategorie" FromRole="Spiel" ToRole="Tarifkategorie" />
           <NavigationProperty Name="Verlag" Relationship="LudothekDBModel.FK_SpielVerlag" FromRole="Spiel" ToRole="Verlag" />
-        </EntityType>
-        <EntityType Name="Spielkategorie">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Spiel" Relationship="LudothekDBModel.FK_SpielSpielkategorie" FromRole="Spielkategorie" ToRole="Spiel" />
         </EntityType>
         <EntityType Name="Standort">
           <Key>
@@ -441,10 +381,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="Vereinstarif" Type="Int32" />
-          <Property Name="Normaltarif" Type="Int32" />
-          <Property Name="FkUrheber" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Mitarbeiter" Relationship="LudothekDBModel.FK_TarifkategorieUrheber" FromRole="Tarifkategorie" ToRole="Mitarbeiter" />
+          <Property Name="Tarifname" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
           <NavigationProperty Name="Spiel" Relationship="LudothekDBModel.FK_SpielTarifkategorie" FromRole="Tarifkategorie" ToRole="Spiel" />
         </EntityType>
         <EntityType Name="Verband">
@@ -525,18 +463,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TarifkategorieUrheber">
-          <End Type="LudothekDBModel.Mitarbeiter" Role="Mitarbeiter" Multiplicity="1" />
-          <End Type="LudothekDBModel.Tarifkategorie" Role="Tarifkategorie" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Mitarbeiter">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Tarifkategorie">
-              <PropertyRef Name="FkUrheber" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_VerbandsvorstandsmitarbeiterMitarbeiter">
           <End Type="LudothekDBModel.Mitarbeiter" Role="Mitarbeiter" Multiplicity="1" />
           <End Type="LudothekDBModel.Verbandsvorstandsmitarbeiter" Role="Verbandsvorstandsmitarbeiter" Multiplicity="*" />
@@ -546,18 +472,6 @@
             </Principal>
             <Dependent Role="Verbandsvorstandsmitarbeiter">
               <PropertyRef Name="FkMitarbeiter" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SpielSpielkategorie">
-          <End Type="LudothekDBModel.Spielkategorie" Role="Spielkategorie" Multiplicity="1" />
-          <End Type="LudothekDBModel.Spiel" Role="Spiel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Spielkategorie">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Spiel">
-              <PropertyRef Name="FkSpielkategorie" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -597,6 +511,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EnumType Name="SpielKategorie" a:ExternalTypeName="Enums.SpielKategorie" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -658,21 +573,13 @@
           <EntitySetMapping Name="Spiel">
             <EntityTypeMapping TypeName="LudothekDBModel.Spiel">
               <MappingFragment StoreEntitySet="Spiel">
+                <ScalarProperty Name="Kategorie" ColumnName="Kategorie" />
                 <ScalarProperty Name="FSK" ColumnName="FSK" />
                 <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
                 <ScalarProperty Name="FkTarifkategorie" ColumnName="FkTarifkategorie" />
-                <ScalarProperty Name="FkSpielkategorie" ColumnName="FkSpielkategorie" />
                 <ScalarProperty Name="FkVerlag" ColumnName="FkVerlag" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Spielnummer" ColumnName="Spielnummer" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Spielkategorie">
-            <EntityTypeMapping TypeName="LudothekDBModel.Spielkategorie">
-              <MappingFragment StoreEntitySet="Spielkategorie">
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -690,9 +597,8 @@
           <EntitySetMapping Name="Tarifkategorie">
             <EntityTypeMapping TypeName="LudothekDBModel.Tarifkategorie">
               <MappingFragment StoreEntitySet="Tarifkategorie">
-                <ScalarProperty Name="FkUrheber" ColumnName="FkUrheber" />
-                <ScalarProperty Name="Normaltarif" ColumnName="Normaltarif" />
-                <ScalarProperty Name="Vereinstarif" ColumnName="Vereinstarif" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Tarifname" ColumnName="Tarifname" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

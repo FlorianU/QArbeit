@@ -21,11 +21,9 @@ namespace Ludothek.Model
         }
     
         public System.Guid ID { get; set; }
-        public Nullable<int> Vereinstarif { get; set; }
-        public Nullable<int> Normaltarif { get; set; }
-        public System.Guid FkUrheber { get; set; }
+        public string Tarifname { get; set; }
+        public double Price { get; set; }
     
-        public virtual Mitarbeiter Mitarbeiter { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Spiel> Spiel { get; set; }
     }

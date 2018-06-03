@@ -53,6 +53,7 @@
     <Compile Include="Ausleihe.cs">
       <DependentUpon>LudothekModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Enums\SpielKategorie.cs" />
     <Compile Include="Kunde.cs">
       <DependentUpon>LudothekModel.tt</DependentUpon>
     </Compile>
@@ -79,9 +80,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Spiel.cs">
-      <DependentUpon>LudothekModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Spielkategorie.cs">
       <DependentUpon>LudothekModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Standort.cs">

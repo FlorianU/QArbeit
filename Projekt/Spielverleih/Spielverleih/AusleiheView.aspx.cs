@@ -15,33 +15,16 @@ namespace Spielverleih
     {
         private LudothekDBEntities _context;
 
-        public Kunde Benutzer
-        {
-            get
-            {
-                return _context.Kunde.ToList().Where(x => x.ID == new Guid(Context.User.Identity.GetUserId())).FirstOrDefault();
-            }
-        }
+        public Guid _benutzerID;
 
-        public List<Spiel> Spiele
-        {
-            get
-            {
-                return _context.Spiel.ToList();
-            }
-        }
+        public List<Spiel> Spiele => _context.Spiel.ToList();
 
-        public List<Ausleihe> Ausleihen
-        {
-            get
-            {
-                return _context.Ausleihe.Where(x => x.FkKunde == Benutzer.ID).ToList();
-            }
-        }
+        public List<Ausleihe> Ausleihen =>  _context.Ausleihe.Where(x => x.FkKunde == _benutzerID).ToList();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             _context = new LudothekDBEntities();
+            _benutzerID = new Guid(Context.User.Identity.GetUserId());
             if (!Page.IsPostBack)
             {
                 lstVerfuegbareSpiele.DataSource = Spiele;
@@ -71,7 +54,7 @@ namespace Spielverleih
                 SpielNummer = spiel.Spielnummer,
                 SpielBezeichnung = spiel.Name,
                 Verlag = spiel.Verlag.Name,
-                Kunde = Benutzer,
+                //Kunde = Benutzer,
                 Ausleihdatum = now,
                 AnzVerlängerungen = 0,
             };

@@ -17,7 +17,6 @@ namespace Ludothek.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Mitarbeiter()
         {
-            this.Tarifkategorie = new HashSet<Tarifkategorie>();
             this.Verbandsvorstandsmitarbeiter = new HashSet<Verbandsvorstandsmitarbeiter>();
         }
     
@@ -29,8 +28,6 @@ namespace Ludothek.Model
         public Nullable<System.Guid> FkLudothek { get; set; }
     
         public virtual Ludothek Ludothek { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tarifkategorie> Tarifkategorie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Verbandsvorstandsmitarbeiter> Verbandsvorstandsmitarbeiter { get; set; }
     }
