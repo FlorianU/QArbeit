@@ -18,10 +18,37 @@
                             CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." />
                     </div>
                 </div>
+                <div class="form-group">
+                    <asp:Label runat="server" AssociatedControlID="txtStrasse" CssClass="col-md-2 control-label">Strasse</asp:Label>
+                    <div class="col-md-10">
+                        <asp:TextBox runat="server" ID="txtStrasse" CssClass="form-control" />
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtStrasse"
+                            CssClass="text-danger" ErrorMessage="Die Strasse muss angegeben werden." />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <asp:Label runat="server" AssociatedControlID="txtPlz" CssClass="col-md-2 control-label">PLZ</asp:Label>
+                    <div class="col-md-3">
+                        <asp:TextBox runat="server" ID="txtPlz" CssClass="form-control plz" TextMode="Number" />
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPlz"
+                            CssClass="text-danger" ErrorMessage="Die Postleitzahl muss angegeben werden." />
+                        <asp:RegularExpressionValidator runat="server" ControlToValidate="txtPlz" CssClass="text-danger"
+                            ErrorMessage="Es sind nur Ganzzahlen erlaubt" ValidationExpression="\d+"/>
+                    </div>
+                    <asp:Label runat="server" AssociatedControlID="txtOrt" CssClass="col-md-2 control-label">Ort</asp:Label>
+                    <div class="col-md-3">
+                        <asp:TextBox runat="server" ID="txtOrt" CssClass="form-control" />
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtOrt"
+                            CssClass="text-danger" ErrorMessage="Der Ort muss angegeben werden." />
+                    </div>
+                </div>
                 <div class="col-md-offset-1 col-md-11">
                     <asp:Button runat="server" OnClick="Hinzufügen_Click" Text="Hinzufügen" CssClass="btn btn-default" UseSubmitBehavior="false"/>
                 </div>
             </div>
+            <br />
+            <br />
             <asp:ListView ID="lstVerlaege" runat="server" ItemType="Ludothek.Model.Verlag">
                 <EmptyDataTemplate>
                     <table >
@@ -43,7 +70,10 @@
                         <div class="form-group">
                             <table>
                                 <tr>
-                                    <div class="col-md-10"><%#: Item.Name %></div>
+                                    <div class="col-md-3"><%#: Item.Name %></div>
+                                    <div class="col-md-3"><%#: Item.Strasse %></div>
+                                    <div class="col-md-3"><%#: Item.PLZ %></div>
+                                    <div class="col-md-3"><%#: Item.Ort %></div>
                                 </tr>  
                             </table>
                         </div>
@@ -53,7 +83,10 @@
                 <td runat="server">
                     <div class="form-group">
                         <table>
-                            <tr><div class="col-md-9"><b>Name</b></div></tr>
+                            <tr><div class="col-md-3"><b>Name</b></div></tr>
+                            <tr><div class="col-md-3"><b>Strasse</b></div></tr>
+                            <tr><div class="col-md-3"><b>Postleitzahl</b></div></tr>
+                            <tr><div class="col-md-3"><b>Ort</b></div></tr>
                         </table>
                     </div>
                 </td>

@@ -27,10 +27,14 @@ namespace Spielverleih
 
         protected void Hinzufügen_Click(object sender, EventArgs e)
         {
+
             Verlag verlag = new Verlag()
             {
                 ID = Guid.NewGuid(),
                 Name = txtName.Text,
+                Strasse = txtStrasse.Text,
+                PLZ = int.Parse(txtPlz.Text),
+                Ort = txtOrt.Text
             };
 
             _context.Verlag.Add(verlag);

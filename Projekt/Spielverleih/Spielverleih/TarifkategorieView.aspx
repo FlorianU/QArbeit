@@ -30,6 +30,8 @@
                     <asp:Button runat="server" OnClick="Hinzufügen_Click" Text="Hinzufügen" CssClass="btn btn-default" UseSubmitBehavior="false"/>
                 </div>
             </div>
+            <br />
+            <br />
             <asp:ListView ID="lstTarifkategorien" runat="server" ItemType="Ludothek.Model.Tarifkategorie">
                 <EmptyDataTemplate>
                     <table >
@@ -52,7 +54,7 @@
                             <table>
                                 <tr>
                                     <div class="col-md-4"><%#: Item.Tarifname %></div>
-                                    <div class="col-md-4"><%#: Item.Price %></div>
+                                    <div class="col-md-4"><%#: Item.Price.ToString("C2") %></div>
                                 </tr>  
                             </table>
                         </div>

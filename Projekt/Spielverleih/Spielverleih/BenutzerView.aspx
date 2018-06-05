@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="Profil" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BenutzerView.aspx.cs" Inherits="Spielverleih.BenutzerView" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <h1><%: Title %></h1>
+    <div class="form-horizontal">
+        <h4>Mein Profil</h4>
+        <hr />
+    </div>
     <asp:FormView ID="productDetail" runat="server" ItemType="Ludothek.Model.Kunde" SelectMethod ="GetKunde" RenderOuterTable="false">
         <ItemTemplate>
             <div>
@@ -28,5 +33,12 @@
                 </tr>
             </table>        
         </ItemTemplate>
+        <EmptyDataTemplate>
+            <table >
+                <tr>
+                    <td>Es wurden keine Daten zurückgegeben.</td>
+                </tr>
+            </table>
+        </EmptyDataTemplate>
     </asp:FormView>
 </asp:Content>
