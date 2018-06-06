@@ -13,6 +13,15 @@ namespace Spielverleih {
     public partial class SpieleView {
         
         /// <summary>
+        /// loginView-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LoginView loginView;
+        
+        /// <summary>
         /// lstSpiele-Steuerelement
         /// </summary>
         /// <remarks>
