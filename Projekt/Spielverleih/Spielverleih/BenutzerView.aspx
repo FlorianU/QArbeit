@@ -6,7 +6,7 @@
         <h4>Mein Profil</h4>
         <hr />
     </div>
-    <asp:FormView ID="productDetail" runat="server" ItemType="Ludothek.Model.Kunde" SelectMethod ="GetKunde" RenderOuterTable="false">
+    <asp:FormView ID="productDetail" runat="server" ItemType="Ludothek.Model.Benutzer" SelectMethod ="GetBenutzer" RenderOuterTable="false">
         <ItemTemplate>
             <div>
                 <h1><%#:Item.Vorname +  " " + Item.Nachname%></h1>

@@ -53,10 +53,11 @@
     <Compile Include="Ausleihe.cs">
       <DependentUpon>LudothekModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Enums\SpielKategorie.cs" />
-    <Compile Include="Kunde.cs">
+    <Compile Include="Benutzer.cs">
       <DependentUpon>LudothekModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Enums\Funktion.cs" />
+    <Compile Include="Enums\SpielKategorie.cs" />
     <Compile Include="Ludothek.cs">
       <DependentUpon>LudothekModel.tt</DependentUpon>
     </Compile>

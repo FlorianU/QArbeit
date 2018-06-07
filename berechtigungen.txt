@@ -1,0 +1,8 @@
+Administrator
+Alles
+
+Mitarbeiter
+Alles ausser Ludotheken, MitarbeiterView
+
+Kunde
+Ausleihe, Spiele

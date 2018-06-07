@@ -19,10 +19,10 @@ namespace Spielverleih
             _context = new LudothekDBEntities();
         }
 
-        public IQueryable<Kunde> GetKunde([QueryString("Id")] Guid? kundeId)
+        public IQueryable<Benutzer> GetBenutzer([QueryString("Id")] Guid? benutzerId)
         {
             Guid userIdentityId = new Guid(Context.User.Identity.GetUserId());
-            return _context.Kunde.Where(kunde => kunde.ID == userIdentityId);
+            return _context.Benutzer.Where(benutzer => benutzer.ID == userIdentityId);
         }
 
         protected void Editieren_Click(object sender, EventArgs e)

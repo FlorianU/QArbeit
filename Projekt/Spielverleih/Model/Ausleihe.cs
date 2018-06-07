@@ -24,6 +24,6 @@ namespace Ludothek.Model
         public int AnzVerlängerungen { get; set; }
         public System.Guid FkKunde { get; set; }
     
-        public virtual Kunde Kunde { get; set; }
+        public virtual Benutzer Benutzer { get; set; }
     }
 }

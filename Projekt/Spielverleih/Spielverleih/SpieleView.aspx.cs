@@ -15,6 +15,10 @@ namespace Spielverleih
     {
         private LudothekDBEntities _context;
 
+        public List<Spiel> Spiele => _context.Spiel.OrderBy(x => x.Spielnummer).ToList();
+        public List<Verlag> Verlaege => _context.Verlag.OrderBy(x => x.Name).ToList();
+        public List<Tarifkategorie> TarifKategorien => _context.Tarifkategorie.OrderBy(x => x.Tarifname).ToList();
+        public IEnumerable<SpielKategorie> SpielKategorien => Enum.GetValues(typeof(SpielKategorie)).Cast<SpielKategorie>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -44,13 +48,7 @@ namespace Spielverleih
                 lstSpiele.DataSource = Spiele;
                 lstSpiele.DataBind();
             }
-            
         }
-
-        public List<Spiel> Spiele => _context.Spiel.OrderBy(x => x.Spielnummer).ToList();
-        public List<Verlag> Verlaege => _context.Verlag.OrderBy(x => x.Name).ToList();
-        public List<Tarifkategorie> TarifKategorien => _context.Tarifkategorie.OrderBy(x => x.Tarifname).ToList();
-        public IEnumerable<SpielKategorie> SpielKategorien => Enum.GetValues(typeof(SpielKategorie)).Cast<SpielKategorie>();
 
         protected void Hinzufügen_Click(object sender, EventArgs e)
         {

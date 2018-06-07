@@ -183,6 +183,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MitarbeiterView.aspx" />
     <Content Include="UebersichtView.aspx" />
     <Content Include="BenutzerView.aspx" />
     <Content Include="BenutzerEditView.aspx" />
@@ -373,6 +374,13 @@
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="MitarbeiterView.aspx.cs">
+      <DependentUpon>MitarbeiterView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MitarbeiterView.aspx.designer.cs">
+      <DependentUpon>MitarbeiterView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UebersichtView.aspx.cs">
       <DependentUpon>UebersichtView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

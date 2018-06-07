@@ -33,11 +33,11 @@ namespace Spielverleih
                     || x.Ausleihdatum.ToString().Contains(_filter)
                     || x.Rueckgabedatum.ToString().Contains(_filter)
                     || x.AnzVerlängerungen.ToString().Contains(_filter)
-                    || x.Kunde.Vorname.Contains(_filter)
-                    || x.Kunde.Nachname.Contains(_filter)
-                    || x.Kunde.Strasse.Contains(_filter)
-                    || x.Kunde.PLZ.ToString().Contains(_filter)
-                    || x.Kunde.Ort.Contains(_filter)
+                    || x.Benutzer.Vorname.Contains(_filter)
+                    || x.Benutzer.Nachname.Contains(_filter)
+                    || x.Benutzer.Strasse.Contains(_filter)
+                    || x.Benutzer.PLZ.ToString().Contains(_filter)
+                    || x.Benutzer.Ort.Contains(_filter)
                     ).OrderByDescending(x => x.Ausleihdatum).ToList();
                 }
             }

@@ -44,9 +44,9 @@
                                 <tr><div class="col-md-1"><%#: Item.Ausleihdatum.ToShortDateString() %></div></tr>
                                 <tr><div class="col-md-1"><%#: (Item.Rueckgabedatum.HasValue) ? Item.Rueckgabedatum.Value.ToShortDateString() : "" %></div></tr>
                                 <tr><div class="col-md-1"><%#: Item.AnzVerlängerungen %></div></tr>
-                                <tr><div class="col-md-2"><%#: Item.Kunde.Vorname + " " + Item.Kunde.Nachname %></div></tr>
-                                <tr><div class="col-md-2"><%#: Item.Kunde.Strasse %></div></tr>
-                                <tr><div class="col-md-1"><%#: Item.Kunde.Ort + " " + Item.Kunde.PLZ %></div></tr>
+                                <tr><div class="col-md-2"><%#: Item.Benutzer.Vorname + " " + Item.Benutzer.Nachname %></div></tr>
+                                <tr><div class="col-md-2"><%#: Item.Benutzer.Strasse %></div></tr>
+                                <tr><div class="col-md-1"><%#: Item.Benutzer.Ort + " " + Item.Benutzer.PLZ %></div></tr>
                             </table>
                         </div>
                     </td>

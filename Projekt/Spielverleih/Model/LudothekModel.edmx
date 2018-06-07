@@ -19,7 +19,7 @@
           <Property Name="AnzVerlängerungen" Type="int" Nullable="false" />
           <Property Name="FkKunde" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
-        <EntityType Name="Kunde">
+        <EntityType Name="Benutzer">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -48,10 +48,9 @@
           </Key>
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Personalnummer" Type="int" />
-          <Property Name="Vorname" Type="varchar" MaxLength="255" />
-          <Property Name="Nachname" Type="varchar" MaxLength="255" />
-          <Property Name="Geburtsdatum" Type="date" />
           <Property Name="FkLudothek" Type="uniqueidentifier" />
+          <Property Name="Funktion" Type="int" Nullable="false" />
+          <Property Name="FK_Benutzer_ID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Spiel">
           <Key>
@@ -108,11 +107,23 @@
           <Property Name="PLZ" Type="int" />
           <Property Name="Ort" Type="varchar" MaxLength="255" />
         </EntityType>
+        <Association Name="FK__Mitarbeit__FK_Be__2FCF1A8A">
+          <End Role="Benutzer" Type="Self.Benutzer" Multiplicity="1" />
+          <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Benutzer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Mitarbeiter">
+              <PropertyRef Name="FK_Benutzer_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Kunde">
-          <End Role="Kunde" Type="Self.Kunde" Multiplicity="1" />
+          <End Role="Benutzer" Type="Self.Benutzer" Multiplicity="1" />
           <End Role="Ausleihe" Type="Self.Ausleihe" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Kunde">
+            <Principal Role="Benutzer">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Ausleihe">
@@ -206,7 +217,7 @@
         </Association>
         <EntityContainer Name="LudothekDBModelStoreContainer">
           <EntitySet Name="Ausleihe" EntityType="Self.Ausleihe" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Kunde" EntityType="Self.Kunde" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Benutzer" EntityType="Self.Benutzer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ludothek" EntityType="Self.Ludothek" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mitarbeiter" EntityType="Self.Mitarbeiter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Spiel" EntityType="Self.Spiel" Schema="dbo" store:Type="Tables" />
@@ -215,8 +226,12 @@
           <EntitySet Name="Verband" EntityType="Self.Verband" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Verbandsvorstandsmitarbeiter" EntityType="Self.Verbandsvorstandsmitarbeiter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Verlag" EntityType="Self.Verlag" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Mitarbeit__FK_Be__2FCF1A8A" Association="Self.FK__Mitarbeit__FK_Be__2FCF1A8A">
+            <End Role="Benutzer" EntitySet="Benutzer" />
+            <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
+          </AssociationSet>
           <AssociationSet Name="FK_Kunde" Association="Self.FK_Kunde">
-            <End Role="Kunde" EntitySet="Kunde" />
+            <End Role="Benutzer" EntitySet="Benutzer" />
             <End Role="Ausleihe" EntitySet="Ausleihe" />
           </AssociationSet>
           <AssociationSet Name="FK_LudothekVerband" Association="Self.FK_LudothekVerband">
@@ -254,7 +269,7 @@
       <Schema Namespace="LudothekDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="LudothekDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Ausleihe" EntityType="LudothekDBModel.Ausleihe" />
-          <EntitySet Name="Kunde" EntityType="LudothekDBModel.Kunde" />
+          <EntitySet Name="Benutzer" EntityType="LudothekDBModel.Benutzer" />
           <EntitySet Name="Ludothek" EntityType="LudothekDBModel.Ludothek" />
           <EntitySet Name="Mitarbeiter" EntityType="LudothekDBModel.Mitarbeiter" />
           <EntitySet Name="Spiel" EntityType="LudothekDBModel.Spiel" />
@@ -264,8 +279,12 @@
           <EntitySet Name="Verbandsvorstandsmitarbeiter" EntityType="LudothekDBModel.Verbandsvorstandsmitarbeiter" />
           <EntitySet Name="Verlag" EntityType="LudothekDBModel.Verlag" />
           <AssociationSet Name="FK_Kunde" Association="LudothekDBModel.FK_Kunde">
-            <End Role="Kunde" EntitySet="Kunde" />
+            <End Role="Benutzer" EntitySet="Benutzer" />
             <End Role="Ausleihe" EntitySet="Ausleihe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mitarbeit__FK_Be__2FCF1A8A" Association="LudothekDBModel.FK__Mitarbeit__FK_Be__2FCF1A8A">
+            <End Role="Benutzer" EntitySet="Benutzer" />
+            <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
           </AssociationSet>
           <AssociationSet Name="FK_LudothekVerband" Association="LudothekDBModel.FK_LudothekVerband">
             <End Role="Verband" EntitySet="Verband" />
@@ -296,6 +315,7 @@
             <End Role="Verbandsvorstandsmitarbeiter" EntitySet="Verbandsvorstandsmitarbeiter" />
           </AssociationSet>
         </EntityContainer>
+        <EnumType Name="SpielKategorie" a:ExternalTypeName="Enums.SpielKategorie" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
         <EntityType Name="Ausleihe">
           <Key>
             <PropertyRef Name="ID" />
@@ -309,9 +329,9 @@
           <Property Name="Rueckgabedatum" Type="DateTime" Precision="3" />
           <Property Name="AnzVerlängerungen" Type="Int32" Nullable="false" />
           <Property Name="FkKunde" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Kunde" Relationship="LudothekDBModel.FK_Kunde" FromRole="Ausleihe" ToRole="Kunde" />
+          <NavigationProperty Name="Benutzer" Relationship="LudothekDBModel.FK_Kunde" FromRole="Ausleihe" ToRole="Benutzer" />
         </EntityType>
-        <EntityType Name="Kunde">
+        <EntityType Name="Benutzer">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -322,7 +342,8 @@
           <Property Name="Strasse" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="PLZ" Type="Int32" />
           <Property Name="Ort" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Ausleihe" Relationship="LudothekDBModel.FK_Kunde" FromRole="Kunde" ToRole="Ausleihe" />
+          <NavigationProperty Name="Ausleihe" Relationship="LudothekDBModel.FK_Kunde" FromRole="Benutzer" ToRole="Ausleihe" />
+          <NavigationProperty Name="Mitarbeiter" Relationship="LudothekDBModel.FK__Mitarbeit__FK_Be__2FCF1A8A" FromRole="Benutzer" ToRole="Mitarbeiter" />
         </EntityType>
         <EntityType Name="Ludothek">
           <Key>
@@ -344,10 +365,10 @@
           </Key>
           <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Personalnummer" Type="Int32" />
-          <Property Name="Vorname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Nachname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Geburtsdatum" Type="DateTime" Precision="0" />
           <Property Name="FkLudothek" Type="Guid" />
+          <Property Name="Funktion" Type="LudothekDBModel.Funktion" Nullable="false" />
+          <Property Name="FK_Benutzer_ID" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Benutzer" Relationship="LudothekDBModel.FK__Mitarbeit__FK_Be__2FCF1A8A" FromRole="Mitarbeiter" ToRole="Benutzer" />
           <NavigationProperty Name="Ludothek" Relationship="LudothekDBModel.FK_MitarbeiterLudothek" FromRole="Mitarbeiter" ToRole="Ludothek" />
           <NavigationProperty Name="Verbandsvorstandsmitarbeiter" Relationship="LudothekDBModel.FK_VerbandsvorstandsmitarbeiterMitarbeiter" FromRole="Mitarbeiter" ToRole="Verbandsvorstandsmitarbeiter" />
         </EntityType>
@@ -416,14 +437,26 @@
           <NavigationProperty Name="Spiel" Relationship="LudothekDBModel.FK_SpielVerlag" FromRole="Verlag" ToRole="Spiel" />
         </EntityType>
         <Association Name="FK_Kunde">
-          <End Type="LudothekDBModel.Kunde" Role="Kunde" Multiplicity="1" />
+          <End Type="LudothekDBModel.Benutzer" Role="Benutzer" Multiplicity="1" />
           <End Type="LudothekDBModel.Ausleihe" Role="Ausleihe" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Kunde">
+            <Principal Role="Benutzer">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Ausleihe">
               <PropertyRef Name="FkKunde" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mitarbeit__FK_Be__2FCF1A8A">
+          <End Type="LudothekDBModel.Benutzer" Role="Benutzer" Multiplicity="1" />
+          <End Type="LudothekDBModel.Mitarbeiter" Role="Mitarbeiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Benutzer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Mitarbeiter">
+              <PropertyRef Name="FK_Benutzer_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -511,7 +544,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EnumType Name="SpielKategorie" a:ExternalTypeName="Enums.SpielKategorie" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+        <EnumType Name="Funktion" a:ExternalTypeName="Enums.Funktion" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -533,9 +566,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Kunde">
-            <EntityTypeMapping TypeName="LudothekDBModel.Kunde">
-              <MappingFragment StoreEntitySet="Kunde">
+          <EntitySetMapping Name="Benutzer">
+            <EntityTypeMapping TypeName="LudothekDBModel.Benutzer">
+              <MappingFragment StoreEntitySet="Benutzer">
                 <ScalarProperty Name="Ort" ColumnName="Ort" />
                 <ScalarProperty Name="PLZ" ColumnName="PLZ" />
                 <ScalarProperty Name="Strasse" ColumnName="Strasse" />
@@ -561,10 +594,9 @@
           <EntitySetMapping Name="Mitarbeiter">
             <EntityTypeMapping TypeName="LudothekDBModel.Mitarbeiter">
               <MappingFragment StoreEntitySet="Mitarbeiter">
+                <ScalarProperty Name="FK_Benutzer_ID" ColumnName="FK_Benutzer_ID" />
+                <ScalarProperty Name="Funktion" ColumnName="Funktion" />
                 <ScalarProperty Name="FkLudothek" ColumnName="FkLudothek" />
-                <ScalarProperty Name="Geburtsdatum" ColumnName="Geburtsdatum" />
-                <ScalarProperty Name="Nachname" ColumnName="Nachname" />
-                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
                 <ScalarProperty Name="Personalnummer" ColumnName="Personalnummer" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

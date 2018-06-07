@@ -14,11 +14,11 @@ namespace Spielverleih
     public partial class BenutzerEditView : Page
     {
         private LudothekDBEntities _context;
-        public Kunde Benutzer
+        public Benutzer Benutzer
         {
             get
             {
-               return _context.Kunde.ToList().Where(x => x.ID == new Guid(Context.User.Identity.GetUserId())).FirstOrDefault();
+               return _context.Benutzer.ToList().Where(x => x.ID == new Guid(Context.User.Identity.GetUserId())).FirstOrDefault();
             }
         }
 
@@ -38,9 +38,9 @@ namespace Spielverleih
         }
 
 
-        public IQueryable<Kunde> GetKunde([QueryString("Id")] Guid? kundeId)
+        public IQueryable<Benutzer> GetBenutzer([QueryString("Id")] Guid? kundeId)
         {
-            IQueryable<Kunde> query = _context.Kunde;
+            IQueryable<Benutzer> query = _context.Benutzer;
             var id = Context.User.Identity.GetUserId();
             query = query.Where(p => p.ID.ToString() == id);
             return query;

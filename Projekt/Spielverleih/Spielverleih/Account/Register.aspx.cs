@@ -29,7 +29,7 @@ namespace Spielverleih.Account
                 //manager.SendEmail(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
 
                 signInManager.SignIn( user, isPersistent: false, rememberBrowser: false);
-                var kunde = new Kunde()
+                var benutzer = new Benutzer()
                 {
                     ID = new Guid(user.Id),
                     Vorname = Vorname.Text,
@@ -41,7 +41,7 @@ namespace Spielverleih.Account
                 };
                 manager.AddToRole<ApplicationUser, string>(user.Id, "Kunde");
                 var db = new LudothekDBEntities();
-                db.Kunde.Add(kunde);
+                db.Benutzer.Add(benutzer);
                 db.SaveChanges();
                 IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
 

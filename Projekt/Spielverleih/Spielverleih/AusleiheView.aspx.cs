@@ -54,7 +54,7 @@ namespace Spielverleih
                 SpielNummer = spiel.Spielnummer,
                 SpielBezeichnung = spiel.Name,
                 Verlag = spiel.Verlag.Name,
-                //Kunde = Benutzer,
+                //Benutzer = Benutzer,
                 Ausleihdatum = now,
                 AnzVerlängerungen = 0,
             };
