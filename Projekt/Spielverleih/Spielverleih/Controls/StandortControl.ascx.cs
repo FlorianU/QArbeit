@@ -23,7 +23,7 @@ namespace Spielverleih
             _context = new LudothekDBEntities();
         }
         
-        public List<Standort> Standorte => _context.Standort.Where(x => x.FkLudothek == new Guid(LudothekID)).OrderBy(x => x.Name).ToList();
+        public List<Standort> Standorte => _context.Standort.Where(x => x.FK_Ludothek_ID == new Guid(LudothekID)).OrderBy(x => x.Name).ToList();
 
         protected void StandortHinzufügen_Click(object sender, EventArgs e)
         {
@@ -33,7 +33,7 @@ namespace Spielverleih
                 ID = Guid.NewGuid(),
                 Name = txtOrt.Text,
                 PLZ = int.Parse(txtPLZ.Text),
-                FkLudothek = new Guid(LudothekID)
+                FK_Ludothek_ID = new Guid(LudothekID)
             };
 
             _context.Standort.Add(standort);

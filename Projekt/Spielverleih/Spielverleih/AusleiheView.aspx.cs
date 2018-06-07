@@ -19,7 +19,7 @@ namespace Spielverleih
 
         public List<Spiel> Spiele => _context.Spiel.ToList();
 
-        public List<Ausleihe> Ausleihen =>  _context.Ausleihe.Where(x => x.FkKunde == _benutzerID).ToList();
+        public List<Ausleihe> Ausleihen =>  _context.Ausleihe.Where(x => x.FK_Kunde_ID == _benutzerID).ToList();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -54,9 +54,11 @@ namespace Spielverleih
                 SpielNummer = spiel.Spielnummer,
                 SpielBezeichnung = spiel.Name,
                 Verlag = spiel.Verlag.Name,
-                //Benutzer = Benutzer,
+                FK_Kunde_ID = _benutzerID,
                 Ausleihdatum = now,
                 AnzVerlängerungen = 0,
+                Rueckgabedatum = DateTime.Now.AddDays(7),
+                Zurueckgegeben = false
             };
             _context.Ausleihe.Add(ausleihe);
             _context.SaveChanges();
@@ -68,13 +70,28 @@ namespace Spielverleih
 
         protected void Verlaengern_Click(object sender, EventArgs e)
         {
-            //var id = new Guid(((Button)sender).CommandArgument);
-            //var ausleihe = _context.Ausleihen.Where(x => x.Id == id).FirstOrDefault();
-            //ausleihe.Enddatum = ausleihe.Enddatum.AddDays(7);
-            // _context.Entry(ausleihe).State = EntityState.Modified;
-            //_context.SaveChanges();
-            //lstAusleihe.DataSource = Ausleihen;
-            //lstAusleihe.DataBind();
+            var id = new Guid(((Button)sender).CommandArgument);
+            var ausleihe = _context.Ausleihe.Where(x => x.ID == id).FirstOrDefault();
+            if (ausleihe.AnzVerlängerungen < 3)
+            {
+                ausleihe.Rueckgabedatum = ausleihe.Rueckgabedatum.AddDays(7);
+                ausleihe.AnzVerlängerungen++;
+                _context.Entry(ausleihe).State = EntityState.Modified;
+                _context.SaveChanges();
+                lstAusleihe.DataSource = Ausleihen;
+                lstAusleihe.DataBind();
+            }
+        }
+
+        protected void Zurueckgeben_Click(object sender, EventArgs e)
+        {
+            var id = new Guid(((Button)sender).CommandArgument);
+            var ausleihe = _context.Ausleihe.Where(x => x.ID == id).FirstOrDefault();
+            ausleihe.Zurueckgegeben = true;
+            _context.Entry(ausleihe).State = EntityState.Modified;
+            _context.SaveChanges();
+            lstAusleihe.DataSource = Ausleihen;
+            lstAusleihe.DataBind();
         }
     }
 }

@@ -20,9 +20,10 @@ namespace Ludothek.Model
         public string SpielBezeichnung { get; set; }
         public string Verlag { get; set; }
         public System.DateTime Ausleihdatum { get; set; }
-        public Nullable<System.DateTime> Rueckgabedatum { get; set; }
+        public System.DateTime Rueckgabedatum { get; set; }
         public int AnzVerlängerungen { get; set; }
-        public System.Guid FkKunde { get; set; }
+        public System.Guid FK_Kunde_ID { get; set; }
+        public bool Zurueckgegeben { get; set; }
     
         public virtual Benutzer Benutzer { get; set; }
     }

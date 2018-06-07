@@ -76,6 +76,15 @@ namespace Spielverleih.Account {
         protected global::System.Web.UI.WebControls.TextBox Geburtsdatum;
         
         /// <summary>
+        /// Strasse-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Strasse;
+        
+        /// <summary>
         /// Plz-Steuerelement
         /// </summary>
         /// <remarks>
@@ -92,23 +101,5 @@ namespace Spielverleih.Account {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Ort;
-        
-        /// <summary>
-        /// Strasse-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Strasse;
-        
-        /// <summary>
-        /// Strassennummer-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Strassennummer;
     }
 }

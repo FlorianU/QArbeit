@@ -17,8 +17,8 @@ namespace Ludothek.Model
         public System.Guid ID { get; set; }
         public int Spielnummer { get; set; }
         public string Name { get; set; }
-        public System.Guid FkVerlag { get; set; }
-        public System.Guid FkTarifkategorie { get; set; }
+        public System.Guid FK_Verlag_ID { get; set; }
+        public System.Guid FK_Tarifkategorie_ID { get; set; }
         public string Beschreibung { get; set; }
         public Nullable<int> FSK { get; set; }
         public Enums.SpielKategorie Kategorie { get; set; }

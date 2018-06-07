@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="8dc18de8e5534db5b7b468830840a842" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="LudothekDBModel.Ausleihe" Width="1.5" PointX="5.25" PointY="9.25" />
-        <EntityTypeShape EntityType="LudothekDBModel.Benutzer" Width="1.5" PointX="3" PointY="7.375" />
-        <EntityTypeShape EntityType="LudothekDBModel.Ludothek" Width="1.5" PointX="3" PointY="2.375" />
+        <EntityTypeShape EntityType="LudothekDBModel.Ausleihe" Width="1.5" PointX="5.25" PointY="9.125" />
+        <EntityTypeShape EntityType="LudothekDBModel.Benutzer" Width="1.5" PointX="3" PointY="7.25" />
+        <EntityTypeShape EntityType="LudothekDBModel.Ludothek" Width="1.5" PointX="3" PointY="2.25" />
         <EntityTypeShape EntityType="LudothekDBModel.Mitarbeiter" Width="1.5" PointX="5.25" PointY="2.5" />
-        <EntityTypeShape EntityType="LudothekDBModel.Spiel" Width="1.5" PointX="10" PointY="6" />
-        <EntityTypeShape EntityType="LudothekDBModel.Standort" Width="1.5" PointX="5.25" PointY="6" />
-        <EntityTypeShape EntityType="LudothekDBModel.Tarifkategorie" Width="1.5" PointX="7.75" PointY="9.5" />
+        <EntityTypeShape EntityType="LudothekDBModel.Spiel" Width="1.5" PointX="10" PointY="1" />
+        <EntityTypeShape EntityType="LudothekDBModel.Standort" Width="1.5" PointX="5.25" PointY="5.75" />
+        <EntityTypeShape EntityType="LudothekDBModel.Tarifkategorie" Width="1.5" PointX="7.75" PointY="1.5" />
         <EntityTypeShape EntityType="LudothekDBModel.Verband" Width="1.5" PointX="0.75" PointY="2.875" />
-        <EntityTypeShape EntityType="LudothekDBModel.Verlag" Width="1.5" PointX="7.75" PointY="6.375" />
+        <EntityTypeShape EntityType="LudothekDBModel.Verlag" Width="1.5" PointX="7.75" PointY="5.375" />
         <AssociationConnector Association="LudothekDBModel.FK_Kunde" />
         <AssociationConnector Association="LudothekDBModel.FK__Mitarbeit__FK_Be__2FCF1A8A" />
         <AssociationConnector Association="LudothekDBModel.FK_LudothekVerband" />

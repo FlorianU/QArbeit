@@ -65,9 +65,9 @@ namespace Spielverleih
                 Name = txtName.Text,
                 Beschreibung = txtBeschreibung.Text,
                 FSK = int.Parse(txtFSK.Text),
-                FkVerlag = new Guid(lstVerlaege.SelectedValue),
+                FK_Verlag_ID = new Guid(lstVerlaege.SelectedValue),
                 Kategorie = (SpielKategorie)Enum.Parse(typeof(SpielKategorie), lstSpielKategorien.SelectedValue),
-                FkTarifkategorie = new Guid(lstTarifKategorien.SelectedValue)
+                FK_Tarifkategorie_ID = new Guid(lstTarifKategorien.SelectedValue)
             };
 
             _context.Spiel.Add(spiel);

@@ -59,6 +59,14 @@
                 <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="Geburtsdatum"
                     CssClass="text-danger" ErrorMessage="Der Geburtsdatum muss angegeben werden." />--%>
             </div>
+        </div>        
+        <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="Strasse" CssClass="col-md-2 control-label">Strasse</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="Strasse" CssClass="form-control" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="Strasse"
+                    CssClass="text-danger" ErrorMessage="Die Strasse muss angegeben werden." />
+            </div>
         </div>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Plz" CssClass="col-md-2 control-label">PLZ</asp:Label>
@@ -72,20 +80,6 @@
                 <asp:TextBox runat="server" ID="Ort" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Ort"
                     CssClass="text-danger" ErrorMessage="Der Ort muss angegeben werden." />
-            </div>
-        </div>
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Strasse" CssClass="col-md-2 control-label">Strasse</asp:Label>
-            <div class="col-md-3">
-                <asp:TextBox runat="server" ID="Strasse" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Strasse"
-                    CssClass="text-danger" ErrorMessage="Die Strasse muss angegeben werden." />
-            </div>
-            <asp:Label runat="server" AssociatedControlID="Strassennummer" CssClass="col-md-2 control-label">Strassennummer</asp:Label>
-            <div class="col-md-3">
-                <asp:TextBox runat="server" ID="Strassennummer" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Strassennummer"
-                    CssClass="text-danger" ErrorMessage="Die Strassennummer muss angegeben werden." />
             </div>
         </div>
         <div class="form-group">

@@ -48,7 +48,8 @@ namespace Spielverleih
                     PLZ = int.Parse(Plz.Text),
                     Ort = Ort.Text
                 };
-                int personalNummer = _context.Mitarbeiter.OrderByDescending(x => x.Personalnummer).FirstOrDefault().Personalnummer + 1 ?? 1;
+                var lastUser = _context.Mitarbeiter.OrderByDescending(x => x.Personalnummer).FirstOrDefault();
+                int personalNummer = lastUser != null ? lastUser.Personalnummer.Value + 1 : 1;
                 var mitarbeiter = new Mitarbeiter()
                 {
                     ID = Guid.NewGuid(),

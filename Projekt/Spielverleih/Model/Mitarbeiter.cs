@@ -16,7 +16,7 @@ namespace Ludothek.Model
     {
         public System.Guid ID { get; set; }
         public Nullable<int> Personalnummer { get; set; }
-        public Nullable<System.Guid> FkLudothek { get; set; }
+        public Nullable<System.Guid> FK_Ludothek_ID { get; set; }
         public Enums.Funktion Funktion { get; set; }
         public System.Guid FK_Benutzer_ID { get; set; }
     

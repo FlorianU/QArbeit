@@ -17,7 +17,7 @@ namespace Ludothek.Model
         public System.Guid ID { get; set; }
         public Nullable<int> PLZ { get; set; }
         public string Name { get; set; }
-        public System.Guid FkLudothek { get; set; }
+        public System.Guid FK_Ludothek_ID { get; set; }
     
         public virtual Ludothek Ludothek { get; set; }
     }
