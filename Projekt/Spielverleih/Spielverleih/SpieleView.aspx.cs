@@ -60,6 +60,7 @@ namespace Spielverleih
             var lstSpielKategorien = (DropDownList)loginView.FindControl("lstSpielKategorien");
             var lstTarifKategorien = (DropDownList)loginView.FindControl("lstTarifKategorien");
             var lstVerlaege = (DropDownList)loginView.FindControl("lstVerlaege");
+
             Spiel spiel = new Spiel()
             {
                 ID = Guid.NewGuid(),
@@ -67,7 +68,7 @@ namespace Spielverleih
                 Beschreibung = txtBeschreibung.Text,
                 FSK = int.Parse(txtFSK.Text),
                 FkVerlag = new Guid(lstVerlaege.SelectedValue),
-                Kategorie = SpielKategorie.Kindergarten,
+                Kategorie = (SpielKategorie)Enum.Parse(typeof(SpielKategorie), lstSpielKategorien.SelectedValue),
                 FkTarifkategorie = new Guid(lstTarifKategorien.SelectedValue)
             };
 

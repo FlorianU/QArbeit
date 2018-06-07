@@ -91,9 +91,10 @@
                                     <table>
                                         <tr><div class="col-md-2"><%#: Item.Spielnummer %></div></tr>   
                                         <tr><div class="col-md-2"><%#: Item.Name %></div></tr>   
-                                        <tr><div class="col-md-3"><%#: Item.Kategorie %></div></tr>   
-                                        <tr><div class="col-md-3"><%#: Item.Verlag.Name %></div></tr>   
-                                        <tr><div class="col-md-2"><%#: Item.Tarifkategorie.Tarifname %></div></tr>
+                                        <tr><div class="col-md-2"><%#: Item.Beschreibung %></div></tr>   
+                                        <tr><div class="col-md-2"><%#: Item.Kategorie %></div></tr>   
+                                        <tr><div class="col-md-2"><%#: Item.Verlag?.Name %></div></tr>   
+                                        <tr><div class="col-md-2"><%#: Item.Tarifkategorie?.Tarifname %></div></tr>
                                     </table>
                                 </div>
                             </td>
@@ -104,8 +105,9 @@
                             <table>
                                 <tr><div class="col-md-2"><b>Spielnummer</b></div></tr>
                                 <tr><div class="col-md-2"><b>Name</b></div></tr>
-                                <tr><div class="col-md-3"><b>Kategorie</b></div></tr>
-                                <tr><div class="col-md-3"><b>Verlag</b></div></tr>
+                                <tr><div class="col-md-2"><b>Beschreibung</b></div></tr>
+                                <tr><div class="col-md-2"><b>Kategorie</b></div></tr>
+                                <tr><div class="col-md-2"><b>Verlag</b></div></tr>
                                 <tr><div class="col-md-2"><b>Tarif</b></div></tr>
                             </table>
                         </div>
