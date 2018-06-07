@@ -49,7 +49,8 @@
             </div>
             <br />
             <br />
-            <asp:ListView ID="lstVerlaege" runat="server" ItemType="Ludothek.Model.Verlag">
+            <asp:ListView ID="lstVerlaege" runat="server" ItemType="Ludothek.Model.Verlag" OnItemDataBound="OnItemDataBound" OnItemEditing="OnItemEditing" OnItemCanceling="OnItemCanceling"
+                ItemPlaceholderID="itemPlaceHolder1">
                 <EmptyDataTemplate>
                     <table >
                         <tr>
@@ -61,8 +62,8 @@
                     <td/>
                 </EmptyItemTemplate>
                 <GroupTemplate>
-                    <tr id="itemPlaceholderContainer" runat="server">
-                        <td id="itemPlaceholder" runat="server"></td>
+                    <tr>
+                        <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
                     </tr>
                 </GroupTemplate>
                 <ItemTemplate>
@@ -70,15 +71,39 @@
                         <div class="form-group">
                             <table>
                                 <tr>
-                                    <div class="col-md-3"><%#: Item.Name %></div>
-                                    <div class="col-md-3"><%#: Item.Strasse %></div>
-                                    <div class="col-md-3"><%#: Item.PLZ %></div>
-                                    <div class="col-md-3"><%#: Item.Ort %></div>
+                                    <div class="col-md-2"><%#: Item.Name %></div>
+                                    <div class="col-md-2"><%#: Item.Strasse %></div>
+                                    <div class="col-md-2"><%#: Item.PLZ %></div>
+                                    <div class="col-md-2"><%#: Item.Ort %></div>
+                                    <div><asp:Button ID="EditButton" CssClass="btn btn-default col-md-2" runat="server" Text="Edit" CommandName="Edit" CausesValidation="false"/></div>
                                 </tr>  
                             </table>
                         </div>
                     </td>
                 </ItemTemplate>
+                <EditItemTemplate>
+                    <td runat="server">
+                        <div class="form-group">
+                            <table>
+                                <tr>                        
+                                    <asp:TextBox runat="server" ID="txtEditName" CssClass="form-control" />
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditName" CssClass="text-danger" ErrorMessage="Der Ort muss angegeben werden." />
+                                    
+                                    <asp:TextBox runat="server" ID="txtEditStrasse" CssClass="form-control" />
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditStrasse" CssClass="text-danger" ErrorMessage="Der Ort muss angegeben werden." />
+                                    
+                                    <asp:TextBox runat="server" ID="txtEditPLZ" CssClass="form-control" />
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditPLZ" CssClass="text-danger" ErrorMessage="Der Ort muss angegeben werden." />
+                                    
+                                    <asp:TextBox runat="server" ID="txtEditOrt" CssClass="form-control" />
+                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditOrt" CssClass="text-danger" ErrorMessage="Der Ort muss angegeben werden." />
+                                    <div><asp:Button CssClass="btn btn-default col-md-2" ID="UpdateButton" runat="server" CommandName="Update" Text="Update" /></div>
+                                    <div><asp:Button CssClass="btn btn-default col-md-2" ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" CausesValidation="false"/></div>
+                                </tr>  
+                            </table>
+                        </div>
+                    </td>
+                    </EditItemTemplate>
                 <LayoutTemplate>
                 <td runat="server">
                     <div class="form-group">
