@@ -5,4 +5,4 @@ Mitarbeiter
 Alles ausser Ludotheken, MitarbeiterView
 
 Kunde
-Ausleihe, Spiele
+Ausleihe, Spiele (ohne Übersicht Spieleinfo...)
