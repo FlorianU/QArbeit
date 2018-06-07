@@ -33,7 +33,6 @@ namespace Ludothek.Model
         public virtual DbSet<Standort> Standort { get; set; }
         public virtual DbSet<Tarifkategorie> Tarifkategorie { get; set; }
         public virtual DbSet<Verband> Verband { get; set; }
-        public virtual DbSet<Verbandsvorstandsmitarbeiter> Verbandsvorstandsmitarbeiter { get; set; }
         public virtual DbSet<Verlag> Verlag { get; set; }
     }
 }

@@ -92,9 +92,6 @@
     <Compile Include="Verband.cs">
       <DependentUpon>LudothekModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Verbandsvorstandsmitarbeiter.cs">
-      <DependentUpon>LudothekModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Verlag.cs">
       <DependentUpon>LudothekModel.tt</DependentUpon>
     </Compile>

@@ -18,7 +18,6 @@ namespace Ludothek.Model
         public Verband()
         {
             this.Ludothek = new HashSet<Ludothek>();
-            this.Verbandsvorstandsmitarbeiter = new HashSet<Verbandsvorstandsmitarbeiter>();
         }
     
         public System.Guid ID { get; set; }
@@ -26,7 +25,5 @@ namespace Ludothek.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ludothek> Ludothek { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Verbandsvorstandsmitarbeiter> Verbandsvorstandsmitarbeiter { get; set; }
     }
 }
