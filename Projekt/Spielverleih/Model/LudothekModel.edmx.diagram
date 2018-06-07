@@ -13,17 +13,14 @@
         <EntityTypeShape EntityType="LudothekDBModel.Standort" Width="1.5" PointX="5.25" PointY="6" />
         <EntityTypeShape EntityType="LudothekDBModel.Tarifkategorie" Width="1.5" PointX="7.75" PointY="9.5" />
         <EntityTypeShape EntityType="LudothekDBModel.Verband" Width="1.5" PointX="0.75" PointY="2.875" />
-        <EntityTypeShape EntityType="LudothekDBModel.Verbandsvorstandsmitarbeiter" Width="1.5" PointX="7.5" PointY="2.75" />
         <EntityTypeShape EntityType="LudothekDBModel.Verlag" Width="1.5" PointX="7.75" PointY="6.375" />
         <AssociationConnector Association="LudothekDBModel.FK_Kunde" />
         <AssociationConnector Association="LudothekDBModel.FK__Mitarbeit__FK_Be__2FCF1A8A" />
         <AssociationConnector Association="LudothekDBModel.FK_LudothekVerband" />
         <AssociationConnector Association="LudothekDBModel.FK_MitarbeiterLudothek" />
         <AssociationConnector Association="LudothekDBModel.FK_StandortLudothek" />
-        <AssociationConnector Association="LudothekDBModel.FK_VerbandsvorstandsmitarbeiterMitarbeiter" />
         <AssociationConnector Association="LudothekDBModel.FK_SpielTarifkategorie" />
         <AssociationConnector Association="LudothekDBModel.FK_SpielVerlag" />
-        <AssociationConnector Association="LudothekDBModel.FK_VerbandsvorstandsmitarbeiterVerband" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

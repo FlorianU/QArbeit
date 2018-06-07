@@ -89,14 +89,6 @@
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="255" />
         </EntityType>
-        <EntityType Name="Verbandsvorstandsmitarbeiter">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="FkMitarbeiter" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="FkVerband" Type="uniqueidentifier" Nullable="false" />
-        </EntityType>
         <EntityType Name="Verlag">
           <Key>
             <PropertyRef Name="ID" />
@@ -191,30 +183,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VerbandsvorstandsmitarbeiterMitarbeiter">
-          <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="1" />
-          <End Role="Verbandsvorstandsmitarbeiter" Type="Self.Verbandsvorstandsmitarbeiter" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Mitarbeiter">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Verbandsvorstandsmitarbeiter">
-              <PropertyRef Name="FkMitarbeiter" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VerbandsvorstandsmitarbeiterVerband">
-          <End Role="Verband" Type="Self.Verband" Multiplicity="1" />
-          <End Role="Verbandsvorstandsmitarbeiter" Type="Self.Verbandsvorstandsmitarbeiter" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Verband">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Verbandsvorstandsmitarbeiter">
-              <PropertyRef Name="FkVerband" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="LudothekDBModelStoreContainer">
           <EntitySet Name="Ausleihe" EntityType="Self.Ausleihe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Benutzer" EntityType="Self.Benutzer" Schema="dbo" store:Type="Tables" />
@@ -224,7 +192,6 @@
           <EntitySet Name="Standort" EntityType="Self.Standort" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tarifkategorie" EntityType="Self.Tarifkategorie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Verband" EntityType="Self.Verband" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Verbandsvorstandsmitarbeiter" EntityType="Self.Verbandsvorstandsmitarbeiter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Verlag" EntityType="Self.Verlag" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Mitarbeit__FK_Be__2FCF1A8A" Association="Self.FK__Mitarbeit__FK_Be__2FCF1A8A">
             <End Role="Benutzer" EntitySet="Benutzer" />
@@ -254,15 +221,7 @@
             <End Role="Ludothek" EntitySet="Ludothek" />
             <End Role="Standort" EntitySet="Standort" />
           </AssociationSet>
-          <AssociationSet Name="FK_VerbandsvorstandsmitarbeiterMitarbeiter" Association="Self.FK_VerbandsvorstandsmitarbeiterMitarbeiter">
-            <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
-            <End Role="Verbandsvorstandsmitarbeiter" EntitySet="Verbandsvorstandsmitarbeiter" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VerbandsvorstandsmitarbeiterVerband" Association="Self.FK_VerbandsvorstandsmitarbeiterVerband">
-            <End Role="Verband" EntitySet="Verband" />
-            <End Role="Verbandsvorstandsmitarbeiter" EntitySet="Verbandsvorstandsmitarbeiter" />
-          </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -276,7 +235,6 @@
           <EntitySet Name="Standort" EntityType="LudothekDBModel.Standort" />
           <EntitySet Name="Tarifkategorie" EntityType="LudothekDBModel.Tarifkategorie" />
           <EntitySet Name="Verband" EntityType="LudothekDBModel.Verband" />
-          <EntitySet Name="Verbandsvorstandsmitarbeiter" EntityType="LudothekDBModel.Verbandsvorstandsmitarbeiter" />
           <EntitySet Name="Verlag" EntityType="LudothekDBModel.Verlag" />
           <AssociationSet Name="FK_Kunde" Association="LudothekDBModel.FK_Kunde">
             <End Role="Benutzer" EntitySet="Benutzer" />
@@ -298,10 +256,6 @@
             <End Role="Ludothek" EntitySet="Ludothek" />
             <End Role="Standort" EntitySet="Standort" />
           </AssociationSet>
-          <AssociationSet Name="FK_VerbandsvorstandsmitarbeiterMitarbeiter" Association="LudothekDBModel.FK_VerbandsvorstandsmitarbeiterMitarbeiter">
-            <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
-            <End Role="Verbandsvorstandsmitarbeiter" EntitySet="Verbandsvorstandsmitarbeiter" />
-          </AssociationSet>
           <AssociationSet Name="FK_SpielTarifkategorie" Association="LudothekDBModel.FK_SpielTarifkategorie">
             <End Role="Tarifkategorie" EntitySet="Tarifkategorie" />
             <End Role="Spiel" EntitySet="Spiel" />
@@ -309,10 +263,6 @@
           <AssociationSet Name="FK_SpielVerlag" Association="LudothekDBModel.FK_SpielVerlag">
             <End Role="Verlag" EntitySet="Verlag" />
             <End Role="Spiel" EntitySet="Spiel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VerbandsvorstandsmitarbeiterVerband" Association="LudothekDBModel.FK_VerbandsvorstandsmitarbeiterVerband">
-            <End Role="Verband" EntitySet="Verband" />
-            <End Role="Verbandsvorstandsmitarbeiter" EntitySet="Verbandsvorstandsmitarbeiter" />
           </AssociationSet>
         </EntityContainer>
         <EnumType Name="SpielKategorie" a:ExternalTypeName="Enums.SpielKategorie" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
@@ -370,7 +320,6 @@
           <Property Name="FK_Benutzer_ID" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Benutzer" Relationship="LudothekDBModel.FK__Mitarbeit__FK_Be__2FCF1A8A" FromRole="Mitarbeiter" ToRole="Benutzer" />
           <NavigationProperty Name="Ludothek" Relationship="LudothekDBModel.FK_MitarbeiterLudothek" FromRole="Mitarbeiter" ToRole="Ludothek" />
-          <NavigationProperty Name="Verbandsvorstandsmitarbeiter" Relationship="LudothekDBModel.FK_VerbandsvorstandsmitarbeiterMitarbeiter" FromRole="Mitarbeiter" ToRole="Verbandsvorstandsmitarbeiter" />
         </EntityType>
         <EntityType Name="Spiel">
           <Key>
@@ -413,17 +362,6 @@
           <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Ludothek" Relationship="LudothekDBModel.FK_LudothekVerband" FromRole="Verband" ToRole="Ludothek" />
-          <NavigationProperty Name="Verbandsvorstandsmitarbeiter" Relationship="LudothekDBModel.FK_VerbandsvorstandsmitarbeiterVerband" FromRole="Verband" ToRole="Verbandsvorstandsmitarbeiter" />
-        </EntityType>
-        <EntityType Name="Verbandsvorstandsmitarbeiter">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="FkMitarbeiter" Type="Guid" Nullable="false" />
-          <Property Name="FkVerband" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Mitarbeiter" Relationship="LudothekDBModel.FK_VerbandsvorstandsmitarbeiterMitarbeiter" FromRole="Verbandsvorstandsmitarbeiter" ToRole="Mitarbeiter" />
-          <NavigationProperty Name="Verband" Relationship="LudothekDBModel.FK_VerbandsvorstandsmitarbeiterVerband" FromRole="Verbandsvorstandsmitarbeiter" ToRole="Verband" />
         </EntityType>
         <EntityType Name="Verlag">
           <Key>
@@ -496,18 +434,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VerbandsvorstandsmitarbeiterMitarbeiter">
-          <End Type="LudothekDBModel.Mitarbeiter" Role="Mitarbeiter" Multiplicity="1" />
-          <End Type="LudothekDBModel.Verbandsvorstandsmitarbeiter" Role="Verbandsvorstandsmitarbeiter" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Mitarbeiter">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Verbandsvorstandsmitarbeiter">
-              <PropertyRef Name="FkMitarbeiter" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SpielTarifkategorie">
           <End Type="LudothekDBModel.Tarifkategorie" Role="Tarifkategorie" Multiplicity="1" />
           <End Type="LudothekDBModel.Spiel" Role="Spiel" Multiplicity="*" />
@@ -529,18 +455,6 @@
             </Principal>
             <Dependent Role="Spiel">
               <PropertyRef Name="FkVerlag" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VerbandsvorstandsmitarbeiterVerband">
-          <End Type="LudothekDBModel.Verband" Role="Verband" Multiplicity="1" />
-          <End Type="LudothekDBModel.Verbandsvorstandsmitarbeiter" Role="Verbandsvorstandsmitarbeiter" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Verband">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Verbandsvorstandsmitarbeiter">
-              <PropertyRef Name="FkVerband" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -639,15 +553,6 @@
             <EntityTypeMapping TypeName="LudothekDBModel.Verband">
               <MappingFragment StoreEntitySet="Verband">
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Verbandsvorstandsmitarbeiter">
-            <EntityTypeMapping TypeName="LudothekDBModel.Verbandsvorstandsmitarbeiter">
-              <MappingFragment StoreEntitySet="Verbandsvorstandsmitarbeiter">
-                <ScalarProperty Name="FkVerband" ColumnName="FkVerband" />
-                <ScalarProperty Name="FkMitarbeiter" ColumnName="FkMitarbeiter" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
