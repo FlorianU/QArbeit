@@ -18,6 +18,7 @@ namespace Spielverleih
         private LudothekDBEntities _context;
 
         public IEnumerable<Funktion> Funktionen => Enum.GetValues(typeof(Funktion)).Cast<Funktion>();
+        public List<Ludothek.Model.Ludothek> Ludotheken => _context.Ludothek.ToList();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,6 +27,9 @@ namespace Spielverleih
             {
                 lstFunktionen.DataSource = Funktionen;
                 lstFunktionen.DataBind();
+
+                lstLudotheken.DataSource = Ludotheken;
+                lstLudotheken.DataBind();
             }
         }
 

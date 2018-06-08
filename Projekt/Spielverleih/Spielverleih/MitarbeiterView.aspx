@@ -72,6 +72,12 @@
             </div>
         </div>
         <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="lstLudotheken" CssClass="col-md-2 control-label">Ludothek</asp:Label>
+            <div class="col-md-10">
+                <asp:DropDownList ID="lstLudotheken" runat="server"  CssClass="form-control"  Value =""/>
+            </div>
+        </div>
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <asp:Button runat="server" OnClick="CreateUser_Click" Text="Registrieren" CssClass="btn btn-default" />
             </div>
