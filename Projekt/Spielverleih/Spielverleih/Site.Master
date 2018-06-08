@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Ludothek Tempora</title>
+    <title><%: Page.Title %> - Ludothek</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -46,13 +46,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Ludothek Tempora</a>
+                    <a class="navbar-brand" runat="server" href="~/">Home</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav">
-                                <li><a runat="server" href="~/">Home</a></li>
                                 <li><a runat="server" href="~/SpieleView">Spiele</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
@@ -60,24 +59,62 @@
                                 <li><a runat="server" href="~/Account/Login">Log in</a></li>
                             </ul>
                         </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <ul class="nav navbar-nav">
-                                <li><a runat="server" href="~/UebersichtView">Übersicht</a></li>
-                                <li><a runat="server" href="~/AusleiheView">Ausleihe</a></li>
-                                <li><a runat="server" href="~/SpieleView">Spiele</a></li>
-                                <li><a runat="server" href="~/TarifkategorieView">Tarifkategorien</a></li>
-                                <li><a runat="server" href="~/VerlagView">Verläge</a></li>
-                                <li><a runat="server" href="~/LudothekView">Ludotheken</a></li>
-                                <li><a runat="server" href="~/MitarbeiterView">Mitarbeiter</a></li>
-                            </ul>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hallo, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                                <li><a runat="server" href="~/BenutzerView">Profil</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                                </li>
-                            </ul>
-                        </LoggedInTemplate>
+                        <RoleGroups>
+                            <asp:RoleGroup Roles="Kunde">
+                                <ContentTemplate>
+                                    <ul class="nav navbar-nav">
+                                        <li><a runat="server" href="~/UebersichtView">Übersicht</a></li>
+                                        <li><a runat="server" href="~/AusleiheView">Ausleihe</a></li>
+                                        <li><a runat="server" href="~/SpieleView">Spiele</a></li>
+                                    </ul>
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hallo, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                        <li><a runat="server" href="~/BenutzerView">Profil</a></li>
+                                        <li>
+                                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                        </li>
+                                    </ul>
+                                </ContentTemplate>
+                            </asp:RoleGroup>
+                            <asp:RoleGroup Roles="Mitarbeiter">
+                                <ContentTemplate>
+                                    <ul class="nav navbar-nav">
+                                        <li><a runat="server" href="~/UebersichtView">Übersicht</a></li>
+                                        <li><a runat="server" href="~/AusleiheView">Ausleihe</a></li>
+                                        <li><a runat="server" href="~/SpieleView">Spiele</a></li>
+                                        <li><a runat="server" href="~/TarifkategorieView">Tarifkategorien</a></li>
+                                        <li><a runat="server" href="~/VerlagView">Verläge</a></li>
+                                    </ul>
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hallo, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                        <li><a runat="server" href="~/BenutzerView">Profil</a></li>
+                                        <li>
+                                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                        </li>
+                                    </ul>
+                                </ContentTemplate>
+                            </asp:RoleGroup>
+                            <asp:RoleGroup Roles="Administrator">
+                                <ContentTemplate>
+                                    <ul class="nav navbar-nav">
+                                        <li><a runat="server" href="~/UebersichtView">Übersicht</a></li>
+                                        <li><a runat="server" href="~/AusleiheView">Ausleihe</a></li>
+                                        <li><a runat="server" href="~/SpieleView">Spiele</a></li>
+                                        <li><a runat="server" href="~/TarifkategorieView">Tarifkategorien</a></li>
+                                        <li><a runat="server" href="~/VerlagView">Verläge</a></li>
+                                        <li><a runat="server" href="~/LudothekView">Ludotheken</a></li>
+                                        <li><a runat="server" href="~/MitarbeiterView">Mitarbeiter</a></li>
+                                    </ul>
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hallo, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                        <li><a runat="server" href="~/BenutzerView">Profil</a></li>
+                                        <li>
+                                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                        </li>
+                                    </ul>
+                                </ContentTemplate>
+                            </asp:RoleGroup>
+                        </RoleGroups>
                     </asp:LoginView>
                 </div>
             </div>
@@ -87,7 +124,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Ludothek Tempora</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Ludothek</p>
             </footer>
         </div>
     </form>

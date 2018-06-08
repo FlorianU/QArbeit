@@ -38,7 +38,7 @@ namespace Spielverleih
         }
 
 
-        public IQueryable<Benutzer> GetBenutzer([QueryString("Id")] Guid? kundeId)
+        public IQueryable<Benutzer> GetBenutzer([QueryString("Id")] Guid? benutzerID)
         {
             IQueryable<Benutzer> query = _context.Benutzer;
             var id = Context.User.Identity.GetUserId();

@@ -42,7 +42,7 @@
                                 <tr><div class="col-md-2"><%#: Item.SpielBezeichnung %></div></tr>
                                 <tr><div class="col-md-1"><%#: Item.Verlag %></div></tr>
                                 <tr><div class="col-md-1"><%#: Item.Ausleihdatum.ToShortDateString() %></div></tr>
-                                <tr><div class="col-md-1"><%#: (Item.Rueckgabedatum.HasValue) ? Item.Rueckgabedatum.Value.ToShortDateString() : "" %></div></tr>
+                                <tr><div class="col-md-1"><%#: Item.Rueckgabedatum.ToShortDateString() %></div></tr>
                                 <tr><div class="col-md-1"><%#: Item.AnzVerlängerungen %></div></tr>
                                 <tr><div class="col-md-2"><%#: Item.Benutzer.Vorname + " " + Item.Benutzer.Nachname %></div></tr>
                                 <tr><div class="col-md-2"><%#: Item.Benutzer.Strasse %></div></tr>
@@ -61,7 +61,7 @@
                                 <tr><div class="col-md-1"><b>Ausleihe</b></div></tr>
                                 <tr><div class="col-md-1"><b>Rückgabe</b></div></tr>
                                 <tr><div class="col-md-1"><b>Verlänger.</b></div></tr>
-                                <tr><div class="col-md-2"><b>Kunde</b></div></tr>
+                                <tr><div class="col-md-2"><b>Benutuzer</b></div></tr>
                                 <tr><div class="col-md-2"><b>Strasse</b></div></tr>
                                 <tr><div class="col-md-1"><b>Ort</b></div></tr>
                             </table>
