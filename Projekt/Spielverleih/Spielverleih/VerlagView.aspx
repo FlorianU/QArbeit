@@ -31,10 +31,8 @@
                     <asp:Label runat="server" AssociatedControlID="txtPlz" CssClass="col-md-2 control-label">PLZ</asp:Label>
                     <div class="col-md-3">
                         <asp:TextBox runat="server" ID="txtPlz" CssClass="form-control plz" TextMode="Number" />
-                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPlz"
-                            CssClass="text-danger" ErrorMessage="Die Postleitzahl muss angegeben werden." />
-                        <asp:RegularExpressionValidator runat="server" ControlToValidate="txtPlz" CssClass="text-danger"
-                            ErrorMessage="Es sind nur Ganzzahlen erlaubt" ValidationExpression="\d+"/>
+                        <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPlz" CssClass="text-danger" ErrorMessage="Die Postleitzahl muss angegeben werden." />
+                        <asp:RegularExpressionValidator runat="server" ControlToValidate="txtPlz" CssClass="text-danger" ErrorMessage="Es sind nur Ganzzahlen erlaubt" ValidationExpression="\d+"/>
                     </div>
                     <asp:Label runat="server" AssociatedControlID="txtOrt" CssClass="col-md-2 control-label">Ort</asp:Label>
                     <div class="col-md-3">
@@ -49,7 +47,7 @@
             </div>
             <br />
             <br />
-            <asp:ListView ID="lstVerlaege" runat="server" ItemType="Ludothek.Model.Verlag" OnItemDataBound="OnItemDataBound" OnItemEditing="OnItemEditing" OnItemCanceling="OnItemCanceling"
+            <asp:ListView ID="lstVerlaege" runat="server" ItemType="Ludothek.Model.Verlag" OnItemEditing="OnItemEditing" OnItemCanceling="OnItemCanceling"
                 ItemPlaceholderID="itemPlaceHolder1">
                 <EmptyDataTemplate>
                     <table >
@@ -75,7 +73,8 @@
                                     <div class="col-md-2"><%#: Item.Strasse %></div>
                                     <div class="col-md-2"><%#: Item.PLZ %></div>
                                     <div class="col-md-2"><%#: Item.Ort %></div>
-                                    <div><asp:Button ID="EditButton" CssClass="btn btn-default col-md-2" runat="server" Text="Edit" CommandName="Edit" CausesValidation="false"/></div>
+                                    <div class="col-md-2"><asp:Button ID="EditButton" CssClass="btn btn-default col-md-12" runat="server" Text="Editieren" CommandName="Edit" CausesValidation="false"/></div>
+                                    <div class="col-md-2"><asp:Button ID="Delete" CssClass="btn btn-default col-md-12" runat="server" Text="Löschen" OnClick="Delete_Clicked" CausesValidation="false" CommandArgument="<%#: Item.ID %>"/></div>
                                 </tr>  
                             </table>
                         </div>
@@ -85,20 +84,32 @@
                     <td runat="server">
                         <div class="form-group">
                             <table>
-                                <tr>                        
-                                    <asp:TextBox runat="server" ID="txtEditName" CssClass="form-control" />
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditName" CssClass="text-danger" ErrorMessage="Der Ort muss angegeben werden." />
-                                    
-                                    <asp:TextBox runat="server" ID="txtEditStrasse" CssClass="form-control" />
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditStrasse" CssClass="text-danger" ErrorMessage="Der Ort muss angegeben werden." />
-                                    
-                                    <asp:TextBox runat="server" ID="txtEditPLZ" CssClass="form-control" />
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditPLZ" CssClass="text-danger" ErrorMessage="Der Ort muss angegeben werden." />
-                                    
-                                    <asp:TextBox runat="server" ID="txtEditOrt" CssClass="form-control" />
-                                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditOrt" CssClass="text-danger" ErrorMessage="Der Ort muss angegeben werden." />
-                                    <div><asp:Button CssClass="btn btn-default col-md-2" ID="UpdateButton" runat="server" CommandName="Update" Text="Update" /></div>
-                                    <div><asp:Button CssClass="btn btn-default col-md-2" ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" CausesValidation="false"/></div>
+                                <tr>
+                                    <asp:Panel runat="server" ID="editPanel">
+                                        <div class="col-md-2">
+                                            <asp:TextBox runat="server" ID="txtEditName" CssClass="form-control" placeholder="Name" Text='<%# Item.Name %>' />
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditName" CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." ValidationGroup="EditValidation" />
+                                        </div>
+                                        <div class="col-md-2">
+                                            <asp:TextBox runat="server" ID="txtEditStrasse" CssClass="form-control" placeholder="Strasse" Text='<%# Item.Strasse %>'/>
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditStrasse" CssClass="text-danger" ErrorMessage="Die Strasse muss angegeben werden." ValidationGroup="EditValidation"/>
+                                        </div>
+                                        <div class="col-md-2"
+                                            ><asp:TextBox runat="server" ID="txtEditPLZ" CssClass="form-control" placeholder="PLZ" Text='<%# Item.PLZ %>'/>
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditPLZ" CssClass="text-danger" ErrorMessage="Die Postleitzahl muss angegeben werden." ValidationGroup="EditValidation"/>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <asp:TextBox runat="server" ID="txtEditOrt" CssClass="form-control" placeholder="Ort" Text='<%# Item.Ort %>'/>
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditOrt" CssClass="text-danger" ErrorMessage="Der Ort muss angegeben werden." ValidationGroup="EditValidation" />
+                                        </div>
+                                        <div class="col-md-2">
+                                            <asp:Button CssClass="btn btn-default col-md-12" ID="UpdateButton" runat="server" Text="Update" ValidationGroup="EditValidation" OnClick="Update_Click" CommandArgument="<%#: Item.ID %>"/>
+
+                                        </div>
+                                        <div class="col-md-2">
+                                            <asp:Button CssClass="btn btn-default col-md-12" ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" CausesValidation="false"/>
+                                        </div>
+                                    </asp:Panel>
                                 </tr>  
                             </table>
                         </div>
@@ -108,9 +119,9 @@
                 <td runat="server">
                     <div class="form-group">
                         <table>
-                            <tr><div class="col-md-3"><b>Name</b></div></tr>
-                            <tr><div class="col-md-3"><b>Strasse</b></div></tr>
-                            <tr><div class="col-md-3"><b>Postleitzahl</b></div></tr>
+                            <tr><div class="col-md-2"><b>Name</b></div></tr>
+                            <tr><div class="col-md-2"><b>Strasse</b></div></tr>
+                            <tr><div class="col-md-2"><b>Postleitzahl</b></div></tr>
                             <tr><div class="col-md-3"><b>Ort</b></div></tr>
                         </table>
                     </div>
