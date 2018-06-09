@@ -27,7 +27,6 @@
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Vorname" Type="varchar" MaxLength="255" />
           <Property Name="Nachname" Type="varchar" MaxLength="255" />
-          <Property Name="Geburtsdatum" Type="date" />
           <Property Name="Strasse" Type="varchar" MaxLength="255" />
           <Property Name="PLZ" Type="int" />
           <Property Name="Ort" Type="varchar" MaxLength="255" />
@@ -237,7 +236,7 @@
           <EntitySet Name="Tarifkategorie" EntityType="LudothekDBModel.Tarifkategorie" />
           <EntitySet Name="Verband" EntityType="LudothekDBModel.Verband" />
           <EntitySet Name="Verlag" EntityType="LudothekDBModel.Verlag" />
-          <AssociationSet Name="FK_Kunde" Association="LudothekDBModel.FK_Kunde">
+          <AssociationSet Name="FK__Ausleihe__FK_Kun__3B40CD36" Association="LudothekDBModel.FK__Ausleihe__FK_Kun__3B40CD36">
             <End Role="Benutzer" EntitySet="Benutzer" />
             <End Role="Ausleihe" EntitySet="Ausleihe" />
           </AssociationSet>
@@ -278,11 +277,11 @@
           <Property Name="SpielBezeichnung" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Verlag" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Ausleihdatum" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Rueckgabedatum" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="Rueckgabedatum" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="AnzVerlängerungen" Type="Int32" Nullable="false" />
           <Property Name="FK_Kunde_ID" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Benutzer" Relationship="LudothekDBModel.FK_Kunde" FromRole="Ausleihe" ToRole="Benutzer" />
           <Property Name="Zurueckgegeben" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Benutzer" Relationship="LudothekDBModel.FK__Ausleihe__FK_Kun__3B40CD36" FromRole="Ausleihe" ToRole="Benutzer" />
         </EntityType>
         <EntityType Name="Benutzer">
           <Key>
@@ -291,11 +290,10 @@
           <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Vorname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Nachname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Geburtsdatum" Type="DateTime" Precision="0" />
           <Property Name="Strasse" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="PLZ" Type="Int32" />
           <Property Name="Ort" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Ausleihe" Relationship="LudothekDBModel.FK_Kunde" FromRole="Benutzer" ToRole="Ausleihe" />
+          <NavigationProperty Name="Ausleihe" Relationship="LudothekDBModel.FK__Ausleihe__FK_Kun__3B40CD36" FromRole="Benutzer" ToRole="Ausleihe" />
           <NavigationProperty Name="Mitarbeiter" Relationship="LudothekDBModel.FK__Mitarbeit__FK_Be__2FCF1A8A" FromRole="Benutzer" ToRole="Mitarbeiter" />
         </EntityType>
         <EntityType Name="Ludothek">
@@ -377,7 +375,7 @@
           <Property Name="Ort" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Spiel" Relationship="LudothekDBModel.FK_SpielVerlag" FromRole="Verlag" ToRole="Spiel" />
         </EntityType>
-        <Association Name="FK_Kunde">
+        <Association Name="FK__Ausleihe__FK_Kun__3B40CD36">
           <End Type="LudothekDBModel.Benutzer" Role="Benutzer" Multiplicity="1" />
           <End Type="LudothekDBModel.Ausleihe" Role="Ausleihe" Multiplicity="*" />
           <ReferentialConstraint>
@@ -489,7 +487,6 @@
                 <ScalarProperty Name="Ort" ColumnName="Ort" />
                 <ScalarProperty Name="PLZ" ColumnName="PLZ" />
                 <ScalarProperty Name="Strasse" ColumnName="Strasse" />
-                <ScalarProperty Name="Geburtsdatum" ColumnName="Geburtsdatum" />
                 <ScalarProperty Name="Nachname" ColumnName="Nachname" />
                 <ScalarProperty Name="Vorname" ColumnName="Vorname" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

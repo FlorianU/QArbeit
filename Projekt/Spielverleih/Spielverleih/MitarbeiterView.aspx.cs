@@ -49,7 +49,6 @@ namespace Spielverleih
                     ID = new Guid(user.Id),
                     Vorname = Vorname.Text,
                     Nachname = Nachname.Text,
-                    //Geburtsdatum = Geburtsdatum.Text,
                     Strasse = Strasse.Text,
                     PLZ = int.Parse(Plz.Text),
                     Ort = Ort.Text
