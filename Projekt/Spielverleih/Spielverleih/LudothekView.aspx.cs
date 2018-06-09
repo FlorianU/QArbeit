@@ -18,6 +18,12 @@ namespace Spielverleih
             _context = new LudothekDBEntities();
             if (!Page.IsPostBack)
             {
+
+                lstVerbaende.DataSource = Verbaende;
+                lstVerbaende.DataValueField = "Id";
+                lstVerbaende.DataTextField = "Name";
+                lstVerbaende.DataBind();
+
                 lstLudotheken.DataSource = Ludotheken;
                 lstLudotheken.DataBind();
             }
@@ -25,12 +31,15 @@ namespace Spielverleih
 
         public List<Ludothek.Model.Ludothek> Ludotheken => _context.Ludothek.OrderBy(x => x.Name).ToList();
 
+        public List<Verband> Verbaende => _context.Verband.OrderBy(x => x.Name).ToList();
+
         protected void Hinzufügen_Click(object sender, EventArgs e)
         {
             Ludothek.Model.Ludothek ludothek = new Ludothek.Model.Ludothek()
             {
                 ID = Guid.NewGuid(),
-                Name = txtName.Text
+                Name = txtName.Text,
+                FK_Verband_ID = new Guid(lstVerbaende.SelectedValue)
             };
 
             _context.Ludothek.Add(ludothek);
@@ -44,9 +53,6 @@ namespace Spielverleih
             Button button = ((Button)sender);
             var panel = button.Parent.FindControl("expandID");
             panel.Visible = !panel.Visible;
-            StandortControl sc = (StandortControl)panel.FindControl("standortControl");
-            sc.LudothekID = ((Button)sender).CommandArgument;
-            sc.RefreshList();
         }
     }
 }

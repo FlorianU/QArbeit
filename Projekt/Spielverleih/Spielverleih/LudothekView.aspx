@@ -19,6 +19,12 @@
                             CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." />
                     </div>
                 </div>
+                <div class="form-group">
+                    <asp:Label runat="server" AssociatedControlID="lstVerbaende" CssClass="col-md-2 control-label">Verbände</asp:Label>
+                    <div class="col-md-10">
+                        <asp:DropDownList ID="lstVerbaende" runat="server"  CssClass="form-control"  />
+                    </div>
+                </div>
 
                 <div class="col-md-offset-1 col-md-11">
                     <asp:Button runat="server" OnClick="Hinzufügen_Click" Text="Hinzufügen" CssClass="btn btn-default" UseSubmitBehavior="false"/>
@@ -46,15 +52,14 @@
                                     <table>
                                         <tr><div class="col-md-3"><%#: Item.Name %></div></tr>  
                                         <tr><div class="col-md-3"><%#: Item.Verband.Name %></div></tr>  
-                                        
-                                <tr>
-                                    <asp:Button runat="server" Text="+" CssClass="btn btn-default col-md-2" CausesValidation="false" CommandArgument="<%#: Item.ID %>"  OnClick="Expand_Click" />
-                                </tr>
-                                <tr>
-                                    <asp:Panel ID="expandID" runat="server" Visible="false">
-                                        <uc:StandortControl runat="server" ID="standortControl"/>   
-                                    </asp:Panel>
-                                </tr>
+                                        <tr>
+                                            <asp:Button runat="server" Text="+" CssClass="btn btn-default col-md-2" CausesValidation="false" CommandArgument="<%#: Item.ID %>"  OnClick="Expand_Click" />
+                                        </tr>
+                                        <tr>
+                                            <asp:Panel ID="expandID" runat="server" Visible="false" >
+                                                <uc:StandortControl runat="server" LudothekID='<%#: Item.ID %>'/>   
+                                            </asp:Panel>
+                                        </tr>
                                     </table>
                                 </div>
                             </td>

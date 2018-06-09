@@ -37,10 +37,7 @@
           </Key>
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="255" />
-          <Property Name="Strasse" Type="varchar" MaxLength="255" />
-          <Property Name="PLZ" Type="int" />
-          <Property Name="Ort" Type="varchar" MaxLength="255" />
-          <Property Name="FK_Verband_ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FK_Verband_ID" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="Mitarbeiter">
           <Key>
@@ -111,6 +108,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Ludothek__FK_Ver__4D5F7D71">
+          <End Role="Verband" Type="Self.Verband" Multiplicity="0..1" />
+          <End Role="Ludothek" Type="Self.Ludothek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Verband">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ludothek">
+              <PropertyRef Name="FK_Verband_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Mitarbeit__FK_Be__2FCF1A8A">
           <End Role="Benutzer" Type="Self.Benutzer" Multiplicity="1" />
           <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="*" />
@@ -120,18 +129,6 @@
             </Principal>
             <Dependent Role="Mitarbeiter">
               <PropertyRef Name="FK_Benutzer_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_LudothekVerband">
-          <End Role="Verband" Type="Self.Verband" Multiplicity="1" />
-          <End Role="Ludothek" Type="Self.Ludothek" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Verband">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Ludothek">
-              <PropertyRef Name="FK_Verband_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -197,13 +194,13 @@
             <End Role="Benutzer" EntitySet="Benutzer" />
             <End Role="Ausleihe" EntitySet="Ausleihe" />
           </AssociationSet>
+          <AssociationSet Name="FK__Ludothek__FK_Ver__4D5F7D71" Association="Self.FK__Ludothek__FK_Ver__4D5F7D71">
+            <End Role="Verband" EntitySet="Verband" />
+            <End Role="Ludothek" EntitySet="Ludothek" />
+          </AssociationSet>
           <AssociationSet Name="FK__Mitarbeit__FK_Be__2FCF1A8A" Association="Self.FK__Mitarbeit__FK_Be__2FCF1A8A">
             <End Role="Benutzer" EntitySet="Benutzer" />
             <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LudothekVerband" Association="Self.FK_LudothekVerband">
-            <End Role="Verband" EntitySet="Verband" />
-            <End Role="Ludothek" EntitySet="Ludothek" />
           </AssociationSet>
           <AssociationSet Name="FK_MitarbeiterLudothek" Association="Self.FK_MitarbeiterLudothek">
             <End Role="Ludothek" EntitySet="Ludothek" />
@@ -244,7 +241,7 @@
             <End Role="Benutzer" EntitySet="Benutzer" />
             <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
           </AssociationSet>
-          <AssociationSet Name="FK_LudothekVerband" Association="LudothekDBModel.FK_LudothekVerband">
+          <AssociationSet Name="FK__Ludothek__FK_Ver__4D5F7D71" Association="LudothekDBModel.FK__Ludothek__FK_Ver__4D5F7D71">
             <End Role="Verband" EntitySet="Verband" />
             <End Role="Ludothek" EntitySet="Ludothek" />
           </AssociationSet>
@@ -302,11 +299,8 @@
           </Key>
           <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Strasse" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="PLZ" Type="Int32" />
-          <Property Name="Ort" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="FK_Verband_ID" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Verband" Relationship="LudothekDBModel.FK_LudothekVerband" FromRole="Ludothek" ToRole="Verband" />
+          <Property Name="FK_Verband_ID" Type="Guid" />
+          <NavigationProperty Name="Verband" Relationship="LudothekDBModel.FK__Ludothek__FK_Ver__4D5F7D71" FromRole="Ludothek" ToRole="Verband" />
           <NavigationProperty Name="Mitarbeiter" Relationship="LudothekDBModel.FK_MitarbeiterLudothek" FromRole="Ludothek" ToRole="Mitarbeiter" />
           <NavigationProperty Name="Standort" Relationship="LudothekDBModel.FK_StandortLudothek" FromRole="Ludothek" ToRole="Standort" />
         </EntityType>
@@ -362,7 +356,7 @@
           </Key>
           <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Ludothek" Relationship="LudothekDBModel.FK_LudothekVerband" FromRole="Verband" ToRole="Ludothek" />
+          <NavigationProperty Name="Ludothek" Relationship="LudothekDBModel.FK__Ludothek__FK_Ver__4D5F7D71" FromRole="Verband" ToRole="Ludothek" />
         </EntityType>
         <EntityType Name="Verlag">
           <Key>
@@ -399,8 +393,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_LudothekVerband">
-          <End Type="LudothekDBModel.Verband" Role="Verband" Multiplicity="1" />
+        <Association Name="FK__Ludothek__FK_Ver__4D5F7D71">
+          <End Type="LudothekDBModel.Verband" Role="Verband" Multiplicity="0..1" />
           <End Type="LudothekDBModel.Ludothek" Role="Ludothek" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Verband">
@@ -497,9 +491,6 @@
             <EntityTypeMapping TypeName="LudothekDBModel.Ludothek">
               <MappingFragment StoreEntitySet="Ludothek">
                 <ScalarProperty Name="FK_Verband_ID" ColumnName="FK_Verband_ID" />
-                <ScalarProperty Name="Ort" ColumnName="Ort" />
-                <ScalarProperty Name="PLZ" ColumnName="PLZ" />
-                <ScalarProperty Name="Strasse" ColumnName="Strasse" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
