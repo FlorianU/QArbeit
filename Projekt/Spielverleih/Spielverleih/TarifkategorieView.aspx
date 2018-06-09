@@ -32,7 +32,8 @@
             </div>
             <br />
             <br />
-            <asp:ListView ID="lstTarifkategorien" runat="server" ItemType="Ludothek.Model.Tarifkategorie">
+            <asp:ListView ID="lstTarifkategorien" runat="server" ItemType="Ludothek.Model.Tarifkategorie" OnItemEditing="OnItemEditing" OnItemCanceling="OnItemCanceling"
+                ItemPlaceholderID="itemPlaceHolder1">
                 <EmptyDataTemplate>
                     <table >
                         <tr>
@@ -44,8 +45,8 @@
                     <td/>
                 </EmptyItemTemplate>
                 <GroupTemplate>
-                    <tr id="itemPlaceholderContainer" runat="server">
-                        <td id="itemPlaceholder" runat="server"></td>
+                    <tr>
+                        <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
                     </tr>
                 </GroupTemplate>
                 <ItemTemplate>
@@ -55,11 +56,40 @@
                                 <tr>
                                     <div class="col-md-4"><%#: Item.Tarifname %></div>
                                     <div class="col-md-4"><%#: Item.Price.ToString("C2") %></div>
+                                    <div class="col-md-2"><asp:Button ID="EditButton" CssClass="btn btn-default col-md-12" runat="server" Text="Editieren" CommandName="Edit" CausesValidation="false"/></div>
+                                    <div class="col-md-2"><asp:Button ID="Delete" CssClass="btn btn-default col-md-12" runat="server" Text="Löschen" OnClick="Delete_Clicked" CausesValidation="false" CommandArgument="<%#: Item.ID %>"/></div>
                                 </tr>  
                             </table>
                         </div>
                     </td>
                 </ItemTemplate>
+                <EditItemTemplate>
+                    <td runat="server">
+                        <div class="form-group">
+                            <table>
+                                <tr>
+                                    <asp:Panel runat="server" ID="editPanel">
+                                        <div class="col-md-4">
+                                            <asp:TextBox runat="server" ID="txtEditTarifname" CssClass="form-control" placeholder="Name" Text='<%# Item.Tarifname %>' />
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditTarifname" CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." ValidationGroup="EditValidation" />
+                                        </div>
+                                        <div class="col-md-4"
+                                            ><asp:TextBox runat="server" ID="txtEditPrice" CssClass="form-control" placeholder="PLZ" Text='<%# Item.Price %>'/>
+                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditPrice" CssClass="text-danger" ErrorMessage="Der Preis muss angegeben werden." ValidationGroup="EditValidation"/>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <asp:Button CssClass="btn btn-default col-md-12" ID="UpdateButton" runat="server" Text="Update" ValidationGroup="EditValidation" OnClick="Update_Click" CommandArgument="<%#: Item.ID %>"/>
+
+                                        </div>
+                                        <div class="col-md-2">
+                                            <asp:Button CssClass="btn btn-default col-md-12" ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" CausesValidation="false"/>
+                                        </div>
+                                    </asp:Panel>
+                                </tr>  
+                            </table>
+                        </div>
+                    </td>
+                </EditItemTemplate>
                 <LayoutTemplate>
                 <td runat="server">
                     <div class="form-group">

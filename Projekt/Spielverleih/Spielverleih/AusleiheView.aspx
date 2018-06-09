@@ -44,7 +44,7 @@
                             <tr><div class="col-md-2"><%#: Item.Ausleihdatum %></div></tr>
                             <tr><div class="col-md-2"><%#: Item.Rueckgabedatum %></div></tr>
                             <tr><div class="col-md-1"><%#: Item.AnzVerlängerungen %></div></tr>
-                            <tr><asp:Button runat="server" Text="Verlängern" CssClass="btn btn-default col-md-2" CausesValidation="false"  CommandArgument="<%#: Item.ID %>" Visible='<%# !(Item.Zurueckgegeben || (Item.AnzVerlängerungen == 3))  %>' OnClick="Verlaengern_Click" ViewStateMode="Enabled"/></tr>
+                            <tr><asp:Button runat="server" Text="Verlängern" CssClass="btn btn-default col-md-2" CausesValidation="false"  CommandArgument="<%#: Item.ID %>" Enabled='<%# !(Item.AnzVerlängerungen == 3) %>' Visible='<%# !Item.Zurueckgegeben  %>' OnClick="Verlaengern_Click" ViewStateMode="Enabled"/></tr>
                             <tr><asp:Button runat="server" Text="Zurückgeben" CssClass="btn btn-default col-md-2" CausesValidation="false"  CommandArgument="<%#: Item.ID %>" Visible='<%# !Item.Zurueckgegeben %>' OnClick="Zurueckgeben_Click"/></tr>
                         </table>
                     </div>

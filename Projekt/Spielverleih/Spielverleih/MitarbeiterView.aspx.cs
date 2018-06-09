@@ -29,6 +29,8 @@ namespace Spielverleih
                 lstFunktionen.DataBind();
 
                 lstLudotheken.DataSource = Ludotheken;
+                lstLudotheken.DataValueField = "ID";
+                lstLudotheken.DataTextField = "Name";
                 lstLudotheken.DataBind();
             }
         }
@@ -60,7 +62,7 @@ namespace Spielverleih
                     Personalnummer = personalNummer,
                     Funktion = (Funktion)Enum.Parse(typeof(Funktion), lstFunktionen.SelectedValue),
                     FK_Benutzer_ID = benutzer.ID,
-
+                    FK_Ludothek_ID = new Guid(lstLudotheken.SelectedValue)
                 };
                 switch (mitarbeiter.Funktion)
                 {

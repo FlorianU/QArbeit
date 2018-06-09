@@ -114,7 +114,7 @@
                             </table>
                         </div>
                     </td>
-                    </EditItemTemplate>
+                </EditItemTemplate>
                 <LayoutTemplate>
                 <td runat="server">
                     <div class="form-group">
