@@ -17,6 +17,12 @@ namespace Spielverleih
 
         public List<Verlag> Verlage => _context.Verlag.OrderBy(x => x.Name).ToList();
 
+        private void BindListView()
+        {
+            lstVerlaege.DataSource = Verlage;
+            lstVerlaege.DataBind();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             _context = new LudothekDBEntities();
@@ -24,12 +30,6 @@ namespace Spielverleih
             {
                 BindListView();
             }
-        }
-
-        private void BindListView()
-        {
-            lstVerlaege.DataSource = Verlage;
-            lstVerlaege.DataBind();
         }
 
         protected void Hinzufügen_Click(object sender, EventArgs e)

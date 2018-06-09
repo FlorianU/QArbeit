@@ -3,6 +3,7 @@ using Ludothek.Model.Enums;
 using Spielverleih.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.ModelBinding;
@@ -19,6 +20,12 @@ namespace Spielverleih
         public List<Verlag> Verlaege => _context.Verlag.OrderBy(x => x.Name).ToList();
         public List<Tarifkategorie> TarifKategorien => _context.Tarifkategorie.OrderBy(x => x.Tarifname).ToList();
         public IEnumerable<SpielKategorie> SpielKategorien => Enum.GetValues(typeof(SpielKategorie)).Cast<SpielKategorie>();
+
+        private void BindListView()
+        {
+            lstSpiele.DataSource = Spiele;
+            lstSpiele.DataBind();
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -44,9 +51,7 @@ namespace Spielverleih
                     lstVerlaege.DataTextField = "Name";
                     lstVerlaege.DataBind();
                 }
-
-                lstSpiele.DataSource = Spiele;
-                lstSpiele.DataBind();
+                BindListView();
             }
         }
 
@@ -72,8 +77,57 @@ namespace Spielverleih
 
             _context.Spiel.Add(spiel);
             _context.SaveChanges();
-            lstSpiele.DataSource = Spiele;
-            lstSpiele.DataBind();
+
+            BindListView();
+        }
+
+        protected void Delete_Clicked(object sender, EventArgs e)
+        {
+            Guid id = new Guid(((Button)sender).CommandArgument);
+            Spiel spiel = _context.Spiel.FirstOrDefault(x => x.ID == id);
+            _context.Spiel.Remove(spiel);
+            _context.SaveChanges();
+            BindListView();
+        }
+
+
+        protected void OnItemEditing(object sender, ListViewEditEventArgs e)
+        {
+            lstSpiele.EditIndex = e.NewEditIndex;
+            BindListView();
+        }
+
+        protected void Update_Click(object sender, EventArgs e)
+        {
+
+            Guid id = new Guid(((Button)sender).CommandArgument);
+            Spiel spiel = _context.Spiel.FirstOrDefault(x => x.ID == id);
+            Panel panel = (Panel)((Button)sender).Parent;
+            TextBox txtNameEdit = (TextBox)panel.FindControl("txtEditName");
+            TextBox txtEditBeschreibung = (TextBox)panel.FindControl("txtEditBeschreibung");
+            TextBox txtEditFSK = (TextBox)panel.FindControl("txtEditFSK");
+            TextBox txtEditKategorie = (TextBox)panel.FindControl("txtEditKategorie");
+            TextBox txtEditVerlag = (TextBox)panel.FindControl("txtEditVerlag"); 
+            TextBox txtEditTarifkategorie = (TextBox)panel.FindControl("txtEditTarifkategorie");
+
+            spiel.Name = txtNameEdit.Text;
+            spiel.Beschreibung = txtEditBeschreibung.Text;
+            spiel.FSK = int.Parse(txtEditFSK.Text);
+            //spiel.Kategorie = txtEditKategorie.Text;
+            //spiel.FK_Verlag_ID = txtEditVerlag.Text;
+            //spiel.FK_Tarifkategorie_ID = txtEditTarifkategorie.Text;
+
+            _context.Entry(spiel).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            lstSpiele.EditIndex = -1;
+            BindListView();
+        }
+
+        protected void OnItemCanceling(object sender, ListViewCancelEventArgs e)
+        {
+            lstSpiele.EditIndex = -1;
+            BindListView();
         }
     }
 }
