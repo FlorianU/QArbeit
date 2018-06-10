@@ -14,6 +14,9 @@ namespace Spielverleih.Account
     {
         protected void CreateUser_Click(object sender, EventArgs e)
         {
+            int plz;
+            if (int.TryParse(Plz.Text, out plz))
+            {
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
             var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text };
@@ -28,7 +31,7 @@ namespace Spielverleih.Account
                     Vorname = Vorname.Text,
                     Nachname = Nachname.Text,
                     Strasse = Strasse.Text,
-                    PLZ = int.Parse(Plz.Text),
+                    PLZ = plz,
                     Ort = Ort.Text
                 };
                 manager.AddToRole(user.Id, "Kunde");
@@ -41,6 +44,8 @@ namespace Spielverleih.Account
             else 
             {
                 ErrorMessage.Text = result.Errors.FirstOrDefault();
+                }
+
             }
         }
     }

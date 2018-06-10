@@ -23,7 +23,7 @@
                     <div class="col-md-10">
                         <asp:TextBox runat="server" ID="txtPrice" CssClass="form-control plz" TextMode="Number" />
                         <asp:RequiredFieldValidator runat="server" ControlToValidate="txtName"
-                            CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." />
+                            CssClass="text-danger" ErrorMessage="Der Preis muss angegeben werden." />
                     </div>
                 </div>
                 <div class="col-md-offset-1 col-md-11">

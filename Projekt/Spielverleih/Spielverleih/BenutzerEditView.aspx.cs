@@ -47,15 +47,19 @@ namespace Spielverleih
 
         protected void Speichern_Click(object sender, EventArgs e)
         {
-            var benutzer = Benutzer;
-            benutzer.Vorname = txtVorname.Text;
-            benutzer.Nachname = txtName.Text;
-            benutzer.PLZ = int.Parse(txtPlz.Text);
-            benutzer.Ort = txtOrt.Text;
-            benutzer.Strasse = txtStrasse.Text;
-            _context.Entry(benutzer).State = EntityState.Modified;
-            _context.SaveChanges();
-            Response.Redirect("BenutzerView.aspx");
+            int plz;
+            if (int.TryParse(txtPlz.Text, out plz))
+            {
+                var benutzer = Benutzer;
+                benutzer.Vorname = txtVorname.Text;
+                benutzer.Nachname = txtName.Text;
+                benutzer.PLZ = plz;
+                benutzer.Ort = txtOrt.Text;
+                benutzer.Strasse = txtStrasse.Text;
+                _context.Entry(benutzer).State = EntityState.Modified;
+                _context.SaveChanges();
+                Response.Redirect("BenutzerView.aspx");
+            }
         }
     }
 }

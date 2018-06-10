@@ -67,6 +67,8 @@
             <asp:Label runat="server" AssociatedControlID="lstLudotheken" CssClass="col-md-2 control-label">Ludothek</asp:Label>
             <div class="col-md-10">
                 <asp:DropDownList ID="lstLudotheken" runat="server"  CssClass="form-control"  Value =""/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="lstLudotheken"
+                    CssClass="text-danger" ErrorMessage="Die Ludothek muss angegeben werden." />
             </div>
         </div>
         <div class="form-group">
