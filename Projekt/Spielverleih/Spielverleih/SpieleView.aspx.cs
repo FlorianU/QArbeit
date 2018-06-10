@@ -64,8 +64,12 @@ namespace Spielverleih
             var lstTarifKategorien = (DropDownList)loginView.FindControl("lstTarifKategorien");
             var lstVerlaege = (DropDownList)loginView.FindControl("lstVerlaege");
 
+            var letztesSpiel = _context.Spiel.OrderByDescending(x => x.Spielnummer).FirstOrDefault();
+            int spielnummer = letztesSpiel != null ? letztesSpiel.Spielnummer + 1 : 1;
+
             Spiel spiel = new Spiel()
             {
+                Spielnummer = spielnummer,
                 ID = Guid.NewGuid(),
                 Name = txtName.Text,
                 Beschreibung = txtBeschreibung.Text,
