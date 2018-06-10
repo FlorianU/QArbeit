@@ -18,17 +18,16 @@ namespace Ludothek.Model
         public Ludothek()
         {
             this.Mitarbeiter = new HashSet<Mitarbeiter>();
-            this.Standort = new HashSet<Standort>();
         }
     
         public System.Guid ID { get; set; }
         public string Name { get; set; }
         public Nullable<System.Guid> FK_Verband_ID { get; set; }
+        public int PLZ { get; set; }
+        public string Ort { get; set; }
     
         public virtual Verband Verband { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mitarbeiter> Mitarbeiter { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Standort> Standort { get; set; }
     }
 }

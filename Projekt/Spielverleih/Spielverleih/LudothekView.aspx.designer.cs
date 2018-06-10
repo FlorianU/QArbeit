@@ -22,6 +22,24 @@ namespace Spielverleih {
         protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
+        /// txtPlz-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPlz;
+        
+        /// <summary>
+        /// txtOrt-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOrt;
+        
+        /// <summary>
         /// lstVerbaende-Steuerelement
         /// </summary>
         /// <remarks>

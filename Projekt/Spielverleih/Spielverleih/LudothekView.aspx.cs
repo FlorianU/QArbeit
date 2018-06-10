@@ -30,7 +30,6 @@ namespace Spielverleih
             _context = new LudothekDBEntities();
             if (!Page.IsPostBack)
             {
-
                 lstVerbaende.DataSource = Verbaende;
                 lstVerbaende.DataValueField = "Id";
                 lstVerbaende.DataTextField = "Name";
@@ -42,24 +41,28 @@ namespace Spielverleih
 
         protected void Hinzufügen_Click(object sender, EventArgs e)
         {
-            Ludothek.Model.Ludothek ludothek = new Ludothek.Model.Ludothek()
+            int plz;
+            if (int.TryParse(txtPlz.Text, out plz))
             {
-                ID = Guid.NewGuid(),
-                Name = txtName.Text,
-                FK_Verband_ID = new Guid(lstVerbaende.SelectedValue)
-            };
+                Ludothek.Model.Ludothek ludothek = new Ludothek.Model.Ludothek()
+                {
+                    ID = Guid.NewGuid(),
+                    Name = txtName.Text,
+                    PLZ = plz,
+                    Ort = txtOrt.Text,
+                    FK_Verband_ID = new Guid(lstVerbaende.SelectedValue)
+                };
 
-            _context.Ludothek.Add(ludothek);
-            _context.SaveChanges();
-            BindListView();
+                _context.Ludothek.Add(ludothek);
+                _context.SaveChanges();
+                BindListView();
+            }
         }
 
         protected void Delete_Clicked(object sender, EventArgs e)
         {
             Guid id = new Guid(((Button)sender).CommandArgument);
             Ludothek.Model.Ludothek ludothek = _context.Ludothek.FirstOrDefault(x => x.ID == id);
-            var standorte = _context.Standort.Where(x => x.FK_Ludothek_ID == ludothek.ID);
-            _context.Standort.RemoveRange(standorte);
             _context.Ludothek.Remove(ludothek);
             var mitarbeiterList = _context.Mitarbeiter.Where(x => x.FK_Ludothek_ID == ludothek.ID);
             foreach (Mitarbeiter mitarbeiter in mitarbeiterList)
@@ -91,16 +94,24 @@ namespace Spielverleih
             Ludothek.Model.Ludothek ludothek = _context.Ludothek.FirstOrDefault(x => x.ID == id);
             Panel panel = (Panel)((Button)sender).Parent;
             TextBox txtNameEdit = (TextBox)panel.FindControl("txtEditName");
+            TextBox txtEditPLZ = (TextBox)panel.FindControl("txtEditPLZ");
+            TextBox txtEditOrt = (TextBox)panel.FindControl("txtEditOrt");
             DropDownList lstEditVerbaende = (DropDownList)panel.FindControl("lstEditVerbaende");
 
-            ludothek.Name = txtNameEdit.Text;
-            ludothek.FK_Verband_ID = new Guid(lstEditVerbaende.SelectedValue);
+            int plz;
+            if (int.TryParse(txtEditPLZ.Text, out plz))
+            {
+                ludothek.Name = txtNameEdit.Text;
+                ludothek.PLZ = plz;
+                ludothek.Ort = txtEditOrt.Text;
+                ludothek.FK_Verband_ID = new Guid(lstEditVerbaende.SelectedValue);
 
-            _context.Entry(ludothek).State = EntityState.Modified;
-            _context.SaveChanges();
+                _context.Entry(ludothek).State = EntityState.Modified;
+                _context.SaveChanges();
 
-            lstLudotheken.EditIndex = -1;
-            BindListView();
+                lstLudotheken.EditIndex = -1;
+                BindListView();
+            }
         }
 
         protected void OnItemCanceling(object sender, ListViewCancelEventArgs e)
