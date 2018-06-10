@@ -17,6 +17,12 @@ namespace Spielverleih
 
         public List<Verlag> Verlage => _context.Verlag.OrderBy(x => x.Name).ToList();
 
+        private void BindListView()
+        {
+            lstVerlaege.DataSource = Verlage;
+            lstVerlaege.DataBind();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             _context = new LudothekDBEntities();
@@ -24,12 +30,6 @@ namespace Spielverleih
             {
                 BindListView();
             }
-        }
-
-        private void BindListView()
-        {
-            lstVerlaege.DataSource = Verlage;
-            lstVerlaege.DataBind();
         }
 
         protected void Hinzufügen_Click(object sender, EventArgs e)
@@ -63,16 +63,15 @@ namespace Spielverleih
             }
         }
 
-
         protected void OnItemEditing(object sender, ListViewEditEventArgs e)
         {
             lstVerlaege.EditIndex = e.NewEditIndex;
             BindListView();
+            
         }
 
         protected void Update_Click(object sender, EventArgs e)
         {
-            
             Guid id = new Guid(((Button)sender).CommandArgument);
             Verlag verlag = _context.Verlag.FirstOrDefault(x => x.ID == id);
             Panel panel = (Panel)((Button)sender).Parent;

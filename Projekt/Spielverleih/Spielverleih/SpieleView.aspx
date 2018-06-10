@@ -69,46 +69,93 @@
                     </RoleGroups>
                 </asp:LoginView>
             </div>
-                <asp:ListView ID="lstSpiele" runat="server" ItemType="Ludothek.Model.Spiel">
-                    <EmptyDataTemplate>
-                        <table >
-                            <tr>
-                                <td>Es wurden keine Daten zurückgegeben.</td>
-                            </tr>
-                        </table>
-                    </EmptyDataTemplate>
-                    <EmptyItemTemplate>
-                        <td/>
-                    </EmptyItemTemplate>
-                    <GroupTemplate>
-                        <tr id="itemPlaceholderContainer" runat="server">
-                            <td id="itemPlaceholder" runat="server"></td>
+                <asp:ListView ID="lstSpiele" runat="server" ItemType="Ludothek.Model.Spiel" OnItemEditing="OnItemEditing" OnItemCanceling="OnItemCanceling"
+                ItemPlaceholderID="itemPlaceHolder1">
+                <EmptyDataTemplate>
+                    <table >
+                        <tr>
+                            <td>Es wurden keine Daten zurückgegeben.</td>
                         </tr>
-                    </GroupTemplate>
+                    </table>
+                </EmptyDataTemplate>
+                <EmptyItemTemplate>
+                    <td/>
+                </EmptyItemTemplate>
+                <GroupTemplate>
+                    <tr>
+                        <asp:PlaceHolder runat="server" ID="itemPlaceHolder1"></asp:PlaceHolder>
+                    </tr>
+                </GroupTemplate>
                     <ItemTemplate>
                         <td runat="server">
                                 <div class="form-group">
                                     <table>
-                                        <tr><div class="col-md-2"><%#: Item.Spielnummer %></div></tr>   
-                                        <tr><div class="col-md-2"><%#: Item.Name %></div></tr>   
+                                        <tr><div class="col-md-1"><%#: Item.Spielnummer %></div></tr>   
+                                        <tr><div class="col-md-1"><%#: Item.Name %></div></tr>   
                                         <tr><div class="col-md-2"><%#: Item.Beschreibung %></div></tr>   
+                                        <tr><div class="col-md-2"><%#: Item.FSK %></div></tr>   
                                         <tr><div class="col-md-2"><%#: Item.Kategorie %></div></tr>   
-                                        <tr><div class="col-md-2"><%#: Item.Verlag?.Name %></div></tr>   
-                                        <tr><div class="col-md-2"><%#: Item.Tarifkategorie?.Tarifname %></div></tr>
+                                        <tr><div class="col-md-1"><%#: Item.Verlag?.Name %></div></tr>   
+                                        <tr><div class="col-md-1"><%#: Item.Tarifkategorie?.Tarifname %></div></tr>
+                                        <div class="col-md-2"><asp:Button ID="EditButton" CssClass="btn btn-default col-md-12" runat="server" Text="Editieren" CommandName="Edit" CausesValidation="false" Visible='<%# User.IsInRole("Administrator") || User.IsInRole("Mitarbeiter")  %>'/></div>
+                                        <div class="col-md-2"><asp:Button ID="Delete" CssClass="btn btn-default col-md-12" runat="server" Text="Löschen" OnClick="Delete_Clicked" CausesValidation="false" CommandArgument="<%#: Item.ID %>" Visible='<%# User.IsInRole("Administrator") || User.IsInRole("Mitarbeiter")  %>' /></div>
                                     </table>
                                 </div>
                             </td>
                     </ItemTemplate>
+                    <EditItemTemplate>
+                        <td runat="server">
+                            <div class="form-group">
+                                <table>
+                                    <tr>
+                                        <asp:Panel runat="server" ID="editPanel">
+                                            <div class="col-md-2">
+                                                <asp:TextBox runat="server" ID="txtEditName" CssClass="form-control" placeholder="Name" Text='<%# Item.Name %>' />
+                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditName" CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." ValidationGroup="EditValidation" />
+                                            </div>                                   
+                                            <div class="col-md-2">
+                                                <asp:TextBox runat="server" ID="txtEditBeschreibung" CssClass="form-control" placeholder="Beschreibung" Text='<%# Item.Beschreibung %>' />
+                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditBeschreibung" CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." ValidationGroup="EditValidation" />
+                                            </div>
+                                            <div class="col-md-2">
+                                                <asp:TextBox runat="server" ID="txtEditFSK" CssClass="form-control" placeholder="Altersbeschränkung" Text='<%# Item.FSK %>' />
+                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditFSK" CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." ValidationGroup="EditValidation" />
+                                            </div>                                   
+                                            <div class="col-md-2">
+                                                <asp:TextBox runat="server" ID="txtEditKategorie" CssClass="form-control" placeholder="Kategorie" Text='<%# Item.Kategorie %>' />
+                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditKategorie" CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." ValidationGroup="EditValidation" />
+                                            </div>                                            
+                                            <div class="col-md-2">
+                                                <asp:TextBox runat="server" ID="txtEditVerlag" CssClass="form-control" placeholder="Verlag" Text='<%# Item.Verlag?.Name %>' />
+                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditVerlag" CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." ValidationGroup="EditValidation" />
+                                            </div>                                            
+                                            <div class="col-md-2">
+                                                <asp:TextBox runat="server" ID="txtEditTarifkategorie" CssClass="form-control" placeholder="Tarif" Text='<%# Item.Tarifkategorie?.Tarifname %>' />
+                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditTarifkategorie" CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." ValidationGroup="EditValidation" />
+                                            </div>
+                                            <div class="col-md-2">
+                                                <asp:Button CssClass="btn btn-default col-md-12" ID="UpdateButton" runat="server" Text="Update" ValidationGroup="EditValidation" OnClick="Update_Click" CommandArgument="<%#: Item.ID %>"/>
+
+                                            </div>
+                                            <div class="col-md-2">
+                                                <asp:Button CssClass="btn btn-default col-md-12" ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" CausesValidation="false"/>
+                                            </div>
+                                        </asp:Panel>
+                                    </tr>  
+                                </table>
+                            </div>
+                        </td>
+                    </EditItemTemplate>
                     <LayoutTemplate>
                     <td runat="server">
                         <div class="form-group">
                             <table>
-                                <tr><div class="col-md-2"><b>Spielnummer</b></div></tr>
-                                <tr><div class="col-md-2"><b>Name</b></div></tr>
+                                <tr><div class="col-md-1"><b>Nummer</b></div></tr>
+                                <tr><div class="col-md-1"><b>Name</b></div></tr>
                                 <tr><div class="col-md-2"><b>Beschreibung</b></div></tr>
                                 <tr><div class="col-md-2"><b>Kategorie</b></div></tr>
-                                <tr><div class="col-md-2"><b>Verlag</b></div></tr>
-                                <tr><div class="col-md-2"><b>Tarif</b></div></tr>
+                                <tr><div class="col-md-1"><b>Verlag</b></div></tr>
+                                <tr><div class="col-md-1"><b>Tarif</b></div></tr>
                             </table>
                         </div>
                     </td>

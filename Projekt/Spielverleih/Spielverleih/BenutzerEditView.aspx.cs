@@ -30,7 +30,6 @@ namespace Spielverleih
                 var benutzer = Benutzer;
                 txtVorname.Text = benutzer.Vorname;
                 txtName.Text = benutzer.Nachname;
-                //txtPlz.Text = benutzer.Geburtsdatum;
                 txtPlz.Text = benutzer.PLZ.ToString();
                 txtOrt.Text = benutzer.Ort;
                 txtStrasse.Text = benutzer.Strasse;
@@ -51,7 +50,6 @@ namespace Spielverleih
             var benutzer = Benutzer;
             benutzer.Vorname = txtVorname.Text;
             benutzer.Nachname = txtName.Text;
-            //benutzer.Geburtsdatum = txtGeburtsdatum.Text;
             benutzer.PLZ = int.Parse(txtPlz.Text);
             benutzer.Ort = txtOrt.Text;
             benutzer.Strasse = txtStrasse.Text;

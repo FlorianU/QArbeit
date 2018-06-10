@@ -21,6 +21,10 @@ namespace Spielverleih
         protected void Page_Load(object sender, EventArgs e)
         {
             _context = new LudothekDBEntities();
+            if (!Page.IsPostBack)
+            {
+                BindListView();
+            }
         }
         
         public List<Standort> Standorte => _context.Standort.Where(x => x.FK_Ludothek_ID == new Guid(LudothekID)).OrderBy(x => x.Name).ToList();
@@ -38,11 +42,10 @@ namespace Spielverleih
 
             _context.Standort.Add(standort);
             _context.SaveChanges();
-            lstStandorte.DataSource = Standorte;
-            lstStandorte.DataBind();
+            BindListView();
         }
 
-        public void RefreshList()
+        public void BindListView()
         {
             lstStandorte.DataSource = Standorte;
             lstStandorte.DataBind();

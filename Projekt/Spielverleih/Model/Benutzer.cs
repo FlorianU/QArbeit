@@ -24,7 +24,6 @@ namespace Ludothek.Model
         public System.Guid ID { get; set; }
         public string Vorname { get; set; }
         public string Nachname { get; set; }
-        public Nullable<System.DateTime> Geburtsdatum { get; set; }
         public string Strasse { get; set; }
         public Nullable<int> PLZ { get; set; }
         public string Ort { get; set; }

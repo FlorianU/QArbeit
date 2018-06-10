@@ -53,14 +53,6 @@
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Geburtsdatum" CssClass="col-md-2 control-label">Geburtsdatum</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="Geburtsdatum" CssClass="form-control"/>
-                <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="Geburtsdatum"
-                    CssClass="text-danger" ErrorMessage="Der Geburtsdatum muss angegeben werden." />--%>
-            </div>
-        </div>        
-        <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Strasse" CssClass="col-md-2 control-label">Strasse</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Strasse" CssClass="form-control" />
