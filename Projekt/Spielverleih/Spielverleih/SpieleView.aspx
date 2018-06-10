@@ -69,7 +69,7 @@
                     </RoleGroups>
                 </asp:LoginView>
             </div>
-                <asp:ListView ID="lstSpiele" runat="server" ItemType="Ludothek.Model.Spiel" OnItemEditing="OnItemEditing" OnItemCanceling="OnItemCanceling"
+                <asp:ListView ID="lstSpiele" runat="server" ItemType="Ludothek.Model.Spiel" OnItemEditing="OnItemEditing" OnItemCanceling="OnItemCanceling" OnItemDataBound="OnItemDataBound"
                 ItemPlaceholderID="itemPlaceHolder1">
                 <EmptyDataTemplate>
                     <table >
@@ -151,31 +151,31 @@
                                             <div>
                                                 <asp:Label runat="server" CssClass="col-md-2 control-label"><b>Beschreibung:</b></asp:Label>
                                                 <asp:TextBox runat="server" ID="txtEditBeschreibung" CssClass="col-md-10 form-control" placeholder="Beschreibung" Text='<%# Item.Beschreibung %>' />
-                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditBeschreibung" CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." ValidationGroup="EditValidation" />
+                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditBeschreibung" CssClass="text-danger" ErrorMessage="Die Beschreibung muss angegeben werden." ValidationGroup="EditValidation" />
                                             </div>
                                             <div>
                                                 <asp:Label runat="server" CssClass="col-md-2 control-label"><b>Altersbeschränkung:</b></asp:Label>
                                                 <asp:TextBox runat="server" ID="txtEditFSK" CssClass="col-md-10 form-control" placeholder="Altersbeschränkung" Text='<%# Item.FSK %>' />
-                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditFSK" CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." ValidationGroup="EditValidation" />
+                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditFSK" CssClass="text-danger" ErrorMessage="Die Altersbeschränkung muss angegeben werden." ValidationGroup="EditValidation" />
                                             </div>
                                         </div>  
                                         <div class="col-md-5">
                                             <div>
                                                 <asp:Label runat="server" CssClass="col-md-2 control-label"><b>Kategorie:</b></asp:Label>
-                                                <asp:TextBox runat="server" ID="txtEditKategorie" CssClass="col-md-10 form-control" placeholder="Kategorie" Text='<%# Item.Kategorie %>' />
-                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditKategorie" CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." ValidationGroup="EditValidation" />
+                                                <asp:DropDownList runat="server" ID="lstEditKategorie" CssClass="col-md-10 form-control" placeholder="Kategorie"/>
+                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="lstEditKategorie" CssClass="text-danger" ErrorMessage="Die Kategoriee muss angegeben werden." ValidationGroup="EditValidation" />
                                             
                                             </div>
                                             <div>
                                                 <asp:Label runat="server" CssClass="col-md-2 control-label"><b>Verlag:</b></asp:Label>
-                                                <asp:TextBox runat="server" ID="txtEditVerlag" CssClass="col-md-10 form-control" placeholder="Verlag" Text='<%# Item.Verlag?.Name %>' />
-                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditVerlag" CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." ValidationGroup="EditValidation" />
+                                                <asp:DropDownList runat="server" ID="lstEditVerlag" CssClass="col-md-10 form-control" placeholder="Verlag" />
+                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="lstEditVerlag" CssClass="text-danger" ErrorMessage="Der Verlag muss angegeben werden." ValidationGroup="EditValidation" />
                                             
                                             </div>
                                             <div>
                                                 <asp:Label runat="server" CssClass="col-md-2 control-label"><b>Tarifkategorie:</b></asp:Label>
-                                                <asp:TextBox runat="server" ID="txtEditTarifkategorie" CssClass="col-md-10 form-control" placeholder="Tarif" Text='<%# Item.Tarifkategorie?.Tarifname %>' />
-                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditTarifkategorie" CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." ValidationGroup="EditValidation" />
+                                                <asp:DropDownList runat="server" ID="lstEditTarifkategorie" CssClass="col-md-10 form-control" placeholder="Tarif"/>
+                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="lstEditTarifkategorie" CssClass="text-danger" ErrorMessage="Die Tarifkategorie muss angegeben werden." ValidationGroup="EditValidation" />
                                             
                                             </div>
                                         </div>

@@ -60,7 +60,7 @@
                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditName" CssClass="text-danger" ErrorMessage="Der Name muss angegeben werden." ValidationGroup="EditValidation" />
                                         </div>
                                         <div class="col-md-3">
-                                            <asp:DropDownList runat="server" ID="lstEditVerbaende" CssClass="form-control" placeholder="Verband"   />
+                                            <asp:DropDownList runat="server" ID="lstEditVerbaende" CssClass="form-control" placeholder="Verband"/>
                                         </div>
                                         <div class="col-md-2"></div>
                                         <div class="col-md-2">

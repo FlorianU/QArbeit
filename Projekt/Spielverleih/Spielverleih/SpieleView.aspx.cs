@@ -106,20 +106,23 @@ namespace Spielverleih
 
             Guid id = new Guid(((Button)sender).CommandArgument);
             Spiel spiel = _context.Spiel.FirstOrDefault(x => x.ID == id);
-            Panel panel = (Panel)((Button)sender).Parent;
+            Control panel = ((Button)sender).Parent;
             TextBox txtNameEdit = (TextBox)panel.FindControl("txtEditName");
             TextBox txtEditBeschreibung = (TextBox)panel.FindControl("txtEditBeschreibung");
             TextBox txtEditFSK = (TextBox)panel.FindControl("txtEditFSK");
             TextBox txtEditKategorie = (TextBox)panel.FindControl("txtEditKategorie");
-            TextBox txtEditVerlag = (TextBox)panel.FindControl("txtEditVerlag"); 
+            TextBox txtEditVerlag = (TextBox)panel.FindControl("txtEditVerlag");
             TextBox txtEditTarifkategorie = (TextBox)panel.FindControl("txtEditTarifkategorie");
+            DropDownList lstEditKategorie = (DropDownList)panel.FindControl("lstEditKategorie");
+            DropDownList lstEditVerlag = (DropDownList)panel.FindControl("lstEditVerlag");
+            DropDownList lstEditTarifkategorie = (DropDownList)panel.FindControl("lstEditTarifkategorie");
 
             spiel.Name = txtNameEdit.Text;
             spiel.Beschreibung = txtEditBeschreibung.Text;
             spiel.FSK = int.Parse(txtEditFSK.Text);
-            //spiel.Kategorie = txtEditKategorie.Text;
-            //spiel.FK_Verlag_ID = txtEditVerlag.Text;
-            //spiel.FK_Tarifkategorie_ID = txtEditTarifkategorie.Text;
+            spiel.Kategorie = (SpielKategorie)Enum.Parse(typeof(SpielKategorie), lstEditKategorie.SelectedValue);
+            spiel.FK_Verlag_ID = new Guid(lstEditVerlag.SelectedValue);
+            spiel.FK_Tarifkategorie_ID = new Guid(lstEditTarifkategorie.SelectedValue);
 
             _context.Entry(spiel).State = EntityState.Modified;
             _context.SaveChanges();
@@ -132,6 +135,29 @@ namespace Spielverleih
         {
             lstSpiele.EditIndex = -1;
             BindListView();
+        }
+
+        protected void OnItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            if (lstSpiele.EditIndex == (e.Item as ListViewDataItem).DataItemIndex)
+            {
+                DropDownList lstEditKategorie = (e.Item.FindControl("lstEditKategorie") as DropDownList);
+                DropDownList lstEditVerlag = (e.Item.FindControl("lstEditVerlag") as DropDownList);
+                DropDownList lstEditTarifkategorie = (e.Item.FindControl("lstEditTarifkategorie") as DropDownList);
+                lstEditKategorie.DataSource = SpielKategorien;
+                lstEditKategorie.DataBind();
+                lstEditKategorie.SelectedValue = ((Spiel)e.Item.DataItem).Kategorie.ToString();
+                lstEditVerlag.DataSource = Verlaege;
+                lstEditVerlag.DataTextField = "Name";
+                lstEditVerlag.DataValueField = "Id";
+                lstEditVerlag.DataBind();
+                lstEditVerlag.SelectedValue = ((Spiel)e.Item.DataItem).FK_Verlag_ID.ToString();
+                lstEditTarifkategorie.DataSource = TarifKategorien;
+                lstEditTarifkategorie.DataTextField = "Tarifname";
+                lstEditTarifkategorie.DataValueField = "Id";
+                lstEditTarifkategorie.DataBind();
+                lstEditTarifkategorie.SelectedValue = ((Spiel)e.Item.DataItem).FK_Tarifkategorie_ID.ToString();
+            }
         }
     }
 }
