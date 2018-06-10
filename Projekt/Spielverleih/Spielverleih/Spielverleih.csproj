@@ -252,6 +252,7 @@
     <Content Include="Site.Master" />
     <Content Include="LudothekView.aspx" />
     <Content Include="TarifkategorieView.aspx" />
+    <Content Include="VerbandView.aspx" />
     <Content Include="VerlagView.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -466,6 +467,13 @@
     </Compile>
     <Compile Include="TarifkategorieView.aspx.designer.cs">
       <DependentUpon>TarifkategorieView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VerbandView.aspx.cs">
+      <DependentUpon>VerbandView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VerbandView.aspx.designer.cs">
+      <DependentUpon>VerbandView.aspx</DependentUpon>
     </Compile>
     <Compile Include="VerlagView.aspx.cs">
       <DependentUpon>VerlagView.aspx</DependentUpon>
