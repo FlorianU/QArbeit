@@ -34,19 +34,22 @@ namespace Spielverleih
 
         protected void Hinzufügen_Click(object sender, EventArgs e)
         {
-
-            Verlag verlag = new Verlag()
+            int plz;
+            if (int.TryParse(txtPlz.Text, out plz))
             {
-                ID = Guid.NewGuid(),
-                Name = txtName.Text,
-                Strasse = txtStrasse.Text,
-                PLZ = int.Parse(txtPlz.Text),
-                Ort = txtOrt.Text
-            };
+                Verlag verlag = new Verlag()
+                {
+                    ID = Guid.NewGuid(),
+                    Name = txtName.Text,
+                    Strasse = txtStrasse.Text,
+                    PLZ = plz,
+                    Ort = txtOrt.Text
+                };
 
-            _context.Verlag.Add(verlag);
-            _context.SaveChanges();
-            BindListView();
+                _context.Verlag.Add(verlag);
+                _context.SaveChanges();
+                BindListView();
+            }
         }
 
         protected void Delete_Clicked(object sender, EventArgs e)
@@ -80,16 +83,20 @@ namespace Spielverleih
             TextBox txtEditPLZ = (TextBox)panel.FindControl("txtEditPLZ");
             TextBox txtEditOrt = (TextBox)panel.FindControl("txtEditOrt");
 
-            verlag.Name = txtNameEdit.Text;
-            verlag.Strasse = txtEditStrasse.Text;
-            verlag.PLZ = int.Parse(txtEditPLZ.Text);
-            verlag.Ort = txtEditOrt.Text;
+            int plz;
+            if (int.TryParse(txtEditPLZ.Text, out plz))
+            {
+                verlag.Name = txtNameEdit.Text;
+                verlag.Strasse = txtEditStrasse.Text;
+                verlag.PLZ = plz;
+                verlag.Ort = txtEditOrt.Text;
 
-            _context.Entry(verlag).State = EntityState.Modified;
-            _context.SaveChanges();
+                _context.Entry(verlag).State = EntityState.Modified;
+                _context.SaveChanges();
 
-            lstVerlaege.EditIndex = -1;
-            BindListView();
+                lstVerlaege.EditIndex = -1;
+                BindListView();
+            }
         }
 
         protected void OnItemCanceling(object sender, ListViewCancelEventArgs e)

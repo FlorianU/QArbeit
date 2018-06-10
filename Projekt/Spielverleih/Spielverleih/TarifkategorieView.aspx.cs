@@ -34,16 +34,20 @@ namespace Spielverleih
 
         protected void Hinzufügen_Click(object sender, EventArgs e)
         {
-            Tarifkategorie tarifkategorie = new Tarifkategorie()
+            double price;
+            if (double.TryParse(txtPrice.Text, out price))
             {
-                ID = Guid.NewGuid(),
-                Tarifname = txtName.Text,
-                Price = double.Parse(txtPrice.Text)
-            };
+                Tarifkategorie tarifkategorie = new Tarifkategorie()
+                {
+                    ID = Guid.NewGuid(),
+                    Tarifname = txtName.Text,
+                    Price = price
+                };
 
-            _context.Tarifkategorie.Add(tarifkategorie);
-            _context.SaveChanges();
-            BindListView();
+                _context.Tarifkategorie.Add(tarifkategorie);
+                _context.SaveChanges();
+                BindListView();
+            }
         }
 
         protected void Delete_Clicked(object sender, EventArgs e)
@@ -68,21 +72,26 @@ namespace Spielverleih
 
         protected void Update_Click(object sender, EventArgs e)
         {
-
             Guid id = new Guid(((Button)sender).CommandArgument);
             Tarifkategorie tarifkategorie = _context.Tarifkategorie.FirstOrDefault(x => x.ID == id);
             Panel panel = (Panel)((Button)sender).Parent;
             TextBox txtEditTarifname = (TextBox)panel.FindControl("txtEditTarifname");
             TextBox txtEditPrice = (TextBox)panel.FindControl("txtEditPrice");
+            double price;
 
-            tarifkategorie.Tarifname = txtEditTarifname.Text;
-            tarifkategorie.Price = double.Parse(txtEditPrice.Text);
+            if (double.TryParse(txtEditPrice.Text, out price))
+            {
 
-            _context.Entry(tarifkategorie).State = EntityState.Modified;
-            _context.SaveChanges();
 
-            lstTarifkategorien.EditIndex = -1;
-            BindListView();
+                tarifkategorie.Tarifname = txtEditTarifname.Text;
+                tarifkategorie.Price = price;
+
+                _context.Entry(tarifkategorie).State = EntityState.Modified;
+                _context.SaveChanges();
+
+                lstTarifkategorien.EditIndex = -1;
+                BindListView();
+            }
         }
 
         protected void OnItemCanceling(object sender, ListViewCancelEventArgs e)

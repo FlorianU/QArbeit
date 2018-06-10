@@ -95,7 +95,7 @@
                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditStrasse" CssClass="text-danger" ErrorMessage="Die Strasse muss angegeben werden." ValidationGroup="EditValidation"/>
                                         </div>
                                         <div class="col-md-2"
-                                            ><asp:TextBox runat="server" ID="txtEditPLZ" CssClass="form-control" placeholder="PLZ" Text='<%# Item.PLZ %>'/>
+                                            ><asp:TextBox runat="server" ID="txtEditPLZ" CssClass="form-control" placeholder="PLZ" Text='<%# Item.PLZ %>' TextMode="Number"/>
                                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtEditPLZ" CssClass="text-danger" ErrorMessage="Die Postleitzahl muss angegeben werden." ValidationGroup="EditValidation"/>
                                         </div>
                                         <div class="col-md-2">
