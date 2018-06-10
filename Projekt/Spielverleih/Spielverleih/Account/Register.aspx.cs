@@ -22,7 +22,6 @@ namespace Spielverleih.Account
 
             if (result.Succeeded)
             {
-                signInManager.SignIn( user, isPersistent: false, rememberBrowser: false);
                 var benutzer = new Benutzer()
                 {
                     ID = new Guid(user.Id),
@@ -36,6 +35,7 @@ namespace Spielverleih.Account
                 var db = new LudothekDBEntities();
                 db.Benutzer.Add(benutzer);
                 db.SaveChanges();
+                signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
                 IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
             }
             else 
