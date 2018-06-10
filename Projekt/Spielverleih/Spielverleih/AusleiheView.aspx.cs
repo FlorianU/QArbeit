@@ -17,9 +17,16 @@ namespace Spielverleih
 
         public Guid _benutzerID;
 
-        public List<Spiel> Spiele => _context.Spiel.ToList();
+        public List<Spiel> Spiele
+        {
+            get
+            {
+                var aktiveAusleihen = _context.Ausleihe.Where(y => !y.Zurueckgegeben);
+                return _context.Spiel.Where(x => aktiveAusleihen.All(y => y.SpielNummer != x.Spielnummer)).ToList();
+            }
+        }
 
-        public List<Ausleihe> Ausleihen =>  _context.Ausleihe.Where(x => x.FK_Kunde_ID == _benutzerID).ToList();
+        public List<Ausleihe> Ausleihen =>  _context.Ausleihe.Where(x => x.FK_Kunde_ID == _benutzerID).OrderByDescending(x => x.Nummer).ToList();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,34 +45,38 @@ namespace Spielverleih
 
         protected void Ausleihen_Click(object sender, EventArgs e)
         {
-            DateTime now = DateTime.Now;
-            Spiel spiel = _context.Spiel.Where(x => x.ID == new Guid(lstVerfuegbareSpiele.SelectedValue)).FirstOrDefault();
-            Ausleihe letzteAusleihe = _context.Ausleihe.OrderByDescending(x => x.Nummer).FirstOrDefault();
-            int nummer = 1;
-            if (letzteAusleihe != null)
+            var aktiveAusleihen = _context.Ausleihe.Where(x => !x.Zurueckgegeben).ToList();
+            if (aktiveAusleihen.Count != 3)
             {
-                nummer = letzteAusleihe.Nummer + 1;
-            }
+                DateTime now = DateTime.Now;
+                Spiel spiel = _context.Spiel.Where(x => x.ID == new Guid(lstVerfuegbareSpiele.SelectedValue)).FirstOrDefault();
+                Ausleihe letzteAusleihe = _context.Ausleihe.OrderByDescending(x => x.Nummer).FirstOrDefault();
+                int nummer = 1;
+                if (letzteAusleihe != null)
+                {
+                    nummer = letzteAusleihe.Nummer + 1;
+                }
 
-            Ausleihe ausleihe = new Ausleihe()
-            {
-                ID = Guid.NewGuid(),
-                Nummer = nummer,
-                SpielNummer = spiel.Spielnummer,
-                SpielBezeichnung = spiel.Name,
-                Verlag = spiel.Verlag.Name,
-                FK_Kunde_ID = _benutzerID,
-                Ausleihdatum = now,
-                AnzVerlängerungen = 0,
-                Rueckgabedatum = DateTime.Now.AddDays(7),
-                Zurueckgegeben = false
-            };
-            _context.Ausleihe.Add(ausleihe);
-            _context.SaveChanges();
-            lstVerfuegbareSpiele.DataSource = Spiele;
-            lstVerfuegbareSpiele.DataBind();
-            lstAusleihe.DataSource = Ausleihen;
-            lstAusleihe.DataBind();
+                Ausleihe ausleihe = new Ausleihe()
+                {
+                    ID = Guid.NewGuid(),
+                    Nummer = nummer,
+                    SpielNummer = spiel.Spielnummer,
+                    SpielBezeichnung = spiel.Name,
+                    Verlag = spiel.Verlag.Name,
+                    FK_Kunde_ID = _benutzerID,
+                    Ausleihdatum = now,
+                    AnzVerlängerungen = 0,
+                    Rueckgabedatum = DateTime.Now.AddDays(7),
+                    Zurueckgegeben = false
+                };
+                _context.Ausleihe.Add(ausleihe);
+                _context.SaveChanges();
+                lstVerfuegbareSpiele.DataSource = Spiele;
+                lstVerfuegbareSpiele.DataBind();
+                lstAusleihe.DataSource = Ausleihen;
+                lstAusleihe.DataBind();
+            }
         }
 
         protected void Verlaengern_Click(object sender, EventArgs e)
@@ -90,6 +101,8 @@ namespace Spielverleih
             ausleihe.Zurueckgegeben = true;
             _context.Entry(ausleihe).State = EntityState.Modified;
             _context.SaveChanges();
+            lstVerfuegbareSpiele.DataSource = Spiele;
+            lstVerfuegbareSpiele.DataBind();
             lstAusleihe.DataSource = Ausleihen;
             lstAusleihe.DataBind();
         }
